@@ -10,7 +10,6 @@ public class Building : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("click");
         SelectionManager.Instance?.Select(this);
     }
 }

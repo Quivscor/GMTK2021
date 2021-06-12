@@ -8,6 +8,7 @@ public class SelectionManager : MonoBehaviour
     public static SelectionManager Instance;
 
     public Action OnBuildingSelected;
+    public Action OnDeselection;
 
     public Building SelectedBuilding { get; private set; }
 
@@ -21,5 +22,11 @@ public class SelectionManager : MonoBehaviour
     {
         SelectedBuilding = selectTarget;
         OnBuildingSelected?.Invoke();
+    }
+
+    public void Deselect()
+    {
+        SelectedBuilding = null;
+        OnDeselection?.Invoke();
     }
 }
