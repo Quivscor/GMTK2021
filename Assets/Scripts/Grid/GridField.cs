@@ -7,7 +7,7 @@ public class GridField : MonoBehaviour, IPointerClickHandler
 {
     public GridFieldType type = GridFieldType.UNKNOWN;
 
-    private Vector2Int ownCoordinates;
+    public Vector2Int OwnCoordinates { get; private set; }
 
     [SerializeField] private Building m_Building;
     public Building Building { get => m_Building; private set => m_Building = value; }
@@ -15,7 +15,7 @@ public class GridField : MonoBehaviour, IPointerClickHandler
     //Init from creating class here
     public void Construct(Vector2Int coordinates)
     {
-        ownCoordinates = new Vector2Int(coordinates.x, coordinates.y);
+        OwnCoordinates = new Vector2Int(coordinates.x, coordinates.y);
     }
 
     public void AssignBuilding(Building building)
@@ -25,9 +25,9 @@ public class GridField : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(SelectionManager.Instance?.SelectedBuilding != null && m_Building == null)
+        if(SelectionManager.Instance?.SelectedBuilding != null && m_Building == null && type != GridFieldType.ROAD_FIELD)
         {
-            GridController.Instance.ProcessBuildingPlacement(new GridBuildProcessEventData(SelectionManager.Instance?.SelectedBuilding, ownCoordinates));
+            GridController.Instance.ProcessBuildingPlacement(new GridBuildProcessEventData(SelectionManager.Instance?.SelectedBuilding, OwnCoordinates));
         }
     }
 }
