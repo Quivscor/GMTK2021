@@ -1,4 +1,5 @@
-﻿public class BuildingStats
+﻿[System.Serializable]
+public class BuildingStats
 {
     public float cost; //building cost
 

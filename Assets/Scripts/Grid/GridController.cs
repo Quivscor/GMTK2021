@@ -55,6 +55,7 @@ public class GridController : MonoBehaviour
     {
         Grid[data.gridFieldCoords.x, data.gridFieldCoords.y].AssignBuilding(data.building);
         data.building.transform.position = Grid[data.gridFieldCoords.x, data.gridFieldCoords.y].transform.position;
+        data.building.isBuilt = true;
         SelectionManager.Instance.Deselect();
         OnProcessBuildPlacement?.Invoke();
     }
