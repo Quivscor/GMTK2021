@@ -20,12 +20,16 @@ public class SelectionManager : MonoBehaviour
 
     public void Select(Building selectTarget)
     {
+        if (SelectedBuilding != null)
+            SelectedBuilding.transform.localScale = Vector3.one;
         SelectedBuilding = selectTarget;
+        SelectedBuilding.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
         OnBuildingSelected?.Invoke();
     }
 
     public void Deselect()
     {
+        SelectedBuilding.transform.localScale = Vector3.one;
         SelectedBuilding = null;
         OnDeselection?.Invoke();
     }

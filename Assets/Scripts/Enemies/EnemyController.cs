@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyController : MonoBehaviour
 {
@@ -8,11 +9,14 @@ public class EnemyController : MonoBehaviour
 
     public EnemyPath EnemyPath { get; private set; }
     public EnemyFactory EnemyFactory { get; private set; }
-    
+    public ResourcesController ResourcesController { get; private set; }
+    private AudioSource source;
+
     public List<Enemy> SpawnedEnemies { get; private set; }
 
     public float timeBetweenWaves;
     public float timeToNextWave;
+    public Action<int> OnNewWave;
 
     public int WaveNumber { get; private set; } = 0;
 
@@ -30,6 +34,9 @@ public class EnemyController : MonoBehaviour
         //this works assuming that first 2 nodes are in a straight line
         EnemyFactory = new EnemyFactory(EnemyPath.PathNodes[0].transform.position, 
             EnemyPath.PathNodes[1].transform.position - EnemyPath.PathNodes[0].transform.position);
+
+        ResourcesController = FindObjectOfType<ResourcesController>();
+        source = GetComponent<AudioSource>();
         
         timeToNextWave = timeBetweenWaves;
     }
@@ -48,8 +55,11 @@ public class EnemyController : MonoBehaviour
     private void CallNextWave()
     {
         WaveNumber++;
-        SpawnedEnemies = EnemyFactory.CreateWave(GetAvailablePoints());
-        timeToNextWave = timeBetweenWaves;
+        OnNewWave?.Invoke(WaveNumber);
+        source.PlayOneShot(source.clip);
+        SpawnedEnemies = EnemyFactory.CreateWave(GetAvailablePoints(), WaveNumber);
+        //time to next wave is time between waves + time when last guy reaches start
+        timeToNextWave = timeBetweenWaves - SpawnedEnemies[SpawnedEnemies.Count - 1].CurrentTime;
 
         SubscribeEnemies();
     }
@@ -59,19 +69,23 @@ public class EnemyController : MonoBehaviour
         foreach(Enemy e in SpawnedEnemies)
         {
             e.OnDeath += DisposeEnemy;
+            e.OnDeath += ResourcesController.GainMoney;
 
+            e.OnReachDestination += ResourcesController.RemoveLife;
+            e.OnReachDestination += DisposeEnemy;
         }
     }
 
     private void DisposeEnemy(Enemy e)
     {
         SpawnedEnemies.Remove(e);
-        Destroy(e.gameObject);
+        Destroy(e.GetComponentInChildren<SpriteRenderer>());
+        Destroy(e.gameObject, .2f);
     }
 
     private int GetAvailablePoints()
     {
-        return WaveNumber * 5;
+        return (int)(WaveNumber * 3.5f);
     }
 
     public Vector3 GetPositionOfNodeAt(int i)

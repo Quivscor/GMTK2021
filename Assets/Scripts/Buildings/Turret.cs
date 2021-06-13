@@ -7,6 +7,8 @@ public class Turret : Building
     [SerializeField] private GameObject m_TurretHead;
 
     private TurretEnemyDetector m_TurretEnemyDetector;
+    private ParticleSystem fireParticles;
+    private AudioSource source;
 
     private List<Enemy> targets;
 
@@ -22,10 +24,10 @@ public class Turret : Building
     #endregion
 
     protected override void Awake()
-    {
-        base.Awake();
-
+    { 
         m_TurretEnemyDetector = GetComponentInChildren<TurretEnemyDetector>();
+        fireParticles = GetComponentInChildren<ParticleSystem>();
+        source = GetComponent<AudioSource>();
 
         m_TurretEnemyDetector.OnEnemyEnterRange += AddTarget;
         m_TurretEnemyDetector.OnEnemyExitRange += RemoveTarget;
@@ -41,28 +43,43 @@ public class Turret : Building
         timeBetweenShotsCurrent = timeBetweenShots;
     }
 
-    private void Update()
+    protected override void Update()
     {
-        if(isBuilt)
-        {
-            if (targets.Count > 0)
-            {
-                m_TurretHead.transform.up = targets[0].transform.position - this.transform.position;
+        if (!isBuilt || Time.timeScale == 0/*|| !isPowered*/) //power to be reintroduced later
+            return;
 
-                if (timeBetweenShotsCurrent <= 0)
-                {
-                    Fire();
-                    timeBetweenShotsCurrent = timeBetweenShots - extraTimeBetweenShotsReduction;
-                }
-                else
-                    timeBetweenShotsCurrent -= Time.deltaTime;
+        SanityTargetList();
+
+        if (targets.Count > 0)
+        {
+            m_TurretHead.transform.right = -1 * (targets[0].transform.position - this.transform.position);
+
+            if (timeBetweenShotsCurrent <= 0)
+            {
+                extraDamage = BonusStats.power;
+                extraTimeBetweenShotsReduction = BonusStats.frequency / (32 + BonusStats.frequency);
+                Fire();
+                timeBetweenShotsCurrent = timeBetweenShots - extraTimeBetweenShotsReduction;
             }
+            else
+                timeBetweenShotsCurrent -= Time.deltaTime;
+        }
+    }
+
+    public void SanityTargetList()
+    {
+        foreach(Enemy e in new List<Enemy>(targets))
+        {
+            if (e == null)
+                RemoveTarget(e);
         }
     }
 
     public void Fire()
     {
         targets[0].TakeDamage(baseDamage + extraDamage);
+        fireParticles.Play();
+        source.PlayOneShot(source.clip);
     }
 
     public void AddTarget(Enemy target)

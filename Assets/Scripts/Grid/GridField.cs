@@ -7,10 +7,21 @@ public class GridField : MonoBehaviour, IPointerClickHandler
 {
     public GridFieldType type = GridFieldType.UNKNOWN;
 
+    [SerializeField] private Sprite buildPlotSprite;
+    [SerializeField] private Sprite roadSprite;
+
     public Vector2Int OwnCoordinates { get; private set; }
 
     [SerializeField] private Building m_Building;
     public Building Building { get => m_Building; private set => m_Building = value; }
+
+    private void Awake()
+    {
+        if (type == GridFieldType.ROAD_FIELD)
+            GetComponentInChildren<SpriteRenderer>().sprite = roadSprite;
+        else
+            GetComponentInChildren<SpriteRenderer>().sprite = buildPlotSprite;
+    }
 
     //Init from creating class here
     public void Construct(Vector2Int coordinates)

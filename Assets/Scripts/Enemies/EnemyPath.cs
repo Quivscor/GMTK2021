@@ -34,6 +34,8 @@ public class EnemyPath
             else
                 PathNodes.Add(neighbour);
         }
+        Building hq = Resources.Load<Building>("HQ");
+        PathNodes[PathNodes.Count - 1].AssignBuilding(GameObject.Instantiate<Building>(hq, PathNodes[PathNodes.Count - 1].transform.position, Quaternion.identity, null));
     }
 
     public GridField FindRoadNeighbour(int index)

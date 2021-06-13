@@ -17,15 +17,17 @@ public class EnemyFactory
 
         Enemy e = Resources.Load<Enemy>("Enemies/TestEnemy");
         enemies.Add(e);
+        e = Resources.Load<Enemy>("Enemies/TestEnemy2");
+        enemies.Add(e);
     }
 
-    public List<Enemy> CreateWave(int availablePoints)
+    public List<Enemy> CreateWave(int availablePoints, int waveNumber)
     {
         List<Enemy> wave = new List<Enemy>();
         while(availablePoints > 0)
         {
             Enemy e;
-            if (TryCreateEnemy(ref availablePoints, out e, wave.Count))
+            if (TryCreateEnemy(ref availablePoints, out e, wave.Count, waveNumber))
             {
                 wave.Add(e);
             }
@@ -34,7 +36,7 @@ public class EnemyFactory
         return wave;
     }
 
-    public bool TryCreateEnemy(ref int availablePoints, out Enemy enemy, int enemyInWaveIndex)
+    public bool TryCreateEnemy(ref int availablePoints, out Enemy enemy, int enemyInWaveIndex, int waveNumber)
     {
         List<Enemy> enemiesReversed = new List<Enemy>(enemies);
         enemiesReversed.Reverse();
@@ -43,6 +45,7 @@ public class EnemyFactory
             if(e.pointCost <= availablePoints)
             {
                 Enemy localEnemy = GameObject.Instantiate(e, spawnPoint + (enemyInWaveIndex * distanceOffsetBetweenWaveMembers * -1 * directionTowardsSpawnPoint) , Quaternion.identity, null);
+                localEnemy.Construct(waveNumber);
                 availablePoints -= e.pointCost;
                 enemy = localEnemy;
                 return true;

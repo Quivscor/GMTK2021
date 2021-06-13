@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1983382914362505965}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 1983382915193716150}
   m_RootOrder: 0
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0566e0424105f3243b732e8375390e30, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 2be02364836bf4b4fa7c6423af8f53d0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5174070128815615172}
   - component: {fileID: 6162480795369521101}
   m_Layer: 0
-  m_Name: TestEnemy
+  m_Name: TestEnemy2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,11 +129,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e92290a1b67d8744c87a8daa9a6a9cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointCost: 1
-  money: 3
-  hp: 5
-  damage: 1
-  perWaveIncrease: 0.25
+  pointCost: 20
+  money: 40
+  hp: 100
+  damage: 5
+  perWaveIncrease: 0.8
   moveSpeed: 1
 --- !u!58 &5174070128815615172
 CircleCollider2D:
