@@ -1109,8 +1109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8447039746db9b42890e48cc215c99e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenWaves: 5
-  timeToNextWave: 0
+  m_EnemyTypes:
+  - {fileID: 1983382915193716151, guid: f1155231949b82546a21ce4b2156cbd4, type: 3}
+  - {fileID: 1983382915193716151, guid: 881ae96c819a49746a5895f14d4a0510, type: 3}
+  m_TimeBetweenWaves: 5
 --- !u!4 &51363873
 Transform:
   m_ObjectHideFlags: 0

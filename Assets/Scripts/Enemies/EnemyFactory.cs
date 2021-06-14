@@ -1,57 +1,76 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
+using System.Collections;
+using System.Linq;
 
 public class EnemyFactory
 {
-    public List<Enemy> enemies;
-    public Vector3 spawnPoint;
-    public Vector3 directionTowardsSpawnPoint;
+    public List<Enemy> EnemyTypes { get; private set; }
+    public Vector3 SpawnPoint { get; private set; }
 
-    public float distanceOffsetBetweenWaveMembers = 0.75f;
+    public float timeOffsetBetweenWaveMembers = 0.75f;
 
-    public EnemyFactory(Vector3 spawnPoint, Vector3 direction)
+    public Action OnWaveFinishSpawning;
+    public Action<Enemy> OnEnemySpawned;
+
+    public EnemyFactory(Vector3 spawnPoint, List<Enemy> enemyTypes)
     {
-        enemies = new List<Enemy>();
-        this.spawnPoint = spawnPoint - direction;
-        this.directionTowardsSpawnPoint = direction;
+        EnemyTypes = new List<Enemy>();
+        this.SpawnPoint = spawnPoint;
 
-        Enemy e = Resources.Load<Enemy>("Enemies/TestEnemy");
-        enemies.Add(e);
-        e = Resources.Load<Enemy>("Enemies/TestEnemy2");
-        enemies.Add(e);
+        //most expensive enemy is first
+        EnemyTypes = enemyTypes;
+        EnemyTypes = EnemyTypes.OrderByDescending(i => i.pointCost).ToList<Enemy>();
     }
 
-    public List<Enemy> CreateWave(int availablePoints, int waveNumber)
+    public IEnumerator CreateWave(int waveNumber)
     {
-        List<Enemy> wave = new List<Enemy>();
+        int availablePoints = GetAvailablePoints(waveNumber);
+        
         while(availablePoints > 0)
         {
-            Enemy e;
-            if (TryCreateEnemy(ref availablePoints, out e, wave.Count, waveNumber))
+            if (TryCreateEnemy(ref availablePoints, waveNumber))
             {
-                wave.Add(e);
+                yield return new WaitForSeconds(timeOffsetBetweenWaveMembers);
+            }
+            else
+            {
+                //in case there aren't EnemyTypes of cost 1, fail safe option
+                Debug.LogError("Create wave cannot spend all points, using fail safe option!");
+                break;
             }
         }
-                
-        return wave;
+        FinalizeWaveSpawn();
     }
 
-    public bool TryCreateEnemy(ref int availablePoints, out Enemy enemy, int enemyInWaveIndex, int waveNumber)
+    private int GetAvailablePoints(int waveNumber)
     {
-        List<Enemy> enemiesReversed = new List<Enemy>(enemies);
-        enemiesReversed.Reverse();
-        foreach(Enemy e in enemiesReversed)
+        return (int)(waveNumber * 3.5f);
+    }
+
+    private void FinalizeWaveSpawn()
+    {
+        OnWaveFinishSpawning?.Invoke();
+    }
+
+    public bool TryCreateEnemy(ref int availablePoints, int waveNumber)
+    {
+        foreach(Enemy e in EnemyTypes)
         {
             if(e.pointCost <= availablePoints)
             {
-                Enemy localEnemy = GameObject.Instantiate(e, spawnPoint + (enemyInWaveIndex * distanceOffsetBetweenWaveMembers * -1 * directionTowardsSpawnPoint) , Quaternion.identity, null);
-                localEnemy.Construct(waveNumber);
-                availablePoints -= e.pointCost;
-                enemy = localEnemy;
+                Enemy enemy = GameObject.Instantiate(e, SpawnPoint, Quaternion.identity, null);
+
+                //scale enemy with wave number
+                enemy.Construct(waveNumber);
+                availablePoints -= enemy.pointCost;
+
+                //subscribe enemy to handlers for enemy death and enemy reaching base
+                OnEnemySpawned?.Invoke(enemy);
                 return true;
             }
         }
-        enemy = null;
         return false;
     }
 }
