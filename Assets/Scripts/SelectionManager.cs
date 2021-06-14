@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class SelectionManager : MonoBehaviour
+public static class SelectionManager
 {
     public static Action OnBuildingSelected;
     public static Action OnDeselection;
