@@ -17,6 +17,10 @@ public static class SelectionManager
 
     public static void Select(Building selectTarget)
     {
+        //when trying to assign already selected building
+        if (SelectedBuilding == selectTarget)
+            return;
+
         if (SelectedBuilding != null)
             SelectedBuilding.transform.localScale = Vector3.one;
         SelectedBuilding = selectTarget;
