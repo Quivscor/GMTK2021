@@ -7,15 +7,15 @@ public class StatDisplay : MonoBehaviour
 {
     [SerializeField] private TMProText text;
 
-    private void Start()
+    private void Awake()
     {
-        SelectionManager.Instance.OnBuildingSelected += DisplaySelectedBuilding;
-        SelectionManager.Instance.OnDeselection += HideDisplay;
+        SelectionManager.OnBuildingSelected += DisplaySelectedBuilding;
+        SelectionManager.OnDeselection += HideDisplay;
     }
 
     public void DisplaySelectedBuilding()
     {
-        Building b = SelectionManager.Instance.SelectedBuilding;
+        Building b = SelectionManager.SelectedBuilding;
         if(!b.isBuilt)
         {
             string operationSign = "x";

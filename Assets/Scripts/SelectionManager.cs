@@ -5,20 +5,17 @@ using System;
 
 public class SelectionManager : MonoBehaviour
 {
-    public static SelectionManager Instance;
+    public static Action OnBuildingSelected;
+    public static Action OnDeselection;
 
-    public Action OnBuildingSelected;
-    public Action OnDeselection;
+    public static Building SelectedBuilding { get; private set; }
 
-    public Building SelectedBuilding { get; private set; }
-
-    private void Awake()
+    public static bool IsSelectedBuildingPlaceable()
     {
-        if( Instance == null )
-            Instance = this;
+        return (SelectedBuilding != null && !SelectedBuilding.isBuilt);
     }
 
-    public void Select(Building selectTarget)
+    public static void Select(Building selectTarget)
     {
         if (SelectedBuilding != null)
             SelectedBuilding.transform.localScale = Vector3.one;
@@ -27,7 +24,7 @@ public class SelectionManager : MonoBehaviour
         OnBuildingSelected?.Invoke();
     }
 
-    public void Deselect()
+    public static void Deselect()
     {
         SelectedBuilding.transform.localScale = Vector3.one;
         SelectedBuilding = null;

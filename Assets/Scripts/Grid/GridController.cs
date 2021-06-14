@@ -168,7 +168,7 @@ public class GridController : MonoBehaviour
         data.building.isDirty = true;
         SetNeighboursDirty(data.gridFieldCoords);
         RecalculateGrid();
-        SelectionManager.Instance.Deselect();
+        SelectionManager.Deselect();
         source.PlayOneShot(source.clip);
         OnProcessBuildPlacement?.Invoke();
     }

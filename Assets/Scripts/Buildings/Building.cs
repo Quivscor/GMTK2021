@@ -44,6 +44,6 @@ public class Building : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        SelectionManager.Instance?.Select(this);
+        SelectionManager.Select(this);
     }
 }

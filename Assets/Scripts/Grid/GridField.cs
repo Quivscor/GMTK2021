@@ -36,9 +36,9 @@ public class GridField : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(SelectionManager.Instance?.SelectedBuilding != null && m_Building == null && type != GridFieldType.ROAD_FIELD)
+        if(SelectionManager.IsSelectedBuildingPlaceable() && m_Building == null && type != GridFieldType.ROAD_FIELD)
         {
-            GridController.Instance.ProcessBuildingPlacement(new GridBuildProcessEventData(SelectionManager.Instance?.SelectedBuilding, OwnCoordinates));
+            GridController.Instance.ProcessBuildingPlacement(new GridBuildProcessEventData(SelectionManager.SelectedBuilding, OwnCoordinates));
         }
     }
 }
