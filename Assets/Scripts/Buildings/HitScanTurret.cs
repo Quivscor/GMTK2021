@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : Building
+public class HitScanTurret : Building, ITurret
 {
     [SerializeField] private GameObject m_TurretHead;
 
@@ -10,7 +10,9 @@ public class Turret : Building
     private ParticleSystem fireParticles;
     private AudioSource source;
 
-    private List<Enemy> targets;
+    public List<Enemy> Targets { get; private set; }
+
+    public event TurretFireEvent OnTurretFire;
 
     #region TurretBaseStats
     private float timeBetweenShots;
@@ -32,7 +34,7 @@ public class Turret : Building
         m_TurretEnemyDetector.OnEnemyEnterRange += AddTarget;
         m_TurretEnemyDetector.OnEnemyExitRange += RemoveTarget;
 
-        targets = new List<Enemy>();
+        Targets = new List<Enemy>();
     }
 
     private void Start()
@@ -50,9 +52,9 @@ public class Turret : Building
 
         SanityTargetList();
 
-        if (targets.Count > 0)
+        if (Targets.Count > 0)
         {
-            m_TurretHead.transform.right = -1 * (targets[0].transform.position - this.transform.position);
+            m_TurretHead.transform.right = -1 * (Targets[0].transform.position - this.transform.position);
 
             if (timeBetweenShotsCurrent <= 0)
             {
@@ -68,7 +70,7 @@ public class Turret : Building
 
     public void SanityTargetList()
     {
-        foreach(Enemy e in new List<Enemy>(targets))
+        foreach(Enemy e in new List<Enemy>(Targets))
         {
             if (e == null)
                 RemoveTarget(e);
@@ -77,18 +79,19 @@ public class Turret : Building
 
     public void Fire()
     {
-        targets[0].TakeDamage(baseDamage + extraDamage);
+        Targets[0].TakeDamage(baseDamage + extraDamage);
+        OnTurretFire?.Invoke();
         fireParticles.Play();
         source.PlayOneShot(source.clip);
     }
 
-    public void AddTarget(Enemy target)
+    public void AddTarget(Enemy e)
     {
-        targets.Add(target);
+        Targets.Add(e);
     }
 
-    public void RemoveTarget(Enemy target)
+    public void RemoveTarget(Enemy e)
     {
-        targets.Remove(target);
+        Targets.Remove(e);
     }
 }

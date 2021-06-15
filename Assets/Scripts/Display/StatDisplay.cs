@@ -27,11 +27,11 @@ public class StatDisplay : MonoBehaviour
             return;
         }
 
-        if(b is Turret t)
+        if(b is ITurret t)
         {
             //display combat values
-            text.text = "Damage: " + (t.BaseStats.power + t.BonusStats.power) +
-                "\nFire rate: " + (t.BaseStats.frequency - (t.BonusStats.frequency / (32 + t.BonusStats.frequency))).ToString("n2") + " seconds per shot"; 
+            text.text = "Damage: " + (b.BaseStats.power + b.BonusStats.power) +
+                "\nFire rate: " + (b.BaseStats.frequency - (b.BonusStats.frequency / (32 + b.BonusStats.frequency))).ToString("n2") + " seconds per shot"; 
         }
         else
         {

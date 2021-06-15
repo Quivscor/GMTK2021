@@ -68,7 +68,7 @@ public class GridController : MonoBehaviour
                 if (Grid[x, y].Building == null)
                     continue;
 
-                if(Grid[x,y].Building is Turret t)
+                if(Grid[x,y].Building is ITurret t)
                     turrets.Push(Grid[x, y]);
 
                 if (Grid[x, y].Building.isDirty && !GetIsNeighboursDirty(new Vector2Int(x, y)))
