@@ -5,14 +5,12 @@ using System;
 
 public class EnemyController : MonoBehaviour
 {
-    public static EnemyController Instance;
-
-    public EnemyPath EnemyPath { get; private set; }
+    public static EnemyPath EnemyPath { get; private set; }
 
     [Header("Enemy Factory Settings")]
     [SerializeField] private List<Enemy> m_EnemyTypes;
     public List<Enemy> EnemyTypes { get => m_EnemyTypes; }
-    public EnemyFactory EnemyFactory { get; private set; }
+    public IEnemyFactory EnemyFactory { get; private set; }
 
     public ResourcesController ResourcesController { get; private set; }
     private AudioSource source;
@@ -26,12 +24,6 @@ public class EnemyController : MonoBehaviour
 
     public int WaveNumber { get; private set; } = 0;
 
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-    }
-
     private void Start()
     {
         EnemyPath = new EnemyPath();
@@ -39,7 +31,7 @@ public class EnemyController : MonoBehaviour
 
         if (EnemyTypes.Count <= 0)
             Debug.LogError("No enemy types detected in EnemyController!");
-        EnemyFactory = new EnemyFactory(EnemyPath.PathNodes[0].transform.position, EnemyTypes);
+        EnemyFactory = new PointBasedEnemyFactory(EnemyPath.PathNodes[0].transform.position, EnemyTypes);
 
         EnemyFactory.OnEnemySpawned += SubscribeEnemy;
         EnemyFactory.OnWaveFinishSpawning += HandleFinishWaveSpawn;
@@ -67,7 +59,7 @@ public class EnemyController : MonoBehaviour
         m_IsWaveSpawned = false;
         OnNewWave?.Invoke(WaveNumber);
 
-        StartCoroutine(EnemyFactory.CreateWave(WaveNumber));
+        StartCoroutine(EnemyFactory.CreateWave(new WaveData(WaveNumber)));
 
         source.PlayOneShot(source.clip);
     }

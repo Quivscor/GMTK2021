@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
     public void Construct(int waveNumber)
     {
         previousNode = transform.position;
-        nextNode = EnemyController.Instance.EnemyPath.PathNodes[currentNodeIndex].transform.position;
+        nextNode = EnemyController.EnemyPath.PathNodes[currentNodeIndex].transform.position;
         currentHp = hp * (1 + (waveNumber * perWaveIncrease));
         //gives extra delay on spawn
         CurrentTime = 1 - Vector3.Distance(previousNode, nextNode);
@@ -56,8 +56,8 @@ public class Enemy : MonoBehaviour
         {
             previousNode = nextNode;
             currentNodeIndex++;
-            if (currentNodeIndex < EnemyController.Instance.EnemyPath.PathNodes.Count)
-                nextNode = EnemyController.Instance.EnemyPath.PathNodes[currentNodeIndex].transform.position;
+            if (currentNodeIndex < EnemyController.EnemyPath.PathNodes.Count)
+                nextNode = EnemyController.EnemyPath.PathNodes[currentNodeIndex].transform.position;
             else
                 OnReachDestination?.Invoke(this);
 

@@ -4,17 +4,18 @@ using System;
 using System.Collections;
 using System.Linq;
 
-public class EnemyFactory
+public class PointBasedEnemyFactory : IEnemyFactory
 {
     public List<Enemy> EnemyTypes { get; private set; }
     public Vector3 SpawnPoint { get; private set; }
 
-    public float timeOffsetBetweenWaveMembers = 0.75f;
+    private float m_TimeOffsetBetweenWaveMembers = 0.75f;
+    private int m_AvailablePoints;
 
-    public Action OnWaveFinishSpawning;
-    public Action<Enemy> OnEnemySpawned;
+    public event FactoryEvent OnWaveFinishSpawning;
+    public event FactoryCreateEvent OnEnemySpawned;
 
-    public EnemyFactory(Vector3 spawnPoint, List<Enemy> enemyTypes)
+    public PointBasedEnemyFactory(Vector3 spawnPoint, List<Enemy> enemyTypes)
     {
         EnemyTypes = new List<Enemy>();
         this.SpawnPoint = spawnPoint;
@@ -24,15 +25,15 @@ public class EnemyFactory
         EnemyTypes = EnemyTypes.OrderByDescending(i => i.pointCost).ToList<Enemy>();
     }
 
-    public IEnumerator CreateWave(int waveNumber)
+    public IEnumerator CreateWave(WaveData data)
     {
-        int availablePoints = GetAvailablePoints(waveNumber);
+        m_AvailablePoints = GetAvailablePoints(data.WaveNumber);
         
-        while(availablePoints > 0)
+        while(m_AvailablePoints > 0)
         {
-            if (TryCreateEnemy(ref availablePoints, waveNumber))
+            if (CreateEnemy(data))
             {
-                yield return new WaitForSeconds(timeOffsetBetweenWaveMembers);
+                yield return new WaitForSeconds(m_TimeOffsetBetweenWaveMembers);
             }
             else
             {
@@ -54,17 +55,17 @@ public class EnemyFactory
         OnWaveFinishSpawning?.Invoke();
     }
 
-    public bool TryCreateEnemy(ref int availablePoints, int waveNumber)
+    public bool CreateEnemy(WaveData data)
     {
         foreach(Enemy e in EnemyTypes)
         {
-            if(e.pointCost <= availablePoints)
+            if(e.pointCost <= m_AvailablePoints)
             {
                 Enemy enemy = GameObject.Instantiate(e, SpawnPoint, Quaternion.identity, null);
 
                 //scale enemy with wave number
-                enemy.Construct(waveNumber);
-                availablePoints -= enemy.pointCost;
+                enemy.Construct(data.WaveNumber);
+                m_AvailablePoints -= enemy.pointCost;
 
                 //subscribe enemy to handlers for enemy death and enemy reaching base
                 OnEnemySpawned?.Invoke(enemy);

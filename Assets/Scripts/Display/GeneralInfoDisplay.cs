@@ -14,7 +14,8 @@ public class GeneralInfoDisplay : MonoBehaviour
         ResourcesController r = FindObjectOfType<ResourcesController>();
         r.OnLivesChange += UpdateLives;
         r.OnMoneyChange += UpdateMoney;
-        EnemyController.Instance.OnNewWave += UpdateWave;
+        EnemyController e = FindObjectOfType<EnemyController>();
+        e.OnNewWave += UpdateWave;
     }
 
     public void UpdateWave(int value)
