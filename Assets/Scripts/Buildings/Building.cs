@@ -9,8 +9,8 @@ public class Building : MonoBehaviour, IPointerClickHandler
     public BuildingType BuildingType { get => m_BuildingType; }
 
     [SerializeField] private BuildingStats m_BaseStats;
-    public BuildingStats BaseStats { get => m_BaseStats; private set => m_BaseStats = value; }
-    public BuildingStats BonusStats { get; private set; }
+    public BuildingStats BaseStats { get => m_BaseStats; protected set => m_BaseStats = value; }
+    public BuildingStats BonusStats { get; protected set; }
 
     public bool isDirty = true;
     public bool isBuilt = false;
@@ -32,18 +32,23 @@ public class Building : MonoBehaviour, IPointerClickHandler
         BonusStats.Reset();
     }
 
-    public void AddBoostValue(BuildingStats s)
+    public virtual void AddBoostValue(BuildingStats s)
     {
         BonusStats += s;
     }
 
-    public void AddBoostMultiplier(BuildingStats s)
+    public virtual void AddBoostMultiplier(BuildingStats s)
     {
-        BonusStats += BonusStats * s;
+        BonusStats += (BaseStats + BonusStats) * s;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         SelectionManager.Select(this);
+    }
+
+    public virtual string ShowInfo()
+    {
+        throw new System.NotImplementedException();
     }
 }

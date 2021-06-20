@@ -96,4 +96,13 @@ public class HitScanTurret : Building, ITurret
     {
         Targets.Remove(e);
     }
+
+    public override string ShowInfo()
+    {
+        string info = "Basic turret.\nDamage: " + (baseDamage + extraDamage) + 
+            "\nFirerate: " + (timeBetweenShots - extraTimeBetweenShotsReduction) + 
+            " per shot.";
+        
+        return info;
+    }
 }

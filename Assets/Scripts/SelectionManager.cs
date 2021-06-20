@@ -5,7 +5,7 @@ using System;
 
 public static class SelectionManager
 {
-    public static Action OnBuildingSelected;
+    public static Action<DisplayData> OnBuildingSelected;
     public static Action OnDeselection;
 
     public static Building SelectedBuilding { get; private set; }
@@ -25,7 +25,7 @@ public static class SelectionManager
             SelectedBuilding.transform.localScale = Vector3.one;
         SelectedBuilding = selectTarget;
         SelectedBuilding.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
-        OnBuildingSelected?.Invoke();
+        OnBuildingSelected?.Invoke(new DisplayData());
     }
 
     public static void Deselect()

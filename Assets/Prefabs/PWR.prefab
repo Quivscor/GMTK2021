@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BuildingType: 2
   m_BaseStats:
-    cost: 0
+    cost: 25
     power: 0
     frequency: 0
     electricUsage: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
       electricUsage: 0
       rechargeRate: 0
       resistance: 0
-    m_ConnectingTypes: 7
+    m_ConnectingTypes: 3
     m_IsBoostAdditive: 1
 --- !u!61 &4058455296736449939
 BoxCollider2D:

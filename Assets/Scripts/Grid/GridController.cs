@@ -109,19 +109,27 @@ public class GridController : MonoBehaviour
             return false;
 
         checkedFields.Add(Grid[coords.x, coords.y]);
+        //gather all buildings in cluster
+        ForNeighboursDo(coords, CheckIfBuildingDirty);
 
         if (Grid[coords.x, coords.y].Building.isDirty)
             return true;
-        else
-            return ForNeighboursDo(coords, CheckIfBuildingDirty);
+
+        return false;
     }
 
     private void RecalculateCluster(Vector2Int clusterCenterCoords)
     {
         List<GridField> clusterFields = 
-            checkedFields.OrderBy(x => Vector3.Distance(x.transform.position, 
+            checkedFields.OrderByDescending(x => Vector3.Distance(x.transform.position, 
             Grid[clusterCenterCoords.x, clusterCenterCoords.y].transform.position)).ToList<GridField>();
         checkedFields.Clear();
+
+        foreach(GridField field in clusterFields)
+        {
+            //clear previous calcs before recalculating
+            field.Building.ResetBuildingBonuses();
+        }
 
         foreach(GridField field in clusterFields)
         {
@@ -136,6 +144,7 @@ public class GridController : MonoBehaviour
     {
         recalculatedBuilding = Grid[coords.x, coords.y].Building;
         ForNeighboursDo(coords, UpdateBuilding);
+        recalculatedBuilding.isDirty = false;
         recalculatedBuilding = null;
     }
 
@@ -150,10 +159,10 @@ public class GridController : MonoBehaviour
             {
                 if (module.ConnectionData.IsBoostAdditive)
                     recalculatedBuilding.AddBoostValue(module.ConnectionData.ConnectionBoost + 
-                        Grid[coords.x, coords.y].Building.BaseStats);
+                        Grid[coords.x, coords.y].Building.BonusStats);
                 else
                     recalculatedBuilding.AddBoostMultiplier(module.ConnectionData.ConnectionBoost + 
-                        Grid[coords.x, coords.y].Building.BaseStats);
+                        Grid[coords.x, coords.y].Building.BonusStats);
             }
 
             return true;
