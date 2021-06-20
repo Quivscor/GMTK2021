@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class GridController : MonoBehaviour
 {
@@ -10,12 +11,14 @@ public class GridController : MonoBehaviour
     public static Vector2 GridOffset = new Vector2(0.5f, 0.5f);
 
     public static GridController Instance;
+
     public ResourcesController ResourcesController { get; private set; }
     private AudioSource source;
 
     public bool ConstructGrid = false;
 
-    public GridField[,] Grid { get; private set; }
+    public static GridField[,] Grid { get; private set; }
+    public List<GridField> ActiveBuildingFields { get; private set; }
 
     [SerializeField] private GridField m_GridFieldPrefab;
 
@@ -42,7 +45,9 @@ public class GridController : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
+
         Grid = new GridField[GridSize.x, GridSize.y];
+        ActiveBuildingFields = new List<GridField>();
 
         //Assign grid fields to controller
         int x = 0, y = 0;
@@ -56,107 +61,6 @@ public class GridController : MonoBehaviour
         }
     }
 
-    public void RecalculateGrid()
-    {
-        Stack<GridField> buildings = new Stack<GridField>();
-        Stack<GridField> turrets = new Stack<GridField>();
-
-        for (int x = 0; x < GridSize.x; x++)
-        {
-            for (int y = 0; y < GridSize.y; y++)
-            {
-                if (Grid[x, y].Building == null)
-                    continue;
-
-                if(Grid[x,y].Building is ITurret t)
-                    turrets.Push(Grid[x, y]);
-
-                if (Grid[x, y].Building.isDirty && !GetIsNeighboursDirty(new Vector2Int(x, y)))
-                {
-                    RecalculateBuilding(new Vector2Int(x, y));
-                }
-                else if(Grid[x, y].Building.isDirty)
-                    buildings.Push(Grid[x, y]);
-            }
-        }
-
-        //should be fine here
-        while(buildings.Count > 0)
-        {
-            GridField b = buildings.Pop();
-            RecalculateBuilding(b.OwnCoordinates);
-        }
-
-        //will help updating turrets
-        while(turrets.Count > 0)
-        {
-            GridField b = turrets.Pop();
-            RecalculateBuilding(b.OwnCoordinates);
-        }
-    }
-
-    public void RecalculateBuilding(Vector2Int coords)
-    {
-        Building b = Grid[coords.x, coords.y].Building;
-        b.ResetBonusStats();
-        b.isDirty = false;
-        for (int i = 0; i < 4; i++)
-        {
-            switch (i)
-            {
-                //north
-                case 0:
-                    if (coords.y + 1 >= GridController.GridSize.y - 1 || Grid[coords.x, coords.y + 1].Building == null)
-                        break;
-                    if (!b.BuildingData.connectingTypes.HasFlag(Grid[coords.x, coords.y + 1].Building.BuildingData.type))
-                        break;
-
-                    if (Grid[coords.x, coords.y + 1].Building.BuildingData.isBoostAdditive == true)
-                        b.AddBoostValue(Grid[coords.x, coords.y + 1].Building.BonusStats);
-                    else
-                        b.AddBoostMultiplier(Grid[coords.x, coords.y + 1].Building.BonusStats);
-
-                    break;
-                //south
-                case 1:
-                    if (coords.y - 1 <= 0 || Grid[coords.x, coords.y - 1].Building == null)
-                        break;
-                    if (!b.BuildingData.connectingTypes.HasFlag(Grid[coords.x, coords.y - 1].Building.BuildingData.type))
-                        break;
-
-                    if (Grid[coords.x, coords.y - 1].Building.BuildingData.isBoostAdditive == true)
-                        b.AddBoostValue(Grid[coords.x, coords.y - 1].Building.BonusStats);
-                    else
-                        b.AddBoostMultiplier(Grid[coords.x, coords.y - 1].Building.BonusStats);
-                    break;
-                //east
-                case 2:
-                    if (coords.x + 1 >= GridController.GridSize.x - 1 || Grid[coords.x + 1, coords.y].Building == null)
-                        break;
-                    if (!b.BuildingData.connectingTypes.HasFlag(Grid[coords.x + 1, coords.y].Building.BuildingData.type))
-                        break;
-
-                    if (Grid[coords.x + 1, coords.y].Building.BuildingData.isBoostAdditive == true)
-                        b.AddBoostValue(Grid[coords.x + 1, coords.y].Building.BonusStats);
-                    else
-                        b.AddBoostMultiplier(Grid[coords.x + 1, coords.y].Building.BonusStats);
-                    break;
-                //west
-                case 3:
-                    if (coords.x - 1 <= 0 || Grid[coords.x - 1, coords.y].Building == null)
-                        break;
-                    if (!b.BuildingData.connectingTypes.HasFlag(Grid[coords.x - 1, coords.y].Building.BuildingData.type))
-                        break;
-
-                    if (Grid[coords.x - 1, coords.y].Building.BuildingData.isBoostAdditive == true)
-                        b.AddBoostValue(Grid[coords.x - 1, coords.y].Building.BonusStats);
-                    else
-                        b.AddBoostMultiplier(Grid[coords.x - 1, coords.y].Building.BonusStats);
-                    break;
-            }
-        }
-    }
-
     public void ProcessBuildingPlacement(GridBuildProcessEventData data)
     {
         if (!ResourcesController.TrySpendMoney(data.building.BaseStats.cost))
@@ -166,90 +70,96 @@ public class GridController : MonoBehaviour
         data.building.transform.position = Grid[data.gridFieldCoords.x, data.gridFieldCoords.y].transform.position;
         data.building.isBuilt = true;
         data.building.isDirty = true;
-        SetNeighboursDirty(data.gridFieldCoords);
+
+        if (data.building is IActiveBuilding active)
+            ActiveBuildingFields.Add(Grid[data.gridFieldCoords.x, data.gridFieldCoords.y]);
+
         RecalculateGrid();
         SelectionManager.Deselect();
         source.PlayOneShot(source.clip);
         OnProcessBuildPlacement?.Invoke();
     }
 
-    public void SetNeighboursDirty(Vector2Int coords)
+    private void RecalculateGrid()
     {
-        BuildingType connectionTypes = Grid[coords.x, coords.y].Building.BuildingData.connectingTypes;
-        for (int i = 0; i < 4; i++)
+        foreach(GridField field in ActiveBuildingFields)
         {
-            switch (i)
+            //look for dirty buildings in the cluster
+            if(CheckCluster(field.OwnCoordinates))
             {
-                //north
-                case 0:
-                    if (coords.y + 1 >= GridController.GridSize.y - 1 || Grid[coords.x, coords.y + 1].Building == null)
-                        break;
-                    if(connectionTypes.HasFlag(Grid[coords.x, coords.y + 1].Building.BuildingData.type))
-                        Grid[coords.x, coords.y + 1].Building.isDirty = true;
-                    break;
-                //south
-                case 1:
-                    if (coords.y - 1 <= 0 || Grid[coords.x, coords.y - 1].Building == null)
-                        break;
-                    if (connectionTypes.HasFlag(Grid[coords.x, coords.y - 1].Building.BuildingData.type))
-                        Grid[coords.x, coords.y - 1].Building.isDirty = true;
-                    break;
-                //east
-                case 2:
-                    if (coords.x + 1 >= GridController.GridSize.x - 1 || Grid[coords.x + 1, coords.y].Building == null)
-                        break;
-                    if (connectionTypes.HasFlag(Grid[coords.x + 1, coords.y].Building.BuildingData.type))
-                        Grid[coords.x + 1, coords.y].Building.isDirty = true;
-                    break;
-                //west
-                case 3:
-                    if (coords.x - 1 <= 0 || Grid[coords.x - 1, coords.y].Building == null)
-                        break;
-                    if (connectionTypes.HasFlag(Grid[coords.x - 1, coords.y].Building.BuildingData.type))
-                        Grid[coords.x - 1, coords.y].Building.isDirty = true;
-                    break;
+                //recalculate cluster
+                RecalculateCluster(field.OwnCoordinates);
             }
         }
     }
 
-    public bool GetIsNeighboursDirty(Vector2Int coords)
+    HashSet<GridField> checkedFields;
+
+    private bool CheckCluster(Vector2Int coords)
     {
-        bool result = false;
-        for (int i = 0; i < 4; i++)
+        checkedFields = new HashSet<GridField>();
+        checkedFields.Add(Grid[coords.x, coords.y]);
+
+        return ForNeighboursDo(coords, CheckIfBuildingDirty);
+    }
+
+    private bool CheckIfBuildingDirty(Vector2Int coords)
+    {
+        if (checkedFields.Contains(Grid[coords.x, coords.y]) || Grid[coords.x, coords.y].Building == null)
+            return false;
+
+        checkedFields.Add(Grid[coords.x, coords.y]);
+
+        if (Grid[coords.x, coords.y].Building.isDirty)
+            return true;
+        else
+            return ForNeighboursDo(coords, CheckIfBuildingDirty);
+    }
+
+    private void RecalculateCluster(Vector2Int clusterCenterCoords)
+    {
+        List<GridField> clusterFields = 
+            checkedFields.OrderBy(x => Vector3.Distance(x.transform.position, 
+            Grid[clusterCenterCoords.x, clusterCenterCoords.y].transform.position)).ToList<GridField>();
+        checkedFields.Clear();
+
+        foreach(GridField field in clusterFields)
         {
-            switch (i)
-            {
-                //north
-                case 0:
-                    if (coords.y + 1 >= GridController.GridSize.y - 1 || Grid[coords.x, coords.y + 1].Building == null)
-                        break;
-                    if (Grid[coords.x, coords.y + 1].Building.isDirty == true)
-                        result = true;
-                    break;
-                //south
-                case 1:
-                    if (coords.y - 1 <= 0 || Grid[coords.x, coords.y - 1].Building == null)
-                        break;
-                    if (Grid[coords.x, coords.y - 1].Building.isDirty == true)
-                        result = true;
-                    break;
-                //east
-                case 2:
-                    if (coords.x + 1 >= GridController.GridSize.x - 1 || Grid[coords.x + 1, coords.y].Building == null)
-                        break;
-                    if (Grid[coords.x + 1, coords.y].Building.isDirty == true)
-                        result = true;
-                    break;
-                //west
-                case 3:
-                    if (coords.x - 1 <= 0 || Grid[coords.x - 1, coords.y].Building == null)
-                        break;
-                    if (Grid[coords.x - 1, coords.y].Building.isDirty == true)
-                        result = true;
-                    break;
-            }
+            //we can call building without checking because CheckCluster did that earlier
+            RecalculateBuilding(field.OwnCoordinates);
         }
-        return result;
+    }
+
+    Building recalculatedBuilding;
+
+    private void RecalculateBuilding(Vector2Int coords)
+    {
+        recalculatedBuilding = Grid[coords.x, coords.y].Building;
+        ForNeighboursDo(coords, UpdateBuilding);
+        recalculatedBuilding = null;
+    }
+
+    private bool UpdateBuilding(Vector2Int coords)
+    {
+        if (Grid[coords.x, coords.y].Building == null)
+            return false;
+
+        if(Grid[coords.x, coords.y].Building is IModule module)
+        {
+            if(module.ConnectionData.ConnectingTypes.HasFlag(recalculatedBuilding.BuildingType))
+            {
+                if (module.ConnectionData.IsBoostAdditive)
+                    recalculatedBuilding.AddBoostValue(module.ConnectionData.ConnectionBoost + 
+                        Grid[coords.x, coords.y].Building.BaseStats);
+                else
+                    recalculatedBuilding.AddBoostMultiplier(module.ConnectionData.ConnectionBoost + 
+                        Grid[coords.x, coords.y].Building.BaseStats);
+            }
+
+            return true;
+        }
+
+        return false;
     }
 
     private void BuildGrid()
@@ -272,5 +182,97 @@ public class GridController : MonoBehaviour
         }
 
         Debug.Log("Building grid complete.");
+    }
+
+    public T ForNeighboursDo<T>(Vector2Int coords, Func<Vector2Int, T> Act)
+    {
+        T result = default(T);
+        for (int i = 0; i < 4; i++)
+        {
+            switch (i)
+            {
+                //north
+                case 0:
+                    //check if not illegal position
+                    if (coords.y + 1 >= GridController.GridSize.y - 1)
+                        break;
+
+                    result = Act(new Vector2Int(coords.x, coords.y + 1));
+                    break;
+                //south
+                case 1:
+                    //check if not illegal position
+                    if (coords.y - 1 <= 0)
+                        break;
+
+                    result = Act(new Vector2Int(coords.x, coords.y - 1));
+                    break;
+                //east
+                case 2:
+                    //check if not illegal position
+                    if (coords.x + 1 >= GridController.GridSize.x - 1)
+                        break;
+
+                    result = Act(new Vector2Int(coords.x + 1, coords.y));
+                    break;
+                //west
+                case 3:
+                    //check if not illegal position
+                    if (coords.x - 1 <= 0)
+                        break;
+
+                    result = Act(new Vector2Int(coords.x - 1, coords.y));
+                    break;
+            }
+        }
+        return result;
+    }
+
+    public GridField FindNeighbourWhich(Vector2Int coords, Func<Vector2Int, bool> Act)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            switch (i)
+            {
+                //north
+                case 0:
+                    //check if not illegal position
+                    if (coords.y + 1 >= GridController.GridSize.y - 1)
+                        break;
+
+                    if (Act(new Vector2Int(coords.x, coords.y + 1)))
+                        return Grid[coords.x, coords.y + 1];
+                    break;
+                //south
+                case 1:
+                    //check if not illegal position
+                    if (coords.y - 1 <= 0)
+                        break;
+
+                    if (Act(new Vector2Int(coords.x, coords.y - 1)))
+                        return Grid[coords.x, coords.y - 1];
+                    break;
+                //east
+                case 2:
+                    //check if not illegal position
+                    if (coords.x + 1 >= GridController.GridSize.x - 1)
+                        break;
+
+                    if (Act(new Vector2Int(coords.x + 1, coords.y)))
+                        return Grid[coords.x + 1, coords.y];
+                    break;
+                //west
+                case 3:
+                    //check if not illegal position
+                    if (coords.x - 1 <= 0)
+                        break;
+
+                    if (Act(new Vector2Int(coords.x - 1, coords.y)))
+                        return Grid[coords.x - 1, coords.y];
+                    break;
+            }
+        }
+
+        return null;
     }
 }

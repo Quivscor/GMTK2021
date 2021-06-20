@@ -2,7 +2,7 @@
 
 public delegate void TurretFireEvent();
 
-public interface ITurret
+public interface ITurret : IActiveBuilding
 {
     List<Enemy> Targets { get; }
 

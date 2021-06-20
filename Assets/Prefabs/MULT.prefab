@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2178362147333473737}
-  - component: {fileID: 1380130627285108124}
+  - component: {fileID: 5153646796089180673}
   - component: {fileID: 4058455296736449939}
   m_Layer: 0
   m_Name: MULT
@@ -115,7 +115,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1380130627285108124
+--- !u!114 &5153646796089180673
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,27 +124,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 8874832227221100708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a14669800cc0d9243a387081e267ba3d, type: 3}
+  m_Script: {fileID: 11500000, guid: e5a1f4fb6deb64a43b2ee6eda0a53e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_BuildingType: 4
   m_BaseStats:
-    cost: 50
-    power: 0
-    frequency: 0
-    electricUsage: 0
-    rechargeRate: 0
-    resistance: 0
-  m_BonusStats:
     cost: 0
     power: 0
     frequency: 0
     electricUsage: 0
     rechargeRate: 0
     resistance: 0
-  BuildingData: {fileID: 11400000, guid: 479dab27e1679ac4da238e0cddda7ff2, type: 2}
-  isDirty: 1
+  isDirty: 0
   isBuilt: 0
   isPowered: 0
+  m_ConnectionData:
+    m_ConnectionBoost:
+      cost: 0
+      power: 1.2
+      frequency: 1.2
+      electricUsage: 0
+      rechargeRate: 0
+      resistance: 0
+    m_ConnectingTypes: 7
+    m_IsBoostAdditive: 0
 --- !u!61 &4058455296736449939
 BoxCollider2D:
   m_ObjectHideFlags: 0

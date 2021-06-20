@@ -25,7 +25,7 @@ public class HitScanTurret : Building, ITurret
     private float extraTimeBetweenShotsReduction;
     #endregion
 
-    protected override void Awake()
+    private void Awake()
     { 
         m_TurretEnemyDetector = GetComponentInChildren<TurretEnemyDetector>();
         fireParticles = GetComponentInChildren<ParticleSystem>();
@@ -37,8 +37,10 @@ public class HitScanTurret : Building, ITurret
         Targets = new List<Enemy>();
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         baseDamage = BaseStats.power;
         timeBetweenShots = BaseStats.frequency;
 

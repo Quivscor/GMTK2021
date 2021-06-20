@@ -2,28 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable, CreateAssetMenu(fileName = "BuildingData", menuName = "Building Data")]
-public class BuildingConnectionData : ScriptableObject
+[System.Serializable]
+public class BuildingConnectionData
 {
-    public BuildingType type;
+    [SerializeField] private BuildingStats m_ConnectionBoost;
+    public BuildingStats ConnectionBoost => m_ConnectionBoost;
 
-    public BuildingStats connectionBoost;
+    [SerializeField] private BuildingType m_ConnectingTypes;
+    public BuildingType ConnectingTypes => m_ConnectingTypes;
 
-    public BuildingType connectingTypes;
-
-    public bool isBoostAdditive;
-}
-
-[Flags]
-public enum BuildingType
-{
-    UNKNOWN = 0,
-    TURRET = 1,
-    PWR = 2,
-    FREQ = 4,
-    ECO = 8,
-    MULT = 16,
-    POWER_SUPPLY = 32,
-    POWER_CONNECTOR = 64,
-    HQ = 128,
+    [SerializeField] private bool m_IsBoostAdditive;
+    public bool IsBoostAdditive => m_IsBoostAdditive;
 }

@@ -9567,9 +9567,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopBuildings:
   - {fileID: 733195818145285162, guid: 56199a2e68b36d749ba99770bd8e0758, type: 3}
-  - {fileID: 1380130627285108124, guid: 96b4695a01ad96244b229432c1602443, type: 3}
-  - {fileID: 1380130627285108124, guid: 65f9ab74ccdefd143a4737ac0e05edb3, type: 3}
-  - {fileID: 1380130627285108124, guid: b35f5da8e9c047e4ea5b4bb615aa4def, type: 3}
+  - {fileID: 8121455052510576082, guid: 96b4695a01ad96244b229432c1602443, type: 3}
+  - {fileID: 2156980574197163961, guid: 65f9ab74ccdefd143a4737ac0e05edb3, type: 3}
+  - {fileID: 5153646796089180673, guid: b35f5da8e9c047e4ea5b4bb615aa4def, type: 3}
   spawnPoints:
   - {fileID: 941530038}
   - {fileID: 858218632}

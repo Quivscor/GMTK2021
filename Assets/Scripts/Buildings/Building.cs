@@ -5,31 +5,31 @@ using UnityEngine.EventSystems;
 
 public class Building : MonoBehaviour, IPointerClickHandler
 {
+    [SerializeField] private BuildingType m_BuildingType;
+    public BuildingType BuildingType { get => m_BuildingType; }
+
     [SerializeField] private BuildingStats m_BaseStats;
     public BuildingStats BaseStats { get => m_BaseStats; private set => m_BaseStats = value; }
-    [SerializeField] private BuildingStats m_BonusStats;
-    public BuildingStats BonusStats { get => m_BonusStats; private set => m_BonusStats = value; }
-
-    public BuildingConnectionData BuildingData;
+    public BuildingStats BonusStats { get; private set; }
 
     public bool isDirty = true;
     public bool isBuilt = false;
     public bool isPowered = false;
 
-    protected virtual void Awake()
+    protected virtual void Start()
     {
-        ResetBonusStats();
-    }
-
-    public void ResetBonusStats()
-    {
-        BonusStats = BuildingData.connectionBoost;
+        BonusStats = new BuildingStats();
     }
 
     protected virtual void Update()
     {
         if (!isBuilt || !isPowered)
             return;
+    }
+
+    public void ResetBuildingBonuses()
+    {
+        BonusStats.Reset();
     }
 
     public void AddBoostValue(BuildingStats s)
