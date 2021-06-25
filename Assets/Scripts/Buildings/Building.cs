@@ -12,7 +12,7 @@ public class Building : MonoBehaviour, IPointerClickHandler
     public BuildingStats BaseStats { get => m_BaseStats; protected set => m_BaseStats = value; }
     public BuildingStats BonusStats { get; protected set; }
 
-    public bool isDirty = true;
+    public bool isDirty = false;
     public bool isBuilt = false;
     public bool isPowered = false;
 

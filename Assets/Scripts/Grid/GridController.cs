@@ -68,6 +68,7 @@ public class GridController : MonoBehaviour
 
         Grid[data.gridFieldCoords.x, data.gridFieldCoords.y].AssignBuilding(data.building);
         data.building.transform.position = Grid[data.gridFieldCoords.x, data.gridFieldCoords.y].transform.position;
+        data.building.name += "(" + data.gridFieldCoords.x + ", " + data.gridFieldCoords.y + ")";
         data.building.isBuilt = true;
         data.building.isDirty = true;
 
@@ -94,13 +95,17 @@ public class GridController : MonoBehaviour
     }
 
     HashSet<GridField> checkedFields;
+    bool hasIsDirty;
 
     private bool CheckCluster(Vector2Int coords)
     {
         checkedFields = new HashSet<GridField>();
         checkedFields.Add(Grid[coords.x, coords.y]);
 
-        return ForNeighboursDo(coords, CheckIfBuildingDirty);
+        hasIsDirty = false;
+        ForNeighboursDo(coords, CheckIfBuildingDirty);
+
+        return hasIsDirty;
     }
 
     private bool CheckIfBuildingDirty(Vector2Int coords)
@@ -113,8 +118,7 @@ public class GridController : MonoBehaviour
         ForNeighboursDo(coords, CheckIfBuildingDirty);
 
         if (Grid[coords.x, coords.y].Building.isDirty)
-            return true;
-
+            hasIsDirty = true;
         return false;
     }
 
