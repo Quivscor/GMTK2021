@@ -13,14 +13,13 @@ public class EnemyController : MonoBehaviour
     public IEnemyFactory EnemyFactory { get; private set; }
 
     public ResourcesController ResourcesController { get; private set; }
-    private AudioSource source;
 
     [Header("Enemy Wave Settings")]
     [SerializeField] private float m_TimeBetweenWaves;
     public float TimeBetweenWaves { get => m_TimeBetweenWaves; private set => m_TimeBetweenWaves = value; }
     private float m_TimeToNextWave;
     private bool m_IsWaveSpawned;
-    public Action<int> OnNewWave;
+    public Action<WaveData> OnNewWave;
 
     public int WaveNumber { get; private set; } = 0;
 
@@ -37,7 +36,6 @@ public class EnemyController : MonoBehaviour
         EnemyFactory.OnWaveFinishSpawning += HandleFinishWaveSpawn;
 
         ResourcesController = FindObjectOfType<ResourcesController>();
-        source = GetComponent<AudioSource>();
 
         HandleFinishWaveSpawn();
     }
@@ -57,11 +55,9 @@ public class EnemyController : MonoBehaviour
     {
         WaveNumber++;
         m_IsWaveSpawned = false;
-        OnNewWave?.Invoke(WaveNumber);
+        OnNewWave?.Invoke(new WaveData(WaveNumber));
 
         StartCoroutine(EnemyFactory.CreateWave(new WaveData(WaveNumber)));
-
-        source.PlayOneShot(source.clip);
     }
 
     public void HandleFinishWaveSpawn()
@@ -80,10 +76,10 @@ public class EnemyController : MonoBehaviour
         e.OnReachDestination += DisposeEnemy;
     }
 
-    private void DisposeEnemy(Enemy e)
+    private void DisposeEnemy(EnemyEventData e)
     {
-        Destroy(e.GetComponentInChildren<SpriteRenderer>());
-        Destroy(e.gameObject, .2f);
+        Destroy(e.Enemy.GetComponentInChildren<SpriteRenderer>());
+        Destroy(e.Enemy.gameObject, .2f);
     }
 
     public Vector3 GetPositionOfNodeAt(int i)

@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HitScanTurret : Building, ITurret
+public class HitScanTurret : BaseTurret
 {
     [SerializeField] private GameObject m_TurretHead;
-
-    private TurretEnemyDetector m_TurretEnemyDetector;
-    private ParticleSystem fireParticles;
-    private AudioSource source;
-
-    public List<Enemy> Targets { get; private set; }
-
-    public event TurretFireEvent OnTurretFire;
 
     #region TurretBaseStats
     private float timeBetweenShots;
@@ -24,18 +16,6 @@ public class HitScanTurret : Building, ITurret
     private float extraDamage;
     private float extraTimeBetweenShotsReduction;
     #endregion
-
-    private void Awake()
-    { 
-        m_TurretEnemyDetector = GetComponentInChildren<TurretEnemyDetector>();
-        fireParticles = GetComponentInChildren<ParticleSystem>();
-        source = GetComponent<AudioSource>();
-
-        m_TurretEnemyDetector.OnEnemyEnterRange += AddTarget;
-        m_TurretEnemyDetector.OnEnemyExitRange += RemoveTarget;
-
-        Targets = new List<Enemy>();
-    }
 
     protected override void Start()
     {
@@ -79,30 +59,12 @@ public class HitScanTurret : Building, ITurret
         }
     }
 
-    public void Fire()
+    public override void Fire()
     {
+        base.Fire();
+
         Targets[0].TakeDamage(baseDamage + extraDamage);
-        OnTurretFire?.Invoke();
-        fireParticles.Play();
-        source.PlayOneShot(source.clip);
     }
 
-    public void AddTarget(Enemy e)
-    {
-        Targets.Add(e);
-    }
-
-    public void RemoveTarget(Enemy e)
-    {
-        Targets.Remove(e);
-    }
-
-    public override string ShowInfo()
-    {
-        string info = "Basic turret.\nDamage: " + (baseDamage + extraDamage) + 
-            "\nFirerate: " + (timeBetweenShots - extraTimeBetweenShotsReduction) + 
-            " per shot.";
-        
-        return info;
-    }
+    
 }

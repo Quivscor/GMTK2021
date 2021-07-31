@@ -23,20 +23,11 @@ public class Enemy : MonoBehaviour
     #endregion
 
     #region Events
-    public Action<Enemy> OnReachDestination;
-    public Action<Enemy> OnDeath;
-    public Action OnSpawn;
+    public Action<EnemyEventData> OnReachDestination;
+    public Action<EnemyEventData> OnTakeDamage;
+    public Action<EnemyEventData> OnDeath;
+    public Action<EnemyEventData> OnSpawn;
     #endregion
-
-    private ParticleSystem damageParticles;
-    private AudioSource source;
-
-    private void Start()
-    {
-        damageParticles = GetComponentInChildren<ParticleSystem>();
-        source = GetComponent<AudioSource>();
-        //CurrentTime = 1 - Vector3.Distance(previousNode, nextNode);
-    }
 
     public void Construct(int waveNumber)
     {
@@ -59,7 +50,7 @@ public class Enemy : MonoBehaviour
             if (currentNodeIndex < EnemyController.EnemyPath.PathNodes.Count)
                 nextNode = EnemyController.EnemyPath.PathNodes[currentNodeIndex].transform.position;
             else
-                OnReachDestination?.Invoke(this);
+                OnReachDestination?.Invoke(new EnemyEventData(this));
 
             CurrentTime = 0;
         }
@@ -68,7 +59,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHp -= damage;
-        damageParticles.Play();
+        OnTakeDamage?.Invoke(new EnemyEventData());
 
         if (currentHp <= 0)
             Die();
@@ -76,7 +67,6 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        OnDeath?.Invoke(this);
-        source.PlayOneShot(source.clip);
+        OnDeath?.Invoke(new EnemyEventData(this));
     }
 }

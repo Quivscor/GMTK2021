@@ -8,4 +8,6 @@ public enum BuildingType
     ADDMODULE = 2,
     MULTMODULE = 4,
     HQ = 8,
+    POWERSOURCE = 16,
+    POWERLINE = 32,
 }

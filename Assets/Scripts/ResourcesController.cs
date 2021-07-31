@@ -14,9 +14,9 @@ public class ResourcesController : MonoBehaviour
 
     [SerializeField] private GameObject gameOverCanvas;
 
-    public void RemoveLife(Enemy e)
+    public void RemoveLife(EnemyEventData e)
     {
-        lives -= e.damage;
+        lives -= e.Enemy.damage;
         if (lives <= 0)
             GameOver();
         else
@@ -33,9 +33,9 @@ public class ResourcesController : MonoBehaviour
         return true;
     }
 
-    public void GainMoney(Enemy e)
+    public void GainMoney(EnemyEventData e)
     {
-        money += e.money;
+        money += e.Enemy.money;
         OnMoneyChange?.Invoke(money);
     }
 

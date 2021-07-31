@@ -13,6 +13,7 @@ public class GridController : MonoBehaviour
     public static GridController Instance;
 
     public ResourcesController ResourcesController { get; private set; }
+    public EnergeticsController EnergeticsController { get; private set; }
     private AudioSource source;
 
     public bool ConstructGrid = false;
@@ -29,7 +30,7 @@ public class GridController : MonoBehaviour
         Init();
 
         ResourcesController = FindObjectOfType<ResourcesController>();
-        source = GetComponent<AudioSource>();
+        EnergeticsController = FindObjectOfType<EnergeticsController>();
     }
 
     private void OnValidate()
@@ -75,9 +76,11 @@ public class GridController : MonoBehaviour
         if (data.building is IActiveBuilding active)
             ActiveBuildingFields.Add(Grid[data.gridFieldCoords.x, data.gridFieldCoords.y]);
 
+        if (data.building is IEnergetics energetics)
+            EnergeticsController.ProcessEnergeticsBuildingPlacement(data);
+
         RecalculateGrid();
         SelectionManager.Deselect();
-        source.PlayOneShot(source.clip);
         OnProcessBuildPlacement?.Invoke();
     }
 

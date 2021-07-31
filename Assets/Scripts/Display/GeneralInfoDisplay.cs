@@ -18,9 +18,9 @@ public class GeneralInfoDisplay : MonoBehaviour
         e.OnNewWave += UpdateWave;
     }
 
-    public void UpdateWave(int value)
+    public void UpdateWave(WaveData e)
     {
-        UpdateText(waveText, "Wave: ", value);
+        UpdateText(waveText, "Wave: ", e.WaveNumber);
     }
     public void UpdateMoney(int value)
     {

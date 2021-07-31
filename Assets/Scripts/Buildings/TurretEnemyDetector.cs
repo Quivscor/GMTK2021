@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[RequireComponent(typeof(CircleCollider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class TurretEnemyDetector : MonoBehaviour
 {
     public Action<Enemy> OnEnemyEnterRange;
