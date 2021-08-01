@@ -47,9 +47,15 @@ public class BaseTurret : Building, ITurret
         Targets.Remove(e);
     }
 
-    public virtual void Fire()
+    public virtual bool Fire()
     {
-        OnTurretFire?.Invoke();
+        float electricUsage = BaseStats.electricUsage + BonusStats.electricUsage;
+        if (TryConsumeEnergy(electricUsage))
+        {
+            OnTurretFire?.Invoke();
+            return true;
+        }
+        else return false;
     }
 
     public void AddNetworkNeighbour(IPathfindingNode node)

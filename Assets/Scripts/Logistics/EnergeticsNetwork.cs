@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class EnergeticsNetwork
 {
+    public static float EnergyNetworkContactResistanceDamage = 0.005f;
+
     public HashSet<IEnergetics> Nodes { get; private set; }
     public HashSet<IGenerator> Origins { get; private set; }
     public HashSet<IActiveBuilding> Consumers { get; private set; }
@@ -48,6 +50,9 @@ public class EnergeticsNetwork
             AddOrigin(generator);
         else if (node is IActiveBuilding active)
             Consumers.Add(active);
+
+        Building b = (node as MonoBehaviour).GetComponent<Building>();
+        b.OnEnterRechargingState += OnNetworkNodeEnterRechargeState;
 
         Nodes.Add(node);
     }
@@ -99,6 +104,51 @@ public class EnergeticsNetwork
         {
             p.Update(deltaTime);
         }
+
+        CheckNetworkConnectionsContact();
+    }
+
+    private void CheckNetworkConnectionsContact()
+    {
+        List<IEnergetics> nodes = new List<IEnergetics>(Nodes);
+        foreach (IEnergetics node in nodes)
+        {
+            foreach (IPathfindingNode n in node.NetworkNeighbours)
+            {
+                RaycastHit2D[] hit = Physics2D.RaycastAll(node.TransformReference.position, n.TransformReference.position - node.TransformReference.position,
+                    Vector3.Distance(n.TransformReference.position, node.TransformReference.position));
+
+                Enemy e;
+                for (int i = 0; i < hit.Length; i++)
+                {
+                    if (hit[i])
+                    {
+                        if (hit[i].transform.TryGetComponent(out e))
+                        {
+                            Building b = node as Building;
+                            b.ReceiveDamage(EnergyNetworkContactResistanceDamage);
+                            b = n as Building;
+                            b.ReceiveDamage(EnergyNetworkContactResistanceDamage);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //callback to when one of the buildings in the network goes down and can't be used to travel through
+    public void OnNetworkNodeEnterRechargeState(BuildingEventData e)
+    {
+        List<EnergyParticle> particles = Particles.FindAll(x => x.Path.Contains(e.node));
+        List<IPathfindingNode> pathfindingNodes = Nodes.ToList<IPathfindingNode>();
+        foreach (EnergyParticle p in particles)
+        {
+            Stack<IPathfindingNode> newPath = pathFinder.FindPath(p.CurrentNode, p.Target, pathfindingNodes);
+            if (newPath == null)
+                RemoveParticle(new EnergyParticleEventData(p));
+            else
+                p.UpdatePath(newPath);
+        }
     }
 
     public static EnergeticsNetwork MergeNetworks(EnergeticsNetwork networkA, EnergeticsNetwork networkB)
@@ -131,6 +181,15 @@ public class EnergeticsNetwork
 
             particle.OnNoAvailablePath += network.RemoveParticle;
             particle.OnReachDestination += network.ConsumeParticle;
+        }
+
+        foreach(IEnergetics node in network.Nodes)
+        {
+            Building b = (node as MonoBehaviour).GetComponent<Building>();
+            b.OnEnterRechargingState -= networkA.OnNetworkNodeEnterRechargeState;
+            b.OnEnterRechargingState -= networkB.OnNetworkNodeEnterRechargeState;
+
+            b.OnEnterRechargingState += network.OnNetworkNodeEnterRechargeState;
         }
 
         return network;

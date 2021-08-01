@@ -73,7 +73,7 @@ public class GridController : MonoBehaviour
         data.building.isBuilt = true;
         data.building.isDirty = true;
 
-        if (data.building is IActiveBuilding active)
+        if (!data.building.BuildingType.HasFlag(BuildingType.ADDMODULE) && !data.building.BuildingType.HasFlag(BuildingType.MULTMODULE))
             ActiveBuildingFields.Add(Grid[data.gridFieldCoords.x, data.gridFieldCoords.y]);
 
         if (data.building is IEnergetics energetics)

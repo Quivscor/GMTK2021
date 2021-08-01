@@ -127,17 +127,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09996df58814cf34980e3d6f9c5a0479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BuildingType: 48
+  m_BuildingType: 16
   m_BaseStats:
     cost: 0
     power: 0
     frequency: 4
     electricUsage: 0
-    rechargeRate: 0
-    resistance: 0
+    rechargeRate: 5
+    resistance: 20
   isDirty: 0
   isBuilt: 0
-  isPowered: 1
 --- !u!61 &4058455296736449939
 BoxCollider2D:
   m_ObjectHideFlags: 0

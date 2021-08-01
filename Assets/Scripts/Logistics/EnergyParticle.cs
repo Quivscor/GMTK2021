@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnergyParticle : INodeTraverser
 {
     public static readonly float DefaultEnergyValue = 5.0f;
-    public static readonly float DefaultTraversalTime = 2.0f;
+    public static readonly float DefaultTraversalTime = .5f;
 
     private readonly float m_EnergyValue;
     public float EnergyValue => m_EnergyValue;
@@ -51,6 +51,11 @@ public class EnergyParticle : INodeTraverser
     }
 
     public void Construct(Stack<IPathfindingNode> path)
+    {
+        Path = path;
+    }
+
+    public void UpdatePath(Stack<IPathfindingNode> path)
     {
         Path = path;
     }

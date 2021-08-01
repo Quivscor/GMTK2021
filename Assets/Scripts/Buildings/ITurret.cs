@@ -6,7 +6,7 @@ public interface ITurret : IActiveBuilding
 {
     List<Enemy> Targets { get; }
 
-    void Fire();
+    bool Fire();
     void AddTarget(Enemy e);
     void RemoveTarget(Enemy e);
 

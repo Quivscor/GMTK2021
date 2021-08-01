@@ -29,8 +29,7 @@ public class HitScanTurret : BaseTurret
 
     protected override void Update()
     {
-        if (!isBuilt || Time.timeScale == 0/*|| !isPowered*/) //power to be reintroduced later
-            return;
+        base.Update();
 
         SanityTargetList();
 
@@ -42,8 +41,8 @@ public class HitScanTurret : BaseTurret
             {
                 extraDamage = BonusStats.power;
                 extraTimeBetweenShotsReduction = BonusStats.frequency / (32 + BonusStats.frequency);
-                Fire();
-                timeBetweenShotsCurrent = timeBetweenShots - extraTimeBetweenShotsReduction;
+                if(Fire())
+                    timeBetweenShotsCurrent = timeBetweenShots - extraTimeBetweenShotsReduction;
             }
             else
                 timeBetweenShotsCurrent -= Time.deltaTime;
@@ -59,11 +58,14 @@ public class HitScanTurret : BaseTurret
         }
     }
 
-    public override void Fire()
+    public override bool Fire()
     {
-        base.Fire();
-
-        Targets[0].TakeDamage(baseDamage + extraDamage);
+        if (base.Fire())
+        {
+            Targets[0].TakeDamage(baseDamage + extraDamage);
+            return true;
+        }
+        else return false;
     }
 
     

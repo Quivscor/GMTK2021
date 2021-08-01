@@ -134,19 +134,18 @@ MonoBehaviour:
     frequency: 0
     electricUsage: 0
     rechargeRate: 0
-    resistance: 0
+    resistance: Infinity
   isDirty: 0
   isBuilt: 0
-  isPowered: 0
   m_ConnectionData:
     m_ConnectionBoost:
       cost: 0
       power: 1.2
       frequency: 1.2
-      electricUsage: 0
+      electricUsage: 1.5
       rechargeRate: 0
       resistance: 0
-    m_ConnectingTypes: 7
+    m_ConnectingTypes: 23
     m_IsBoostAdditive: 0
 --- !u!61 &4058455296736449939
 BoxCollider2D:

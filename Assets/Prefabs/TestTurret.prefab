@@ -54,12 +54,12 @@ MonoBehaviour:
     cost: 100
     power: 5
     frequency: 1
-    electricUsage: 0
-    rechargeRate: 0
-    resistance: 0
+    electricUsage: 5
+    rechargeRate: 5
+    resistance: 50
   isDirty: 0
   isBuilt: 0
-  isPowered: 0
+  m_MaxEnergy: 100
   m_TurretHead: {fileID: 1408937353594695431}
 --- !u!61 &5284955210927474974
 BoxCollider2D:

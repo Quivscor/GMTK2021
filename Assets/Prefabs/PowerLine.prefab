@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 7566175405869164301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children: []
   m_Father: {fileID: 2178362147333473737}
   m_RootOrder: 0
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 85c8ec4d12edc884a99550b58483e0d3, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.54853153, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 692794f2590c08a4d8613de9431af139, type: 3}
+  m_Color: {r: 1, g: 0.5226415, b: 0.8535813, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -91,10 +91,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2178362147333473737}
-  - component: {fileID: 2156980574197163961}
   - component: {fileID: 4058455296736449939}
+  - component: {fileID: 11195307000077903}
   m_Layer: 0
-  m_Name: FREQ
+  m_Name: PowerLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,38 +115,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2156980574197163961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8874832227221100708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5a1f4fb6deb64a43b2ee6eda0a53e32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BuildingType: 2
-  m_BaseStats:
-    cost: 25
-    power: 0
-    frequency: 0
-    electricUsage: 0
-    rechargeRate: 0
-    resistance: Infinity
-  isDirty: 0
-  isBuilt: 0
-  m_ConnectionData:
-    m_ConnectionBoost:
-      cost: 0
-      power: 0
-      frequency: 2
-      electricUsage: 1
-      rechargeRate: 0
-      resistance: 0
-    m_ConnectingTypes: 19
-    m_IsBoostAdditive: 1
 --- !u!61 &4058455296736449939
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -173,3 +141,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &11195307000077903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8874832227221100708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb1a898995a8444b8f82c3de2705468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BuildingType: 32
+  m_BaseStats:
+    cost: 0
+    power: 0
+    frequency: 0
+    electricUsage: 0
+    rechargeRate: 5
+    resistance: 5
+  isDirty: 0
+  isBuilt: 0
