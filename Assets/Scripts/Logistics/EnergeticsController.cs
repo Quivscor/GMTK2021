@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class EnergeticsController : MonoBehaviour
@@ -8,6 +9,8 @@ public class EnergeticsController : MonoBehaviour
     public float ConnectionDistance => m_ConnectionDistance;
 
     private List<EnergeticsNetwork> Networks { get; set; }
+
+    public static Action<EnergeticsControllerEventData> OnNetworksListChanged;
 
     private void Awake()
     {
@@ -18,7 +21,8 @@ public class EnergeticsController : MonoBehaviour
     {
         float deltaTime = Time.deltaTime;
 
-        foreach(EnergeticsNetwork network in Networks)
+        List<EnergeticsNetwork> networks = new List<EnergeticsNetwork>(Networks);
+        foreach(EnergeticsNetwork network in networks)
         {
             network.UpdateNetwork(deltaTime);
         }
@@ -41,6 +45,7 @@ public class EnergeticsController : MonoBehaviour
         {
             //if no, create new network
             CreateNetwork(newNode);
+            OnNetworksListChanged?.Invoke(new EnergeticsControllerEventData(Networks));
         }   
     }
 

@@ -3,7 +3,7 @@ public class BuildingStats
 {
     public int cost; //building cost
 
-    public float power; 
+    public float power;
     public float frequency; //speed, cooldowns, etc
     public float electricUsage; //network electricity requirement
 
@@ -32,9 +32,12 @@ public class BuildingStats
         this.resistance = 0;
     }
 
-    public static BuildingStats operator +(BuildingStats a, BuildingStats b) =>
-        new BuildingStats(a.cost + b.cost, a.power + b.power, a.frequency + b.frequency, a.electricUsage + b.electricUsage, 
+    public static BuildingStats operator +(BuildingStats a, BuildingStats b)
+    {
+        return new BuildingStats(a.cost + b.cost, a.power + b.power, a.frequency + b.frequency, a.electricUsage + b.electricUsage,
             a.rechargeRate + b.rechargeRate, a.resistance + b.resistance);
+    }
+        
 
     public static BuildingStats operator *(BuildingStats a, BuildingStats b) =>
         new BuildingStats(a.cost * b.cost, a.power * b.power, a.frequency * b.frequency, a.electricUsage * b.electricUsage,

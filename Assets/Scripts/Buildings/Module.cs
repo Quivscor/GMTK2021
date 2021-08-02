@@ -12,6 +12,12 @@ public class Module : Building, IModule
         BonusStats += (BaseStats + ConnectionData.ConnectionBoost + BonusStats) * s;
     }
 
+    //modules should never recharge
+    protected override bool IsBuildingRecharging()
+    {
+        return false;
+    }
+
     public override string ShowInfo()
     {
         string symbol = "+";
