@@ -70,6 +70,7 @@ public class Building : MonoBehaviour, IPointerClickHandler
     public void ResetBuildingBonuses()
     {
         BonusStats.Reset();
+        isDirty = true;
     }
 
     protected virtual void SetBuildingCustomStats()

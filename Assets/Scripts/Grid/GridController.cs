@@ -152,11 +152,12 @@ public class GridController : MonoBehaviour
     private void RecalculateBuilding(Vector2Int coords)
     {
         recalculatedBuilding = Grid[coords.x, coords.y].Building;
-        ForNeighboursDo(coords, UpdateBuilding);
+        ForNeighboursDo(coords, UpdateBuildingNeighbours);
         recalculatedBuilding.isDirty = false;
         recalculatedBuilding = null;
     }
 
+    //this method adds neighbour bonuses to the building held in recalculatedBuilding variable
     private bool UpdateBuilding(Vector2Int coords)
     {
         if (Grid[coords.x, coords.y].Building == null)
@@ -172,6 +173,30 @@ public class GridController : MonoBehaviour
                 else
                     recalculatedBuilding.AddBoostMultiplier(module.ConnectionData.ConnectionBoost + 
                         Grid[coords.x, coords.y].Building.BonusStats);
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    //this method adds bonus of building stored in recalculatedBuilding variable to all attached neighbours that aren't updated already
+    private bool UpdateBuildingNeighbours(Vector2Int coords)
+    {
+        if (Grid[coords.x, coords.y].Building == null)
+            return false;
+
+        if (recalculatedBuilding is IModule module)
+        {
+            if (module.ConnectionData.ConnectingTypes.HasFlag(Grid[coords.x, coords.y].Building.BuildingType) && Grid[coords.x, coords.y].Building.isDirty)
+            {
+                if (module.ConnectionData.IsBoostAdditive)
+                    Grid[coords.x, coords.y].Building.AddBoostValue(module.ConnectionData.ConnectionBoost +
+                        recalculatedBuilding.BonusStats);
+                else
+                    Grid[coords.x, coords.y].Building.AddBoostMultiplier(module.ConnectionData.ConnectionBoost +
+                        recalculatedBuilding.BonusStats);
             }
 
             return true;
