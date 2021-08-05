@@ -40,7 +40,7 @@ public class PowerGenerator : PowerLine, IEnergetics, IGenerator
 
     protected override void SetBuildingCustomStats()
     {
-        m_EnergyParticleGenerationCooldown = 20f / (BaseStats.frequency + BonusStats.frequency);
+        m_EnergyParticleGenerationCooldown = 10f / Mathf.Log(BaseStats.frequency + BonusStats.frequency, 2);
         m_ParticleValue = EnergyParticle.DefaultEnergyValue + (BaseStats.power + BonusStats.power) / 10f;
     }
 
@@ -49,5 +49,13 @@ public class PowerGenerator : PowerLine, IEnergetics, IGenerator
         EnergyParticle particle = new EnergyParticle(EnergyParticleValue, origin);
 
         OnGenerate?.Invoke(new GeneratorEventData(particle, this));
+    }
+
+    public override string ShowInfo()
+    {
+        string info = "Power generator.\nEnergy per particle = " + m_ParticleValue + "\nParticle rate = " + m_EnergyParticleGenerationCooldown +
+            "s per particle";
+
+        return info;
     }
 }

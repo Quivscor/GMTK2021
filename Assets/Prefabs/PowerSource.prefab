@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BuildingType: 16
   m_BaseStats:
-    cost: 0
+    cost: 100
     power: 0
     frequency: 4
     electricUsage: 0

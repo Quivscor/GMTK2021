@@ -80,7 +80,7 @@ public class EnergeticsNetworkVisualizer : MonoBehaviour
 
         for(int i = startIndex; i < startIndex + nodePairs.Count; i++)
         {
-            LineRenderers[i].positionCount = 2;
+            LineRenderers[i].gameObject.SetActive(true);
             LineRenderers[i].SetPositions(new Vector3[] {nodePairs[i - startIndex].Item1.TransformReference.position,
                 nodePairs[i - startIndex].Item2.TransformReference.position});
         }
@@ -113,7 +113,7 @@ public class EnergeticsNetworkVisualizer : MonoBehaviour
     {
         for (int j = startIndex; j < LineRenderers.Count; j++)
         {
-            LineRenderers[j].positionCount = 0;
+            LineRenderers[j].gameObject.SetActive(false);
         }
     }
 
@@ -123,8 +123,8 @@ public class EnergeticsNetworkVisualizer : MonoBehaviour
         
         for(int i = startIndex; i < startIndex + particles.Count; i++)
         {
+            SpriteRenderers[i].gameObject.SetActive(true);
             SpriteRenderers[i].transform.position = particles[i - startIndex].Position;
-            SpriteRenderers[i].color = Color.white;
         }
         startIndex += particles.Count;
     }    
@@ -133,7 +133,7 @@ public class EnergeticsNetworkVisualizer : MonoBehaviour
     {
         for (int j = startIndex; j < INIT_PARTICLES_COUNT; j++)
         {
-            SpriteRenderers[j].color = Color.clear;
+            SpriteRenderers[j].gameObject.SetActive(false);
         }
     }
 }

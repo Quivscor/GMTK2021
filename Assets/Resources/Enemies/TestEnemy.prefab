@@ -132,9 +132,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointCost: 1
   money: 3
-  hp: 5
+  hp: 3
   damage: 1
-  perWaveIncrease: 0.25
+  perWaveIncrease: 0.15
   moveSpeed: 1
 --- !u!58 &5174070128815615172
 CircleCollider2D:

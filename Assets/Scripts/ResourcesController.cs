@@ -35,7 +35,7 @@ public class ResourcesController : MonoBehaviour
 
     public void GainMoney(EnemyEventData e)
     {
-        money += e.Enemy.money;
+        money += e.Enemy.currentMoney;
         OnMoneyChange?.Invoke(money);
     }
 

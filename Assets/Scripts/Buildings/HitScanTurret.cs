@@ -6,25 +6,23 @@ public class HitScanTurret : BaseTurret
 {
     [SerializeField] private GameObject m_TurretHead;
 
-    #region TurretBaseStats
-    private float timeBetweenShots;
-    private float timeBetweenShotsCurrent;
-    private float baseDamage;
-    #endregion
+    #region TurretStats
+    public float TimeBetweenShots { get; protected set; }
+    private float m_TimeBetweenShotsCurrent;
+    public float BaseDamage { get; protected set; }
 
-    #region TurretExtraStats
-    private float extraDamage;
-    private float extraTimeBetweenShotsReduction;
+    private float m_ExtraDamage;
+    private float m_ExtraTimeBetweenShotsReduction;
     #endregion
 
     protected override void Start()
     {
         base.Start();
 
-        baseDamage = BaseStats.power;
-        timeBetweenShots = BaseStats.frequency;
+        BaseDamage = BaseStats.power;
+        TimeBetweenShots = BaseStats.frequency;
 
-        timeBetweenShotsCurrent = timeBetweenShots;
+        m_TimeBetweenShotsCurrent = TimeBetweenShots;
     }
 
     protected override void Update()
@@ -37,16 +35,20 @@ public class HitScanTurret : BaseTurret
         {
             m_TurretHead.transform.right = -1 * (Targets[0].transform.position - this.transform.position);
 
-            if (timeBetweenShotsCurrent <= 0)
+            if (m_TimeBetweenShotsCurrent <= 0)
             {
-                extraDamage = BonusStats.power;
-                extraTimeBetweenShotsReduction = BonusStats.frequency / (32 + BonusStats.frequency);
                 if(Fire())
-                    timeBetweenShotsCurrent = timeBetweenShots - extraTimeBetweenShotsReduction;
+                    m_TimeBetweenShotsCurrent = TimeBetweenShots - m_ExtraTimeBetweenShotsReduction;
             }
             else
-                timeBetweenShotsCurrent -= Time.deltaTime;
+                m_TimeBetweenShotsCurrent -= Time.deltaTime;
         }
+    }
+
+    protected override void SetBuildingCustomStats()
+    {
+        m_ExtraDamage = BonusStats.power;
+        m_ExtraTimeBetweenShotsReduction = BonusStats.frequency / (32 + BonusStats.frequency);
     }
 
     public void SanityTargetList()
@@ -62,11 +64,19 @@ public class HitScanTurret : BaseTurret
     {
         if (base.Fire())
         {
-            Targets[0].TakeDamage(baseDamage + extraDamage);
+            Targets[0].TakeDamage(BaseDamage + m_ExtraDamage);
             return true;
         }
         else return false;
     }
 
-    
+    public override string ShowInfo()
+    {
+        string info = base.ShowInfo();
+
+        info += "Damage = " + (BaseDamage + m_ExtraDamage) + "\nFire rate = " + (TimeBetweenShots - m_ExtraTimeBetweenShotsReduction) +
+            "\nEnergy use per shot = " + (BaseStats.electricUsage + BonusStats.electricUsage) + "\nCurrent energy = " + Energy + "/" + MaxEnergy;
+
+        return info;
+    }
 }

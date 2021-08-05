@@ -73,7 +73,9 @@ public class GridController : MonoBehaviour
         data.building.isBuilt = true;
         data.building.isDirty = true;
 
-        if (!data.building.BuildingType.HasFlag(BuildingType.ADDMODULE) && !data.building.BuildingType.HasFlag(BuildingType.MULTMODULE))
+        if (!data.building.BuildingType.HasFlag(BuildingType.ADDMODULE) && !data.building.BuildingType.HasFlag(BuildingType.MULTMODULE)
+            && !data.building.BuildingType.HasFlag(BuildingType.POWERLINE))
+            //at least for now, remove power lines from consideration
             ActiveBuildingFields.Add(Grid[data.gridFieldCoords.x, data.gridFieldCoords.y]);
 
         if (data.building is IEnergetics energetics)
@@ -210,7 +212,7 @@ public class GridController : MonoBehaviour
                 //north
                 case 0:
                     //check if not illegal position
-                    if (coords.y + 1 >= GridController.GridSize.y - 1)
+                    if (coords.y + 1 > GridController.GridSize.y - 1)
                         break;
 
                     result = Act(new Vector2Int(coords.x, coords.y + 1));
@@ -218,7 +220,7 @@ public class GridController : MonoBehaviour
                 //south
                 case 1:
                     //check if not illegal position
-                    if (coords.y - 1 <= 0)
+                    if (coords.y - 1 < 0)
                         break;
 
                     result = Act(new Vector2Int(coords.x, coords.y - 1));
@@ -226,7 +228,7 @@ public class GridController : MonoBehaviour
                 //east
                 case 2:
                     //check if not illegal position
-                    if (coords.x + 1 >= GridController.GridSize.x - 1)
+                    if (coords.x + 1 > GridController.GridSize.x - 1)
                         break;
 
                     result = Act(new Vector2Int(coords.x + 1, coords.y));
@@ -234,7 +236,7 @@ public class GridController : MonoBehaviour
                 //west
                 case 3:
                     //check if not illegal position
-                    if (coords.x - 1 <= 0)
+                    if (coords.x - 1 < 0)
                         break;
 
                     result = Act(new Vector2Int(coords.x - 1, coords.y));

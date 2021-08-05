@@ -5,7 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int pointCost = 1; //default to 1, so any enemy costs at least something
-    public int money = 2;
+    [SerializeField] private int money = 2;
+    [HideInInspector] public int currentMoney;
 
     #region EnemyData
     [SerializeField] private float hp;
@@ -34,6 +35,7 @@ public class Enemy : MonoBehaviour
         previousNode = transform.position;
         nextNode = EnemyController.EnemyPath.PathNodes[currentNodeIndex].transform.position;
         currentHp = hp * (1 + (waveNumber * perWaveIncrease));
+        currentMoney = money + (int)(1 * Mathf.Log(waveNumber, 5));
         //gives extra delay on spawn
         CurrentTime = 1 - Vector3.Distance(previousNode, nextNode);
     }

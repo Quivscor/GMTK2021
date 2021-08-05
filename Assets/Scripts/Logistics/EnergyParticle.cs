@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnergyParticle : INodeTraverser
 {
-    public static readonly float DefaultEnergyValue = 5.0f;
+    public static readonly float DefaultEnergyValue = 10.0f;
     public static readonly float DefaultTraversalTime = .5f;
 
     private readonly float m_EnergyValue;
