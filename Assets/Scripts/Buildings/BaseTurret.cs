@@ -22,6 +22,7 @@ public class BaseTurret : Building, ITurret
     public float MaxEnergy => m_MaxEnergy;
 
     public event TurretFireEvent OnTurretFire;
+    public event ReceiveEnergyEvent OnReceiveEnergy;
 
     protected override void Start()
     {
@@ -73,6 +74,8 @@ public class BaseTurret : Building, ITurret
         Energy += energy;
         if (Energy > MaxEnergy)
             Energy = MaxEnergy;
+
+        OnReceiveEnergy?.Invoke();
     }
 
     public bool TryConsumeEnergy(float energy)
