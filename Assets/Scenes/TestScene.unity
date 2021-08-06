@@ -22560,12 +22560,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1116814265}
   - component: {fileID: 1116814264}
+  - component: {fileID: 1116814267}
   - component: {fileID: 1116814270}
   - component: {fileID: 1116814271}
   - component: {fileID: 1116814269}
   - component: {fileID: 1116814268}
   - component: {fileID: 1116814266}
-  - component: {fileID: 1116814267}
   m_Layer: 0
   m_Name: Grid Controller
   m_TagString: Untagged
@@ -22585,6 +22585,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dca0273da6fa374d8ce69f8a3fece9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ModuleEfficiencyInClustersReduced: 1
+  m_ModuleEfficiencyFallsOffWithDistance: 1
   ConstructGrid: 0
   m_GridFieldPrefab: {fileID: 6049693994859010076, guid: 26c8047629ce82a47ab47b9b110692e4, type: 3}
 --- !u!4 &1116814265
@@ -22896,7 +22898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: 20
-  money: 500
+  money: 300
   gameOverCanvas: {fileID: 1200911306}
 --- !u!114 &1116814269
 MonoBehaviour:
@@ -22925,7 +22927,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1d9531322b4384887902c23d5ab1d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ConnectionDistance: 4
+  m_MultipleParticleGeneration: 1
+  m_ConnectionDistance: 5
 --- !u!114 &1116814271
 MonoBehaviour:
   m_ObjectHideFlags: 0

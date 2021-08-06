@@ -100,7 +100,7 @@ public class EnergeticsNetworkVisualizer : MonoBehaviour
                 if (nodePairs.Contains(Tuple.Create(neighbour, node)))
                     continue;
 
-                if ((!node.IsWalkable && !neighbour.IsWalkable))
+                if ((!node.IsWalkable || !neighbour.IsWalkable))
                     continue;
 
                 nodePairs.Add(Tuple.Create(node, neighbour));

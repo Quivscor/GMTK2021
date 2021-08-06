@@ -42,4 +42,7 @@ public class BuildingStats
     public static BuildingStats operator *(BuildingStats a, BuildingStats b) =>
         new BuildingStats(a.cost * b.cost, a.power * b.power, a.frequency * b.frequency, a.electricUsage * b.electricUsage,
             a.rechargeRate * b.rechargeRate, a.resistance * b.resistance);
+
+    public static BuildingStats operator /(BuildingStats a, float b) =>
+        new BuildingStats(a.cost / (int)b, a.power / b, a.frequency / b, a.electricUsage / b, a.rechargeRate / b, a.resistance / b);
 }

@@ -11,6 +11,11 @@ public class GridController : MonoBehaviour
     public static Vector2 GridOffset = new Vector2(0.5f, 0.5f);
 
     public static GridController Instance;
+    [Header("Global settings")]
+    public static bool ModuleEfficiencyInClustersReduced = false;
+    [SerializeField] private bool m_ModuleEfficiencyInClustersReduced;
+    public static bool ModuleEfficiencyFallsOffWithDistance = false;
+    [SerializeField] private bool m_ModuleEfficiencyFallsOffWithDistance;
 
     public ResourcesController ResourcesController { get; private set; }
     public EnergeticsController EnergeticsController { get; private set; }
@@ -21,6 +26,7 @@ public class GridController : MonoBehaviour
     public static GridField[,] Grid { get; private set; }
     public List<GridField> ActiveBuildingFields { get; private set; }
 
+    [Header("Local values")]
     [SerializeField] private GridField m_GridFieldPrefab;
 
     public Action OnProcessBuildPlacement;
@@ -60,6 +66,9 @@ public class GridController : MonoBehaviour
             Grid[x, y].name = "Grid Field (" + x + ", " + y + ")";
             Grid[x, y].Construct(new Vector2Int(x, y));
         }
+
+        ModuleEfficiencyInClustersReduced = m_ModuleEfficiencyInClustersReduced;
+        ModuleEfficiencyFallsOffWithDistance = m_ModuleEfficiencyFallsOffWithDistance;
     }
 
     public void ProcessBuildingPlacement(GridBuildProcessEventData data)
@@ -73,9 +82,7 @@ public class GridController : MonoBehaviour
         data.building.isBuilt = true;
         data.building.isDirty = true;
 
-        if (!data.building.BuildingType.HasFlag(BuildingType.ADDMODULE) && !data.building.BuildingType.HasFlag(BuildingType.MULTMODULE)
-            && !data.building.BuildingType.HasFlag(BuildingType.POWERLINE))
-            //at least for now, remove power lines from consideration
+        if (!data.building.BuildingType.HasFlag(BuildingType.ADDMODULE) && !data.building.BuildingType.HasFlag(BuildingType.MULTMODULE))
             ActiveBuildingFields.Add(Grid[data.gridFieldCoords.x, data.gridFieldCoords.y]);
 
         if (data.building is IEnergetics energetics)
@@ -129,80 +136,54 @@ public class GridController : MonoBehaviour
 
     private void RecalculateCluster(Vector2Int clusterCenterCoords)
     {
-        List<GridField> clusterFields = 
-            checkedFields.OrderByDescending(x => Vector3.Distance(x.transform.position, 
-            Grid[clusterCenterCoords.x, clusterCenterCoords.y].transform.position)).ToList<GridField>();
+        Building clusterBuilding = Grid[clusterCenterCoords.x, clusterCenterCoords.y].Building;
+        checkedFields.OrderByDescending(x => x.Building.BuildingComparator());
+
+        int activeBuildingsInCluster;
+        if (ModuleEfficiencyInClustersReduced)
+            activeBuildingsInCluster = CountActiveBuildingsInCluster(checkedFields);
+        else
+            activeBuildingsInCluster = 1;
+
+        float distanceFromActiveBuilding;
+
+        clusterBuilding.ResetBuildingBonuses();
+        foreach (GridField field in checkedFields)
+        {
+            if(field.Building is IModule module)
+            {
+                if(module.ConnectionData.ConnectingTypes.HasFlag(clusterBuilding.BuildingType))
+                {
+                    if (ModuleEfficiencyFallsOffWithDistance)
+                        distanceFromActiveBuilding = Vector3.Distance(clusterBuilding.transform.position, field.Building.transform.position);
+                    else
+                        distanceFromActiveBuilding = 1;
+
+                    if (module.ConnectionData.IsBoostAdditive)
+                        clusterBuilding.AddBoostValue((module.ConnectionData.ConnectionBoost / activeBuildingsInCluster) / distanceFromActiveBuilding);
+                    else
+                        clusterBuilding.AddBoostMultiplier((module.ConnectionData.ConnectionBoost / activeBuildingsInCluster) / distanceFromActiveBuilding);
+                }
+            }
+        }
         checkedFields.Clear();
-
-        foreach(GridField field in clusterFields)
-        {
-            //clear previous calcs before recalculating
-            field.Building.ResetBuildingBonuses();
-        }
-
-        foreach(GridField field in clusterFields)
-        {
-            //we can call building without checking because CheckCluster did that earlier
-            RecalculateBuilding(field.OwnCoordinates);
-        }
     }
 
-    Building recalculatedBuilding;
-
-    private void RecalculateBuilding(Vector2Int coords)
+    private int CountActiveBuildingsInCluster(HashSet<GridField> fields)
     {
-        recalculatedBuilding = Grid[coords.x, coords.y].Building;
-        ForNeighboursDo(coords, UpdateBuildingNeighbours);
-        recalculatedBuilding.isDirty = false;
-        recalculatedBuilding = null;
-    }
-
-    //this method adds neighbour bonuses to the building held in recalculatedBuilding variable
-    private bool UpdateBuilding(Vector2Int coords)
-    {
-        if (Grid[coords.x, coords.y].Building == null)
-            return false;
-
-        if(Grid[coords.x, coords.y].Building is IModule module)
+        int result = 0;
+        foreach(GridField field in fields)
         {
-            if(module.ConnectionData.ConnectingTypes.HasFlag(recalculatedBuilding.BuildingType))
+            if(field.Building is IModule module)
             {
-                if (module.ConnectionData.IsBoostAdditive)
-                    recalculatedBuilding.AddBoostValue(module.ConnectionData.ConnectionBoost + 
-                        Grid[coords.x, coords.y].Building.BonusStats);
-                else
-                    recalculatedBuilding.AddBoostMultiplier(module.ConnectionData.ConnectionBoost + 
-                        Grid[coords.x, coords.y].Building.BonusStats);
+                continue;
             }
-
-            return true;
-        }
-
-        return false;
-    }
-
-    //this method adds bonus of building stored in recalculatedBuilding variable to all attached neighbours that aren't updated already
-    private bool UpdateBuildingNeighbours(Vector2Int coords)
-    {
-        if (Grid[coords.x, coords.y].Building == null)
-            return false;
-
-        if (recalculatedBuilding is IModule module)
-        {
-            if (module.ConnectionData.ConnectingTypes.HasFlag(Grid[coords.x, coords.y].Building.BuildingType) && Grid[coords.x, coords.y].Building.isDirty)
+            else
             {
-                if (module.ConnectionData.IsBoostAdditive)
-                    Grid[coords.x, coords.y].Building.AddBoostValue(module.ConnectionData.ConnectionBoost +
-                        recalculatedBuilding.BonusStats);
-                else
-                    Grid[coords.x, coords.y].Building.AddBoostMultiplier(module.ConnectionData.ConnectionBoost +
-                        recalculatedBuilding.BonusStats);
+                result++;
             }
-
-            return true;
         }
-
-        return false;
+        return result;
     }
 
     private void BuildGrid()

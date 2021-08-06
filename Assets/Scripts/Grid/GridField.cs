@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class GridField : MonoBehaviour, IPointerClickHandler
+public class GridField : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 {
     public GridFieldType type = GridFieldType.UNKNOWN;
 
@@ -45,6 +45,14 @@ public class GridField : MonoBehaviour, IPointerClickHandler
         {
             //select placed building
             SelectionManager.Select(Building);
+        }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(SelectionManager.SelectedBuilding != null)
+        {
+            //GridVisualizer.TryDisplayBuilding()
         }
     }
 }

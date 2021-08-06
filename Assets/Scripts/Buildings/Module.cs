@@ -18,6 +18,14 @@ public class Module : Building, IModule
         return false;
     }
 
+    public override int BuildingComparator()
+    {
+        if (ConnectionData.IsBoostAdditive)
+            return 0;
+        else
+            return 10;
+    }
+
     public override string ShowInfo()
     {
         string symbol = "+";

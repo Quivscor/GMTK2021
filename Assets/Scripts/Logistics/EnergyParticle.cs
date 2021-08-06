@@ -92,8 +92,9 @@ public class EnergyParticle : INodeTraverser
     public void MoveBetweenNodes(IPathfindingNode current, IPathfindingNode next, float deltaTime)
     {
         m_CurrentTraversalTime += deltaTime;
+        float travelTime = GetTravelTimeBetweenNodes(current, next);
         float nodeDistance = Vector3.Distance(current.TransformReference.position, next.TransformReference.position);
-        if (m_CurrentTraversalTime >= SingleUnitTraversalTime * nodeDistance)
+        if (m_CurrentTraversalTime >= travelTime * nodeDistance)
         {
             Position = next.TransformReference.position;
             CurrentNode = NextNode;
@@ -101,6 +102,17 @@ public class EnergyParticle : INodeTraverser
             m_CurrentTraversalTime = 0;
         }
         else
-            Position = Vector3.Lerp(current.TransformReference.position, next.TransformReference.position, m_CurrentTraversalTime / (SingleUnitTraversalTime * nodeDistance));
+            Position = Vector3.Lerp(current.TransformReference.position, next.TransformReference.position, m_CurrentTraversalTime / (travelTime * nodeDistance));
+    }
+
+    private float GetTravelTimeBetweenNodes(IPathfindingNode current, IPathfindingNode next)
+    {
+        float result = SingleUnitTraversalTime;
+
+        float extraFrequency = (next as MonoBehaviour).GetComponent<Building>().BonusStats.frequency;
+
+        result = SingleUnitTraversalTime / (1 + Mathf.Log(1 + extraFrequency, 4));
+
+        return result;
     }
 }

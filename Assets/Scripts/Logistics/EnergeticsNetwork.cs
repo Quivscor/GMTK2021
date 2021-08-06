@@ -151,7 +151,7 @@ public class EnergeticsNetwork
     //callback to when one of the buildings in the network goes down and can't be used to travel through
     public void OnNetworkNodeEnterRechargeState(BuildingEventData e)
     {
-        List<EnergyParticle> particles = Particles.FindAll(x => x.Path.Contains(e.node));
+        List<EnergyParticle> particles = Particles.FindAll(x => CheckParticleContainsRechargingNode(x, e.node));
         List<IPathfindingNode> pathfindingNodes = Nodes.ToList<IPathfindingNode>();
         foreach (EnergyParticle p in particles)
         {
@@ -161,6 +161,14 @@ public class EnergeticsNetwork
             else
                 p.UpdatePath(newPath);
         }
+    }
+
+    private bool CheckParticleContainsRechargingNode(EnergyParticle p, IPathfindingNode n)
+    {
+        if (p.Path.Contains(n) || p.CurrentNode == n)
+            return true;
+        else
+            return false;
     }
 
     public static EnergeticsNetwork MergeNetworks(EnergeticsNetwork networkA, EnergeticsNetwork networkB)

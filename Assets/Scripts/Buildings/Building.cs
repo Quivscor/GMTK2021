@@ -90,6 +90,8 @@ public class Building : MonoBehaviour, IPointerClickHandler
         OnBuildingStatsUpdated?.Invoke();
     }
 
+    public virtual int BuildingComparator() { return 10000; }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         SelectionManager.Select(this);

@@ -145,7 +145,7 @@ MonoBehaviour:
       electricUsage: 1.1
       rechargeRate: 0
       resistance: 0
-    m_ConnectingTypes: 23
+    m_ConnectingTypes: 55
     m_IsBoostAdditive: 0
 --- !u!61 &4058455296736449939
 BoxCollider2D:
