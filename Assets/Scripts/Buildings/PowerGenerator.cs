@@ -10,6 +10,8 @@ public class PowerGenerator : PowerLine, IEnergetics, IGenerator
 
     private float m_ParticleValue;
 
+    public int ConsumerCount { get; set; }
+
     public float EnergyParticleGenerationCooldown => m_EnergyParticleGenerationCooldown;
     public float EnergyParticleValue => m_ParticleValue;
 
@@ -46,9 +48,20 @@ public class PowerGenerator : PowerLine, IEnergetics, IGenerator
 
     public void Generate(IPathfindingNode origin)
     {
-        EnergyParticle particle = new EnergyParticle(EnergyParticleValue, origin);
+        int iterator;
 
-        OnGenerate?.Invoke(new GeneratorEventData(particle, this));
+        if (EnergeticsController.MultipleParticleGeneration)
+            iterator = ConsumerCount;
+        else
+            iterator = 1;
+
+        for(int i = 0; i < iterator; i++)
+        {
+            EnergyParticle particle = new EnergyParticle(EnergyParticleValue, origin);
+
+            OnGenerate?.Invoke(new GeneratorEventData(particle, this));
+        }
+        
     }
 
     public override string ShowInfo()

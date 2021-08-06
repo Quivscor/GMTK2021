@@ -49,7 +49,10 @@ public class EnergeticsNetwork
         if (node is IGenerator generator)
             AddOrigin(generator);
         else if (node is IActiveBuilding active)
+        {
             Consumers.Add(active);
+            UpdateOrigins();
+        }
 
         Building b = (node as MonoBehaviour).GetComponent<Building>();
         b.OnEnterRechargingState += OnNetworkNodeEnterRechargeState;
@@ -61,6 +64,15 @@ public class EnergeticsNetwork
     {
         Origins.Add(origin);
         origin.OnGenerate += AddParticle;
+        origin.ConsumerCount = Consumers.Count;
+    }
+
+    public void UpdateOrigins()
+    {
+        foreach(IGenerator origin in Origins)
+        {
+            origin.ConsumerCount = Consumers.Count;
+        }
     }
 
     public void AddParticle(GeneratorEventData e)
@@ -191,6 +203,8 @@ public class EnergeticsNetwork
 
             b.OnEnterRechargingState += network.OnNetworkNodeEnterRechargeState;
         }
+
+        network.UpdateOrigins();
 
         return network;
     }

@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class EnergeticsController : MonoBehaviour
 {
+    [Header("Global energetics settings")]
+    public static bool MultipleParticleGeneration = false;
+    [SerializeField] private bool m_MultipleParticleGeneration;
+
     [SerializeField] private float m_ConnectionDistance;
     public float ConnectionDistance => m_ConnectionDistance;
 
@@ -14,6 +18,8 @@ public class EnergeticsController : MonoBehaviour
 
     private void Awake()
     {
+        MultipleParticleGeneration = m_MultipleParticleGeneration;
+
         Networks = new List<EnergeticsNetwork>();
     }
 
