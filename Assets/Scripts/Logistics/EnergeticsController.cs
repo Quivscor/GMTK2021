@@ -10,7 +10,7 @@ public class EnergeticsController : MonoBehaviour
     [SerializeField] private bool m_MultipleParticleGeneration;
 
     [SerializeField] private float m_ConnectionDistance;
-    public float ConnectionDistance => m_ConnectionDistance;
+    public static float ConnectionDistance;
 
     private List<EnergeticsNetwork> Networks { get; set; }
 
@@ -19,6 +19,7 @@ public class EnergeticsController : MonoBehaviour
     private void Awake()
     {
         MultipleParticleGeneration = m_MultipleParticleGeneration;
+        ConnectionDistance = m_ConnectionDistance;
 
         Networks = new List<EnergeticsNetwork>();
     }

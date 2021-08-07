@@ -27,7 +27,6 @@ public static class SelectionManager
 
         SelectedBuilding = selectTarget;
         SelectedBuilding.SelectBuilding();
-        SelectedBuilding.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
 
         SelectedBuilding.OnBuildingStatsUpdated += UpdateDisplay;
         SelectedBuilding.OnDamageReceived += UpdateDisplay;
@@ -44,8 +43,6 @@ public static class SelectionManager
 
     public static void Deselect()
     {
-        SelectedBuilding.transform.localScale = Vector3.one;
-
         SelectedBuilding.OnBuildingStatsUpdated -= UpdateDisplay;
         SelectedBuilding.OnDamageReceived -= UpdateDisplay;
         if (SelectedBuilding is IActiveBuilding activeBuilding)
