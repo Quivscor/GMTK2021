@@ -21,6 +21,8 @@ public class Building : MonoBehaviour, IPointerClickHandler
     public bool IsRecharging { get; protected set; }
     private float m_CurrentRechargeTime;
 
+    public Action OnBuildingSelected;
+    public Action OnBuildingDeselected;
     public Action OnBuildingStatsUpdated;
     public Action OnDamageReceived;
     public Action<BuildingEventData> OnEnterRechargingState;
@@ -92,9 +94,19 @@ public class Building : MonoBehaviour, IPointerClickHandler
 
     public virtual int BuildingComparator() { return 10000; }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public virtual void OnPointerClick(PointerEventData eventData)
     {
         SelectionManager.Select(this);
+    }
+
+    public virtual void SelectBuilding()
+    {
+        OnBuildingSelected?.Invoke();
+    }
+
+    public virtual void DeselectBuilding()
+    {
+        OnBuildingDeselected?.Invoke();
     }
 
     public void ReceiveDamage(float value)
