@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
 
-public class GridField : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
+public class GridField : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public GridFieldType type = GridFieldType.UNKNOWN;
 
@@ -14,6 +15,9 @@ public class GridField : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
     [SerializeField] private Building m_Building;
     public Building Building { get => m_Building; private set => m_Building = value; }
+
+    public Action<GridFieldEventData> OnHoverEnter;
+    public Action<GridFieldEventData> OnHoverExit;
 
     private void Awake()
     {
@@ -39,7 +43,7 @@ public class GridField : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
         if(SelectionManager.IsSelectedBuildingPlaceable() && Building == null && type != GridFieldType.ROAD_FIELD)
         {
             //place building if possible
-            GridController.Instance.ProcessBuildingPlacement(new GridBuildProcessEventData(SelectionManager.SelectedBuilding, OwnCoordinates));
+            GridController.Instance.ProcessBuildingPlacement(new GridFieldEventData(SelectionManager.SelectedBuilding, OwnCoordinates));
         }
         else if(Building != null)
         {
@@ -50,10 +54,12 @@ public class GridField : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(SelectionManager.SelectedBuilding != null)
-        {
-            //GridVisualizer.TryDisplayBuilding()
-        }
+        OnHoverEnter?.Invoke(new GridFieldEventData(this));
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        OnHoverExit?.Invoke(new GridFieldEventData(this));
     }
 }
 

@@ -17,6 +17,7 @@ public class GridController : MonoBehaviour
     public static bool ModuleEfficiencyFallsOffWithDistance = false;
     [SerializeField] private bool m_ModuleEfficiencyFallsOffWithDistance;
 
+    public GridVisualizer GridVisualizer { get; private set; }
     public ResourcesController ResourcesController { get; private set; }
     public EnergeticsController EnergeticsController { get; private set; }
     private AudioSource source;
@@ -37,6 +38,7 @@ public class GridController : MonoBehaviour
 
         ResourcesController = FindObjectOfType<ResourcesController>();
         EnergeticsController = FindObjectOfType<EnergeticsController>();
+        GridVisualizer = FindObjectOfType<GridVisualizer>();
     }
 
     private void OnValidate()
@@ -71,7 +73,7 @@ public class GridController : MonoBehaviour
         ModuleEfficiencyFallsOffWithDistance = m_ModuleEfficiencyFallsOffWithDistance;
     }
 
-    public void ProcessBuildingPlacement(GridBuildProcessEventData data)
+    public void ProcessBuildingPlacement(GridFieldEventData data)
     {
         if (!ResourcesController.TrySpendMoney(data.building.BaseStats.cost))
             return;

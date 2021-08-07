@@ -35,7 +35,7 @@ public class EnergeticsController : MonoBehaviour
         }
     }
 
-    public void ProcessEnergeticsBuildingPlacement(GridBuildProcessEventData e)
+    public void ProcessEnergeticsBuildingPlacement(GridFieldEventData e)
     {
         Building building = e.building;
         IEnergetics newNode = building.GetComponent<IEnergetics>();
