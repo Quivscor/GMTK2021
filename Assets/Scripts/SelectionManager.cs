@@ -46,6 +46,7 @@ public static class SelectionManager
     {
         m_SelectedBuildingMock = GameObject.Instantiate(SelectedBuilding, m_DefaultMockPosition, Quaternion.identity, null);
         m_SelectedBuildingMock.gameObject.layer = IgnoreRaycastLayerID;
+        m_SelectedBuildingMock.OnBuildingSelected?.Invoke();
     }
 
     public static void UpdateDisplay()

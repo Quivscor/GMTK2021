@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class HitScanTurret : BaseTurret
 {
-    [SerializeField] private GameObject m_TurretHead;
-
     #region TurretStats
     public float TimeBetweenShots { get; protected set; }
     private float m_TimeBetweenShotsCurrent;
@@ -33,8 +31,6 @@ public class HitScanTurret : BaseTurret
 
         if (Targets.Count > 0)
         {
-            m_TurretHead.transform.right = -1 * (Targets[0].transform.position - this.transform.position);
-
             if (m_TimeBetweenShotsCurrent <= 0)
             {
                 if(Fire())

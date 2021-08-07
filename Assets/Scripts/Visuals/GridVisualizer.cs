@@ -17,6 +17,8 @@ public class GridVisualizer : MonoBehaviour
     {
         if(SelectionManager.SelectedBuilding != null && !SelectionManager.SelectedBuilding.isBuilt)
             SelectionManager.PlaceMockAt(e.owner);
+
+        HashSet<GridField> cluster = GridController.GetCluster(e.owner.OwnCoordinates);
     }
 
     public void HideSelectedBuildingMock(GridFieldEventData e)

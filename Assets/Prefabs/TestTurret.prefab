@@ -61,7 +61,6 @@ MonoBehaviour:
   isDirty: 0
   isBuilt: 0
   m_MaxEnergy: 100
-  m_TurretHead: {fileID: 1408937353594695431}
 --- !u!61 &5284955210927474974
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -116,6 +115,7 @@ MonoBehaviour:
   m_OnFireParticles: {fileID: 6210242126039765393}
   m_RangeDisplay: {fileID: 5651025355067110845}
   m_EnergeticsRangeDisplay: {fileID: 5894444746914560022}
+  m_TurretHead: {fileID: 1408937353594695431}
 --- !u!1 &1408937351918444527
 GameObject:
   m_ObjectHideFlags: 0

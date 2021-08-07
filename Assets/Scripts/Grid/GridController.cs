@@ -136,6 +136,28 @@ public class GridController : MonoBehaviour
         return false;
     }
 
+    static HashSet<GridField> clusterFields;
+
+    public static HashSet<GridField> GetCluster(Vector2Int coords)
+    {
+        clusterFields = new HashSet<GridField>();
+        clusterFields.Add(Grid[coords.x, coords.y]);
+
+        ForNeighboursDo(coords, CheckNeighboursInCluster);
+
+        return clusterFields;
+    }
+
+    private static bool CheckNeighboursInCluster(Vector2Int coords)
+    {
+        if (clusterFields.Contains(Grid[coords.x, coords.y]) || Grid[coords.x, coords.y].Building == null)
+            return false;
+
+        clusterFields.Add(Grid[coords.x, coords.y]);
+        ForNeighboursDo(coords, CheckNeighboursInCluster);
+        return true;
+    }
+
     private void RecalculateCluster(Vector2Int clusterCenterCoords)
     {
         Building clusterBuilding = Grid[clusterCenterCoords.x, clusterCenterCoords.y].Building;
@@ -210,7 +232,7 @@ public class GridController : MonoBehaviour
         Debug.Log("Building grid complete.");
     }
 
-    public T ForNeighboursDo<T>(Vector2Int coords, Func<Vector2Int, T> Act)
+    private static T ForNeighboursDo<T>(Vector2Int coords, Func<Vector2Int, T> Act)
     {
         T result = default(T);
         for (int i = 0; i < 4; i++)

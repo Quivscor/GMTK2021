@@ -13,6 +13,11 @@ public class TurretVisuals : MonoBehaviour
     [SerializeField] private GameObject m_EnergeticsRangeDisplay;
     public GameObject EnergeticsRangeDisplay => m_EnergeticsRangeDisplay;
 
+    [SerializeField] private GameObject m_TurretHead;
+    public GameObject TurretHead => m_TurretHead;
+
+    private List<Enemy> m_TargetListRef;
+
     private void Awake()
     {
         ITurret turret = GetComponent<ITurret>();
@@ -25,8 +30,18 @@ public class TurretVisuals : MonoBehaviour
 
     private void Start()
     {
+        ITurret turret = GetComponent<ITurret>();
+        m_TargetListRef = turret.Targets;
+
         float size = EnergeticsController.ConnectionDistance * 2;
         EnergeticsRangeDisplay.transform.localScale = new Vector3(size, size, size);
+    }
+
+    private void LateUpdate()
+    {
+        if(TurretHead != null)
+            if(m_TargetListRef.Count > 0 && m_TargetListRef[0] != null)
+                TurretHead.transform.right = -1 * (m_TargetListRef[0].transform.position - this.transform.position);
     }
 
     public void PlayFireParticles()
