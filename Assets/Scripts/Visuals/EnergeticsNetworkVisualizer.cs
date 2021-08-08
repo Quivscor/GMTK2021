@@ -22,6 +22,7 @@ public class EnergeticsNetworkVisualizer : MonoBehaviour
     public Transform RenderersParent => m_RenderersParent;
 
     public List<EnergeticsNetwork> Networks { get; set; }
+    private static List<Tuple<Vector3, Vector3>> MockConnections;
 
     private void Awake()
     {
@@ -30,13 +31,15 @@ public class EnergeticsNetworkVisualizer : MonoBehaviour
         LineRenderers = new List<LineRenderer>();
         SpriteRenderers = new List<SpriteRenderer>();
         Networks = new List<EnergeticsNetwork>();
+        MockConnections = new List<Tuple<Vector3, Vector3>>();
 
-        for(int i = 0; i < INIT_LINERENDERER_COUNT; i++)
+        for (int i = 0; i < INIT_LINERENDERER_COUNT; i++)
         {
             GameObject newGO = new GameObject("LineRenderer", typeof(LineRenderer));
             newGO.transform.parent = RenderersParent;
 
             LineRenderer lr = newGO.GetComponent<LineRenderer>();
+            lr.material = new Material(lr.material);
             lr.sortingOrder = m_SortingOrder;
             lr.material = m_LineMaterial;
             lr.startWidth = lr.endWidth = m_LineWidth;
@@ -61,35 +64,58 @@ public class EnergeticsNetworkVisualizer : MonoBehaviour
         Networks = e.networks;
     }
 
+    public static void UpdateMockConnections(Vector3 mockPosition)
+    {
+        MockConnections.Clear();
+
+        Collider2D[] cols = Physics2D.OverlapCircleAll(mockPosition, EnergeticsController.ConnectionDistance);
+        for (int i = 0; i < cols.Length; i++)
+        {
+            IEnergetics node;
+            //if yes, add connections
+            if (cols[i].TryGetComponent<IEnergetics>(out node))
+            {
+                MockConnections.Add(new Tuple<Vector3, Vector3>(mockPosition, node.TransformReference.position));
+            }
+        }
+    }
+
+    public static void ClearMockConnections()
+    {
+        MockConnections.Clear();
+    }
+
     private void LateUpdate()
     {
         int networkConnectionsCount = 0;
         int particleCount = 0;
         foreach(EnergeticsNetwork network in Networks)
         {
-            DrawNetworkLines(network, ref networkConnectionsCount);
+            DrawNetworkLines(CreatePairList(network), ref networkConnectionsCount, Color.white);
             DrawNetworkParticles(network, ref particleCount);
         }
+        //draw connections to mock if there are any
+        DrawNetworkLines(MockConnections, ref networkConnectionsCount, Color.green);
+
         HideRemainingNetworkLines(networkConnectionsCount);
         HideRemainingParticles(particleCount);
     }
 
-    private void DrawNetworkLines(EnergeticsNetwork network, ref int startIndex)
+    private void DrawNetworkLines(List<Tuple<Vector3, Vector3>> nodePairs, ref int startIndex, Color color)
     {
-        List<Tuple<IPathfindingNode, IPathfindingNode>> nodePairs = CreatePairList(network);
-
         for(int i = startIndex; i < startIndex + nodePairs.Count; i++)
         {
+            LineRenderers[i].material.color = color;
             LineRenderers[i].gameObject.SetActive(true);
-            LineRenderers[i].SetPositions(new Vector3[] {nodePairs[i - startIndex].Item1.TransformReference.position,
-                nodePairs[i - startIndex].Item2.TransformReference.position});
+            LineRenderers[i].SetPositions(new Vector3[] {nodePairs[i - startIndex].Item1,
+                nodePairs[i - startIndex].Item2});
         }
         startIndex += nodePairs.Count;
     }
 
-    private List<Tuple<IPathfindingNode, IPathfindingNode>> CreatePairList(EnergeticsNetwork network)
+    private List<Tuple<Vector3, Vector3>> CreatePairList(EnergeticsNetwork network)
     {
-        List<Tuple<IPathfindingNode, IPathfindingNode>> nodePairs = new List<Tuple<IPathfindingNode, IPathfindingNode>>();
+        List<Tuple<Vector3, Vector3>> nodePairs = new List<Tuple<Vector3, Vector3>>();
         foreach (IPathfindingNode node in network.Nodes)
         {
             if (node.NetworkNeighbours.Count == 0)
@@ -97,13 +123,13 @@ public class EnergeticsNetworkVisualizer : MonoBehaviour
 
             foreach (IPathfindingNode neighbour in node.NetworkNeighbours)
             {
-                if (nodePairs.Contains(Tuple.Create(neighbour, node)))
+                if (nodePairs.Contains(Tuple.Create(neighbour.TransformReference.position, node.TransformReference.position)))
                     continue;
 
                 if ((!node.IsWalkable || !neighbour.IsWalkable))
                     continue;
 
-                nodePairs.Add(Tuple.Create(node, neighbour));
+                nodePairs.Add(Tuple.Create(node.TransformReference.position, neighbour.TransformReference.position));
             }
         }
         return nodePairs;

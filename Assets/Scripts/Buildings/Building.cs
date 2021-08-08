@@ -9,7 +9,7 @@ public class Building : MonoBehaviour, IPointerClickHandler
 {
     //setting more than one causes problems with adjacency
     [SerializeField] private BuildingType m_BuildingType;
-    public BuildingType BuildingType { get => m_BuildingType; }
+    public BuildingType BuildingType => m_BuildingType;
 
     [SerializeField] private BuildingStats m_BaseStats;
     public BuildingStats BaseStats { get => m_BaseStats; protected set => m_BaseStats = value; }
@@ -36,6 +36,7 @@ public class Building : MonoBehaviour, IPointerClickHandler
 
         SetBuildingCustomStats();
         OnBuildingStatsUpdated += SetBuildingCustomStats;
+        CurrentResistance = BaseStats.resistance + BonusStats.resistance;
     }
 
     protected virtual void Update()
@@ -68,11 +69,35 @@ public class Building : MonoBehaviour, IPointerClickHandler
         }
         return false;
     }
+    
+    public virtual bool IsActiveBuilding()
+    {
+        if (this is IModule module)
+            return false;
+        else
+            return true;
+    }
 
     public void ResetBuildingBonuses()
     {
         BonusStats.Reset();
         isDirty = true;
+    }
+
+    /// <summary>
+    /// Use with caution, used to change building type for the purpose of connection boost checking
+    /// </summary>
+    public void DebugSetBaseStats(BuildingStats stats)
+    {
+        m_BaseStats = stats;
+    }
+
+    /// <summary>
+    /// Use with caution, used to change building type for the purpose of connection boost checking
+    /// </summary>
+    public void DebugSetBuildingType(BuildingType type)
+    {
+        m_BuildingType = type;
     }
 
     protected virtual void SetBuildingCustomStats()

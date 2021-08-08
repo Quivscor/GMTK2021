@@ -37,7 +37,12 @@ public class BuildingStats
         return new BuildingStats(a.cost + b.cost, a.power + b.power, a.frequency + b.frequency, a.electricUsage + b.electricUsage,
             a.rechargeRate + b.rechargeRate, a.resistance + b.resistance);
     }
-        
+
+    public static BuildingStats operator -(BuildingStats a, BuildingStats b)
+    {
+        return new BuildingStats(a.cost - b.cost, a.power - b.power, a.frequency - b.frequency, a.electricUsage - b.electricUsage,
+            a.rechargeRate - b.rechargeRate, a.resistance - b.resistance);
+    }
 
     public static BuildingStats operator *(BuildingStats a, BuildingStats b) =>
         new BuildingStats(a.cost * b.cost, a.power * b.power, a.frequency * b.frequency, a.electricUsage * b.electricUsage,

@@ -30,6 +30,7 @@ public class EnemyPath
         }
 
         Building hq = Resources.Load<Building>("HQ");
+        hq.isBuilt = true;
         PathNodes[PathNodes.Count - 1].AssignBuilding(GameObject.Instantiate<Building>(hq, PathNodes[PathNodes.Count - 1].transform.position, Quaternion.identity, null));
     }
 

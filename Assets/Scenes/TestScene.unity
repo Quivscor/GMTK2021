@@ -442,6 +442,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &16484408
@@ -927,6 +929,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &51040768
@@ -1002,6 +1006,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &51153052
@@ -1077,6 +1083,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &53203732
@@ -1234,6 +1242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &57630673
@@ -1309,6 +1319,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &62591190
@@ -1384,6 +1396,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &63554237
@@ -1623,6 +1637,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &70908881
@@ -1862,6 +1878,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &96215792
@@ -2019,6 +2037,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &98674947
@@ -2094,6 +2114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &105360844
@@ -2427,6 +2449,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &126605450
@@ -2502,6 +2526,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &132135975
@@ -2659,6 +2685,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &140122315
@@ -2980,6 +3008,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &152849540
@@ -3055,6 +3085,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &157845305
@@ -3540,6 +3572,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &177347866
@@ -3615,6 +3649,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &183257848
@@ -3772,6 +3808,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &188080880
@@ -3929,6 +3967,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &195655988
@@ -4168,6 +4208,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &203571440
@@ -4243,6 +4285,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &215019297
@@ -4400,6 +4444,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &234706320
@@ -4475,6 +4521,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &234917992
@@ -4714,6 +4762,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &243655818
@@ -5199,6 +5249,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &260300591
@@ -5274,6 +5326,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &261889055
@@ -5349,6 +5403,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &266212439
@@ -5424,6 +5480,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &268630721
@@ -5499,6 +5557,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &269181616
@@ -5574,6 +5634,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &272934904
@@ -5649,6 +5711,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &275078963
@@ -6041,6 +6105,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &282766312
@@ -6116,6 +6182,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &293204543
@@ -6191,6 +6259,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &294484405
@@ -6266,6 +6336,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &307602443
@@ -6587,6 +6659,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &325784896
@@ -6945,7 +7019,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &355533727
 GameObject:
@@ -7266,6 +7340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &381804282
@@ -7505,6 +7581,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &395999673
@@ -7580,6 +7658,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &404099221
@@ -8037,6 +8117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &423245313
@@ -8112,6 +8194,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &428076696
@@ -8325,6 +8409,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &429925696
@@ -8698,6 +8784,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &443165740
@@ -8773,6 +8861,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &444843247
@@ -8930,6 +9020,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &452001969
@@ -9378,6 +9470,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &469991485
@@ -9453,6 +9547,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &476705531
@@ -9720,6 +9816,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &494290465
@@ -9802,7 +9900,7 @@ Transform:
   m_LocalScale: {x: 5000, y: 3000, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &494678984
 GameObject:
@@ -10034,6 +10132,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &505910985
@@ -10109,6 +10209,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &509184423
@@ -10184,6 +10286,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &516620551
@@ -10259,6 +10363,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &528513706
@@ -10416,6 +10522,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &534227365
@@ -10491,6 +10599,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &535584604
@@ -10648,6 +10758,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &549560974
@@ -10723,6 +10835,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &549960968
@@ -10932,6 +11046,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &551649338
@@ -11171,6 +11287,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &567304005
@@ -11246,6 +11364,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &567857680
@@ -11358,7 +11478,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &577909659
 GameObject:
@@ -11679,8 +11799,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
+--- !u!114 &594349885 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1380130627285108124, guid: c2be267ee74eb5441872b7676d0416a9, type: 3}
+  m_PrefabInstance: {fileID: 2142965114}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a14669800cc0d9243a387081e267ba3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &602174673
 GameObject:
   m_ObjectHideFlags: 0
@@ -11836,6 +11969,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &611625005
@@ -11911,6 +12046,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &615271705
@@ -11995,6 +12132,100 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &615725075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 615725079}
+  - component: {fileID: 615725078}
+  - component: {fileID: 615725077}
+  - component: {fileID: 615725076}
+  m_Layer: 0
+  m_Name: CustomShapeRenderer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &615725076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615725075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80920d63f3f789242ac7b098e831c850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!23 &615725077
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615725075}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: dc02ada2531b43c41984787443011250, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &615725078
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615725075}
+  m_Mesh: {fileID: 0}
+--- !u!4 &615725079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615725075}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619796113
 GameObject:
   m_ObjectHideFlags: 0
@@ -12150,6 +12381,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &620314156
@@ -12307,6 +12540,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &625682332
@@ -12464,6 +12699,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &636735223
@@ -12703,6 +12940,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &655311003
@@ -12778,6 +13017,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &656551349
@@ -12853,6 +13094,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &660077156
@@ -12928,6 +13171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &662330085
@@ -13085,6 +13330,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &664791814
@@ -13294,6 +13541,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &668322624
@@ -13369,6 +13618,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &668908738
@@ -13444,6 +13695,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &682021354
@@ -13519,6 +13772,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &683716862
@@ -13840,6 +14095,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &703095818
@@ -13997,6 +14254,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &717380994
@@ -14072,6 +14331,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &719386607
@@ -14147,6 +14408,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &724725900
@@ -14304,6 +14567,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &741191617
@@ -14543,6 +14808,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &753740006
@@ -14618,6 +14885,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &753910836
@@ -14693,6 +14962,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &762347481
@@ -14768,6 +15039,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &765477566
@@ -15089,6 +15362,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &781456768
@@ -15164,6 +15439,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &784913902
@@ -15239,6 +15516,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &788408945
@@ -15314,6 +15593,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &793032926
@@ -15389,6 +15670,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &797492093
@@ -15628,6 +15911,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &802703931
@@ -15949,6 +16234,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &811087488
@@ -16734,6 +17021,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &834522115
@@ -16973,6 +17262,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &855301398
@@ -17048,6 +17339,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &858218631
@@ -17078,7 +17371,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &861785520
 GameObject:
@@ -17287,6 +17580,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &865662332
@@ -17362,6 +17657,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &867013663
@@ -17437,6 +17734,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &876971388
@@ -17997,6 +18296,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &898113425
@@ -18072,6 +18373,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &911979544
@@ -18147,6 +18450,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &921566633
@@ -18304,6 +18609,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &925752138
@@ -18625,6 +18932,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &933665395
@@ -18740,7 +19049,7 @@ Transform:
   - {fileID: 468702066}
   - {fileID: 1714149939}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &938845070
 MonoBehaviour:
@@ -18839,6 +19148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &941530037
@@ -18869,7 +19180,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &946305892
 GameObject:
@@ -19108,6 +19419,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &951948047
@@ -19265,6 +19578,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &955070979
@@ -19340,6 +19655,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &956564571
@@ -19415,6 +19732,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &962548040
@@ -19572,6 +19891,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &965954171
@@ -19647,6 +19968,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &967860926
@@ -19722,6 +20045,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &975002734
@@ -19797,6 +20122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &977792346
@@ -19872,6 +20199,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &982172318
@@ -20111,6 +20440,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1000246818
@@ -20186,6 +20517,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1001961220
@@ -20261,6 +20594,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1005988863
@@ -20418,6 +20753,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1012500383
@@ -20493,6 +20830,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1014138338
@@ -20568,6 +20907,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1016609912
@@ -20725,6 +21066,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1031333350
@@ -20882,6 +21225,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1033715534
@@ -20957,6 +21302,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1038241395
@@ -21196,6 +21543,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1056466744
@@ -21271,6 +21620,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1059118193
@@ -21428,6 +21779,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1062651408
@@ -21503,6 +21856,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1071918786
@@ -21660,6 +22015,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1075247021
@@ -22391,6 +22748,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1110115191
@@ -22466,6 +22825,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1115849837
@@ -22885,6 +23246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145f2740ba1bffd47a42df0752d3d0bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CustomShapeRenderer: {fileID: 615725076}
+  m_DummyBuilding: {fileID: 594349885}
 --- !u!114 &1116814268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22944,9 +23307,9 @@ MonoBehaviour:
   m_RenderersParent: {fileID: 1211077277}
   m_SortingOrder: 5
   m_LineWidth: 0.2
-  m_LineMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-  m_ParticleSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_ParticleScale: {x: 2, y: 2, z: 2}
+  m_LineMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_ParticleSprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
+  m_ParticleScale: {x: 0.5, y: 0.5, z: 0.5}
 --- !u!1 &1121311494
 GameObject:
   m_ObjectHideFlags: 0
@@ -23594,6 +23957,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1151318945
@@ -23751,6 +24116,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1154915183
@@ -24072,6 +24439,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1162688652
@@ -24445,6 +24814,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1174540637
@@ -24520,6 +24891,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1178464914
@@ -24595,6 +24968,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1182062611
@@ -25080,6 +25455,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1191190612
@@ -25155,6 +25532,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1192616878
@@ -25230,6 +25609,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1193155031
@@ -25387,6 +25768,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1200400672
@@ -25566,7 +25949,7 @@ RectTransform:
   - {fileID: 861785521}
   - {fileID: 2122632897}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -25810,6 +26193,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1210812055
@@ -25997,6 +26382,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1216533651
@@ -26072,6 +26459,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1220825155
@@ -26147,6 +26536,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1232002429
@@ -26222,6 +26613,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1242778310
@@ -26379,6 +26772,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1249480808
@@ -26491,7 +26886,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1267715020
 GameObject:
@@ -26566,6 +26961,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1270836265
@@ -26805,6 +27202,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1295076405
@@ -27044,6 +27443,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1304776573
@@ -27119,6 +27520,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1305245321
@@ -27276,6 +27679,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1309457051
@@ -27433,6 +27838,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1328526605
@@ -27508,6 +27915,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1334558013
@@ -27893,6 +28302,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1348063215
@@ -28132,6 +28543,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1354850204
@@ -28207,6 +28620,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1356086066
@@ -28282,6 +28697,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1356634686
@@ -28521,6 +28938,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1370768353
@@ -28596,6 +29015,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1374207876
@@ -28771,6 +29192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1377558559
@@ -28846,6 +29269,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1383613075
@@ -28921,6 +29346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1392475387
@@ -29078,6 +29505,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1424407701
@@ -29153,6 +29582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1424837536
@@ -29310,6 +29741,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1440801094
@@ -29549,6 +29982,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1457621767
@@ -30006,6 +30441,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1464993560
@@ -30081,6 +30518,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1468669579
@@ -30156,6 +30595,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1473449833
@@ -30395,6 +30836,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1485934433
@@ -30552,6 +30995,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1495046686
@@ -30627,6 +31072,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1505185116
@@ -30866,6 +31313,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1513384450
@@ -30941,6 +31390,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1515184291
@@ -31098,6 +31549,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1524845040
@@ -31173,6 +31626,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1531399966
@@ -31412,6 +31867,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1542160208
@@ -31487,6 +31944,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1544495610
@@ -31562,6 +32021,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1545064041
@@ -31637,6 +32098,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1554939218
@@ -31712,6 +32175,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1555883237
@@ -31787,6 +32252,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1557196939
@@ -32037,6 +32504,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1562429537
@@ -32328,6 +32797,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1575016581
@@ -32567,6 +33038,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1580518796
@@ -32642,6 +33115,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1584383148
@@ -32963,6 +33438,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1591544144
@@ -33038,6 +33515,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1592062142
@@ -33195,6 +33674,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1596838001
@@ -33352,6 +33833,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1602293771
@@ -33509,6 +33992,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1620925397
@@ -33539,7 +34024,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1634177824
 GameObject:
@@ -33614,6 +34099,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1641914094
@@ -33689,6 +34176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1642436656
@@ -33837,7 +34326,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1653854577
 GameObject:
@@ -33994,6 +34483,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1671226201
@@ -34069,6 +34560,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1674269896
@@ -34308,6 +34801,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1683044557
@@ -34532,6 +35027,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1688523901
@@ -34607,6 +35104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1693641428
@@ -34846,6 +35345,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1699286440
@@ -35085,6 +35586,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1710178791
@@ -35160,6 +35663,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1711361539
@@ -35235,6 +35740,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1714149937
@@ -35437,6 +35944,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1719925885
@@ -35512,6 +36021,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1730197275
@@ -35751,6 +36262,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1735585405
@@ -35826,6 +36339,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1742247976
@@ -35983,6 +36498,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1756843659
@@ -36140,6 +36657,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1768015348
@@ -36483,6 +37002,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1782085850
@@ -36640,6 +37161,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1787504798
@@ -36879,6 +37402,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1812378284
@@ -36954,6 +37479,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1812447440
@@ -37029,6 +37556,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1812893938
@@ -37186,6 +37715,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1815178019
@@ -37507,6 +38038,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1831809853
@@ -37582,6 +38115,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1834670103
@@ -37739,6 +38274,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1835955955
@@ -37896,6 +38433,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1844834753
@@ -37971,6 +38510,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1848383612
@@ -38128,6 +38669,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1854238348
@@ -38285,6 +38828,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1870055311
@@ -38442,6 +38987,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1881690643
@@ -38517,6 +39064,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1889847941
@@ -38592,6 +39141,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1891533278
@@ -38831,6 +39382,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1896819910
@@ -39070,6 +39623,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1907968874
@@ -39145,6 +39700,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1911981608
@@ -39220,6 +39777,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1912745598
@@ -39377,6 +39936,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1919760628
@@ -39534,6 +40095,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1925092955
@@ -39609,6 +40172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1927027644
@@ -39684,6 +40249,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1928467814
@@ -39759,6 +40326,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1937698510
@@ -39916,6 +40485,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1939705195
@@ -39991,6 +40562,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1944954830
@@ -40066,6 +40639,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1945257449
@@ -40223,6 +40798,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1949828795
@@ -40296,8 +40873,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e22428be31561cc4187d0e15b290ac9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1951223714
@@ -40373,6 +40952,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1957123335
@@ -40448,6 +41029,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1959182872
@@ -40933,6 +41516,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1988082546
@@ -41008,6 +41593,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &1988811505
@@ -41301,6 +41888,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &2002007793
@@ -41376,6 +41965,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &2004133681
@@ -41533,6 +42124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &2013969562
@@ -41608,6 +42201,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &2022394097
@@ -41765,6 +42360,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &2026991988
@@ -42004,6 +42601,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &2036588581
@@ -42325,6 +42924,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &2041185339
@@ -42482,6 +43083,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &2043719640
@@ -42803,6 +43406,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &2052973097
@@ -42878,6 +43483,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &2059319305
@@ -42953,6 +43560,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &2062322247
@@ -43326,6 +43935,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &2070696486
@@ -43401,6 +44012,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &2071427718
@@ -43745,7 +44358,7 @@ RectTransform:
   - {fileID: 1683044558}
   - {fileID: 1337740024}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -43854,7 +44467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c2b1eaa7252ec469772829e7273cb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 428076698}
+  m_Text: {fileID: 428076698}
 --- !u!1 &2095498340
 GameObject:
   m_ObjectHideFlags: 0
@@ -43928,6 +44541,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &2095795172
@@ -44003,6 +44618,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &2110759945
@@ -44078,6 +44695,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   buildPlotSprite: {fileID: 21300000, guid: a430607499448724c8a675ee52dac49d, type: 3}
+  buildPlotSpriteSelected: {fileID: 0}
+  buildPlotSpriteHighlighted: {fileID: 0}
   roadSprite: {fileID: 21300000, guid: a06a125707057464b9fff1a9bd86c2bf, type: 3}
   m_Building: {fileID: 0}
 --- !u!1 &2115922680
@@ -44636,6 +45255,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &2142965114
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2178362147333473737, guid: c2be267ee74eb5441872b7676d0416a9, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178362147333473737, guid: c2be267ee74eb5441872b7676d0416a9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 44.727333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178362147333473737, guid: c2be267ee74eb5441872b7676d0416a9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.1473875
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178362147333473737, guid: c2be267ee74eb5441872b7676d0416a9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178362147333473737, guid: c2be267ee74eb5441872b7676d0416a9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178362147333473737, guid: c2be267ee74eb5441872b7676d0416a9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178362147333473737, guid: c2be267ee74eb5441872b7676d0416a9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178362147333473737, guid: c2be267ee74eb5441872b7676d0416a9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178362147333473737, guid: c2be267ee74eb5441872b7676d0416a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178362147333473737, guid: c2be267ee74eb5441872b7676d0416a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2178362147333473737, guid: c2be267ee74eb5441872b7676d0416a9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874832227221100708, guid: c2be267ee74eb5441872b7676d0416a9, type: 3}
+      propertyPath: m_Name
+      value: DummyBuilding
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c2be267ee74eb5441872b7676d0416a9, type: 3}
 --- !u!1 &2144459888
 GameObject:
   m_ObjectHideFlags: 0

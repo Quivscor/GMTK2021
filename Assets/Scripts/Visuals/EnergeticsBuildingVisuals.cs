@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnergeticsBuildingVisuals : MonoBehaviour
+public class EnergeticsBuildingVisuals : MonoBehaviour, IStatDisplayer
 {
+    [SerializeField] protected BuildingExtraBoostDisplay m_BoostDisplay;
+    public BuildingExtraBoostDisplay BoostDisplay => m_BoostDisplay;
+
     [SerializeField] private GameObject m_RangeDisplay;
     public GameObject RangeDisplay => m_RangeDisplay;
 

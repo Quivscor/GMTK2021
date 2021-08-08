@@ -9,6 +9,8 @@ public class GridField : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
     public GridFieldType type = GridFieldType.UNKNOWN;
 
     [SerializeField] private Sprite buildPlotSprite;
+    [SerializeField] private Sprite buildPlotSpriteSelected;
+    [SerializeField] private Sprite buildPlotSpriteHighlighted;
     [SerializeField] private Sprite roadSprite;
 
     public Vector2Int OwnCoordinates { get; private set; }

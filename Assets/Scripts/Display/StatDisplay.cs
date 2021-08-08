@@ -5,7 +5,7 @@ using TMProText = TMPro.TextMeshProUGUI;
 
 public class StatDisplay : MonoBehaviour, IUIDisplay
 {
-    [SerializeField] private TMProText text;
+    [SerializeField] private TMProText m_Text;
 
     private void Awake()
     {
@@ -17,11 +17,11 @@ public class StatDisplay : MonoBehaviour, IUIDisplay
     {
         Building b = SelectionManager.SelectedBuilding;
 
-        text.text = b.ShowInfo();
+        m_Text.text = b.ShowInfo();
     }
 
     public void Hide()
     {
-        text.text = "";
+        m_Text.text = "";
     }
 }

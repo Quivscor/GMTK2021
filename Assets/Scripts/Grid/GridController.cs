@@ -91,8 +91,9 @@ public class GridController : MonoBehaviour
             EnergeticsController.ProcessEnergeticsBuildingPlacement(data);
 
         RecalculateGrid();
-        SelectionManager.Deselect();
+        
         OnProcessBuildPlacement?.Invoke();
+        SelectionManager.Deselect();
     }
 
     private void RecalculateGrid()
@@ -169,40 +170,76 @@ public class GridController : MonoBehaviour
         else
             activeBuildingsInCluster = 1;
 
-        float distanceFromActiveBuilding;
-
         clusterBuilding.ResetBuildingBonuses();
-        foreach (GridField field in checkedFields)
-        {
-            if(field.Building is IModule module)
-            {
-                if(module.ConnectionData.ConnectingTypes.HasFlag(clusterBuilding.BuildingType))
-                {
-                    if (ModuleEfficiencyFallsOffWithDistance)
-                        distanceFromActiveBuilding = Vector3.Distance(clusterBuilding.transform.position, field.Building.transform.position);
-                    else
-                        distanceFromActiveBuilding = 1;
-
-                    if (module.ConnectionData.IsBoostAdditive)
-                        clusterBuilding.AddBoostValue((module.ConnectionData.ConnectionBoost / activeBuildingsInCluster) / distanceFromActiveBuilding);
-                    else
-                        clusterBuilding.AddBoostMultiplier((module.ConnectionData.ConnectionBoost / activeBuildingsInCluster) / distanceFromActiveBuilding);
-                }
-            }
-        }
+        RecalculateBuilding(ref clusterBuilding, checkedFields, activeBuildingsInCluster);
         checkedFields.Clear();
     }
 
-    private int CountActiveBuildingsInCluster(HashSet<GridField> fields)
+    //Recalculate buildings using actual building placement
+    public void RecalculateBuilding(ref Building building, IEnumerable<GridField> fields, int activeBuildingsInCluster = 1)
+    {
+        float distanceFromActiveBuilding;
+
+        foreach (GridField field in fields)
+        {
+            if (ModuleEfficiencyFallsOffWithDistance)
+                distanceFromActiveBuilding = Vector3.Distance(building.transform.position, field.transform.position);
+            else
+                distanceFromActiveBuilding = 1;
+
+            if (field.Building is IModule module)
+            {
+                IncreaseBuildingStats(building, module, activeBuildingsInCluster, distanceFromActiveBuilding);
+            }
+        }
+    }
+
+    //Recalculate building using fake building to store data and mock building to obtain difference in stats
+    public void RecalculateBuilding(ref Building building, Vector3 buildingPosition, IEnumerable<GridField> fields, int activeBuildingsInCluster = 1)
+    {
+        float distanceFromActiveBuilding;
+        bool hasCalculatedMock = false;
+
+        foreach (GridField field in fields)
+        {
+            if (ModuleEfficiencyFallsOffWithDistance)
+                distanceFromActiveBuilding = Vector3.Distance(buildingPosition, field.transform.position);
+            else
+                distanceFromActiveBuilding = 1;
+
+            if (field.Building is IModule module)
+            {
+                IncreaseBuildingStats(building, module, activeBuildingsInCluster, distanceFromActiveBuilding);
+            }
+            //check based on item held over checked field, not placed on it
+            else if (field.Building == null && SelectionManager.SelectedBuilding is IModule selectedModule && !hasCalculatedMock)
+            {
+                IncreaseBuildingStats(building, selectedModule, activeBuildingsInCluster, distanceFromActiveBuilding);
+                hasCalculatedMock = true;
+            }
+        }
+    }
+
+    private void IncreaseBuildingStats(Building building, IModule module, int activeBuildingsInCluster, float distanceFromActiveBuilding)
+    {
+        if (module.ConnectionData.ConnectingTypes.HasFlag(building.BuildingType))
+        {
+            if (module.ConnectionData.IsBoostAdditive)
+                building.AddBoostValue((module.ConnectionData.ConnectionBoost / activeBuildingsInCluster) / distanceFromActiveBuilding);
+            else
+                building.AddBoostMultiplier((module.ConnectionData.ConnectionBoost / activeBuildingsInCluster) / distanceFromActiveBuilding);
+        }
+    }
+
+    public int CountActiveBuildingsInCluster(IEnumerable<GridField> fields)
     {
         int result = 0;
         foreach(GridField field in fields)
         {
-            if(field.Building is IModule module)
-            {
+            if (field.Building == null)
                 continue;
-            }
-            else
+
+            if (field.Building.IsActiveBuilding())
             {
                 result++;
             }

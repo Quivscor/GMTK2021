@@ -42,6 +42,13 @@ public class PowerLine : Building, IEnergetics
         NetworkNeighbours.Remove(node);
     }
 
+    public override string ShowInfo()
+    {
+        string info = "Connects your active buildings to the electric network";
+
+        return info;
+    }
+
     protected void OnDrawGizmos()
     {
         if (m_NetworkNeighbours == null)

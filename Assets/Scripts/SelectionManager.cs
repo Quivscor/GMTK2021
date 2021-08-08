@@ -11,6 +11,7 @@ public static class SelectionManager
 
     public static Building SelectedBuilding { get; private set; }
     private static Building m_SelectedBuildingMock;
+    public static Building SelectedBuildingMock => m_SelectedBuildingMock;
     private static GridField m_SelectedBuildingMockField;
     private static Vector3 m_DefaultMockPosition = Vector3.one * 100;
 
@@ -37,7 +38,10 @@ public static class SelectionManager
         SelectedBuilding.OnBuildingStatsUpdated += UpdateDisplay;
         SelectedBuilding.OnDamageReceived += UpdateDisplay;
         if (SelectedBuilding is IActiveBuilding activeBuilding)
+        {
             activeBuilding.OnReceiveEnergy += UpdateDisplay;
+            activeBuilding.OnUseEnergy += UpdateDisplay;
+        }
 
         OnBuildingSelected?.Invoke(new DisplayData());
     }
@@ -45,6 +49,7 @@ public static class SelectionManager
     private static void InstantiateMock()
     {
         m_SelectedBuildingMock = GameObject.Instantiate(SelectedBuilding, m_DefaultMockPosition, Quaternion.identity, null);
+        m_SelectedBuildingMock.name = "BuildingMock";
         m_SelectedBuildingMock.gameObject.layer = IgnoreRaycastLayerID;
         m_SelectedBuildingMock.OnBuildingSelected?.Invoke();
     }
@@ -59,7 +64,11 @@ public static class SelectionManager
         SelectedBuilding.OnBuildingStatsUpdated -= UpdateDisplay;
         SelectedBuilding.OnDamageReceived -= UpdateDisplay;
         if (SelectedBuilding is IActiveBuilding activeBuilding)
+        {
             activeBuilding.OnReceiveEnergy -= UpdateDisplay;
+            activeBuilding.OnUseEnergy -= UpdateDisplay;
+        }
+            
 
         SelectedBuilding.DeselectBuilding();
         SelectedBuilding = null;

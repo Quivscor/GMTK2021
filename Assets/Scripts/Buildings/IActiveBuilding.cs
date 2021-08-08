@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public delegate void ReceiveEnergyEvent();
+public delegate void EnergyEvent();
 
 public interface IActiveBuilding : IEnergetics
 {
@@ -11,5 +11,6 @@ public interface IActiveBuilding : IEnergetics
     public void AddEnergy(float energy);
     public bool TryConsumeEnergy(float energy);
 
-    public event ReceiveEnergyEvent OnReceiveEnergy;
+    public event EnergyEvent OnReceiveEnergy;
+    public event EnergyEvent OnUseEnergy;
 }

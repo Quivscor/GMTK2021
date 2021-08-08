@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretVisuals : MonoBehaviour
+public class TurretVisuals : MonoBehaviour, IStatDisplayer
 {
+    [SerializeField] protected BuildingExtraBoostDisplay m_BoostDisplay;
+    public BuildingExtraBoostDisplay BoostDisplay => m_BoostDisplay;
+
     [SerializeField] private ParticleSystem m_OnFireParticles;
     public ParticleSystem OnFireParticles => m_OnFireParticles;
 
