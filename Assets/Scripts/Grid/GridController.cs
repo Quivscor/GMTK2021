@@ -162,16 +162,16 @@ public class GridController : MonoBehaviour
     private void RecalculateCluster(Vector2Int clusterCenterCoords)
     {
         Building clusterBuilding = Grid[clusterCenterCoords.x, clusterCenterCoords.y].Building;
-        checkedFields.OrderByDescending(x => x.Building.BuildingComparator());
+        var checkedFieldsOrdered = checkedFields.OrderByDescending(x => x.Building.BuildingComparator());
 
         int activeBuildingsInCluster;
         if (ModuleEfficiencyInClustersReduced)
-            activeBuildingsInCluster = CountActiveBuildingsInCluster(checkedFields);
+            activeBuildingsInCluster = CountActiveBuildingsInCluster(checkedFieldsOrdered);
         else
             activeBuildingsInCluster = 1;
 
         clusterBuilding.ResetBuildingBonuses();
-        RecalculateBuilding(ref clusterBuilding, checkedFields, activeBuildingsInCluster);
+        RecalculateBuilding(ref clusterBuilding, checkedFieldsOrdered, activeBuildingsInCluster);
         checkedFields.Clear();
     }
 

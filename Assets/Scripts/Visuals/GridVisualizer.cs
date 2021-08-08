@@ -70,7 +70,7 @@ public class GridVisualizer : MonoBehaviour
                 return false;
             return x.Building.IsActiveBuilding();
         });
-        cluster.OrderByDescending(x =>
+        var clusterOrdered = cluster.OrderByDescending(x =>
         {
             if (x.Building == null)
                 return SelectionManager.SelectedBuilding.BuildingComparator();
@@ -79,7 +79,7 @@ public class GridVisualizer : MonoBehaviour
 
         foreach(GridField field in activeList)
         {
-            BuildingStats stats = GetClusterStatDifference(cluster, field.Building);
+            BuildingStats stats = GetClusterStatDifference(clusterOrdered, field.Building);
             IStatDisplayer display;
             if(field.Building.TryGetComponent(out display))
             {
@@ -87,11 +87,11 @@ public class GridVisualizer : MonoBehaviour
                 //for preview purposes currently, UI requires rework
                 string text = "";
                 if (stats.power != 0)
-                    text += "Power + " + stats.power + "\n";
+                    text += "Power + " + stats.power.ToString("F") + "\n";
                 if (stats.frequency != 0)
-                    text += "Frequency + " + stats.frequency + "\n";
+                    text += "Frequency + " + stats.frequency.ToString("F") + "\n";
                 if (stats.electricUsage != 0)
-                    text += "Energy use + " + stats.electricUsage + "\n";
+                    text += "Energy use + " + stats.electricUsage.ToString("F") + "\n";
 
                 if(text != "")
                     display.BoostDisplay.Show(text);
@@ -100,18 +100,18 @@ public class GridVisualizer : MonoBehaviour
         //for mock only
         if(SelectionManager.SelectedBuilding.IsActiveBuilding())
         {
-            BuildingStats stats = GetClusterStatDifference(cluster, SelectionManager.SelectedBuilding);
+            BuildingStats stats = GetClusterStatDifference(clusterOrdered, SelectionManager.SelectedBuilding);
             IStatDisplayer display;
             if (SelectionManager.SelectedBuildingMock.TryGetComponent(out display))
             {
                 //for preview purposes currently, UI requires rework
                 string text = "";
                 if (stats.power != 0)
-                    text += "Power + " + stats.power + "\n";
+                    text += "Power + " + stats.power.ToString("F") + "\n";
                 if (stats.frequency != 0)
-                    text += "Frequency + " + stats.frequency + "\n";
+                    text += "Frequency + " + stats.frequency.ToString("F") + "\n";
                 if (stats.electricUsage != 0)
-                    text += "Energy use + " + stats.electricUsage + "\n";
+                    text += "Energy use + " + stats.electricUsage.ToString("F") + "\n";
 
                 if (text != "")
                     display.BoostDisplay.Show(text);
