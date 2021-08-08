@@ -175,6 +175,18 @@ public class GridController : MonoBehaviour
         checkedFields.Clear();
     }
 
+    private float GetDistanceFromBuilding(Vector3 building, Vector3 target)
+    {
+        float distance;
+
+        if (ModuleEfficiencyFallsOffWithDistance)
+            distance = Mathf.Ceil(Vector3.Distance(building, target));
+        else
+            distance = 1;
+
+        return distance;
+    }
+
     //Recalculate buildings using actual building placement
     public void RecalculateBuilding(ref Building building, IEnumerable<GridField> fields, int activeBuildingsInCluster = 1)
     {
@@ -182,10 +194,7 @@ public class GridController : MonoBehaviour
 
         foreach (GridField field in fields)
         {
-            if (ModuleEfficiencyFallsOffWithDistance)
-                distanceFromActiveBuilding = Vector3.Distance(building.transform.position, field.transform.position);
-            else
-                distanceFromActiveBuilding = 1;
+            distanceFromActiveBuilding = GetDistanceFromBuilding(building.transform.position, field.transform.position);
 
             if (field.Building is IModule module)
             {
@@ -202,10 +211,7 @@ public class GridController : MonoBehaviour
 
         foreach (GridField field in fields)
         {
-            if (ModuleEfficiencyFallsOffWithDistance)
-                distanceFromActiveBuilding = Vector3.Distance(buildingPosition, field.transform.position);
-            else
-                distanceFromActiveBuilding = 1;
+                distanceFromActiveBuilding = GetDistanceFromBuilding(buildingPosition, field.transform.position);
 
             if (field.Building is IModule module)
             {
