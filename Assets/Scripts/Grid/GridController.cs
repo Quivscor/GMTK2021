@@ -6,9 +6,8 @@ using System.Linq;
 
 public class GridController : MonoBehaviour
 {
-    public static Vector2Int GridSize = new Vector2Int(16, 16);
-    public static Vector2Int GridFieldSize = new Vector2Int(1, 1);
-    public static Vector2 GridOffset = new Vector2(0.5f, 0.5f);
+    public static Vector2Int GridSize;
+    public static Vector2 GridFieldSize;
 
     public static GridController Instance;
     [Header("Global settings")]
@@ -22,13 +21,15 @@ public class GridController : MonoBehaviour
     public EnergeticsController EnergeticsController { get; private set; }
     private AudioSource source;
 
-    public bool ConstructGrid = false;
+    //public bool ConstructGrid = false;
 
     public static GridField[,] Grid { get; private set; }
     public List<GridField> ActiveBuildingFields { get; private set; }
 
     [Header("Local values")]
-    [SerializeField] private GridField m_GridFieldPrefab;
+    [SerializeField] private Transform m_GridContainer;
+    [SerializeField] private Vector2Int m_GridSize;
+    [SerializeField] private Vector2 m_GridFieldSize;
 
     public Action OnProcessBuildPlacement;
 
@@ -41,32 +42,62 @@ public class GridController : MonoBehaviour
         GridVisualizer = FindObjectOfType<GridVisualizer>();
     }
 
-    private void OnValidate()
-    {
-        if(ConstructGrid)
-        {
-            BuildGrid();
-            ConstructGrid = false;
-        }
-    }
+    //private void OnValidate()
+    //{
+    //    if(ConstructGrid)
+    //    {
+    //        BuildGrid();
+    //        ConstructGrid = false;
+    //    }
+    //}
 
     private void Init()
     {
         if (Instance == null)
             Instance = this;
 
+        GridSize = new Vector2Int(m_GridSize.x, m_GridSize.y);
+        GridFieldSize = new Vector2(m_GridFieldSize.x, m_GridFieldSize.y);
+
         Grid = new GridField[GridSize.x, GridSize.y];
         ActiveBuildingFields = new List<GridField>();
 
+        List<GridField> gridFields = new List<GridField>();
+        Bounds bounds = new Bounds();
+        for (int i = 0; i < m_GridContainer.childCount; i++)
+        {
+            gridFields.Add(m_GridContainer.GetChild(i).GetComponent<GridField>());
+            bounds.Encapsulate(gridFields[i].transform.position);
+        }
+        if (gridFields.Count > GridSize.x * GridSize.y)
+            Debug.LogError("Size doesn't match grid fields count!");
+        var gridFieldsOrdered = gridFields.OrderBy(x => x.transform.position.x * GridSize.y + x.transform.position.y);
+
         //Assign grid fields to controller
         int x = 0, y = 0;
-        for (int i = 0; i < transform.childCount; i++)
+        foreach(GridField field in gridFieldsOrdered)
         {
-            x = i % GridSize.x;
-            y = i / GridSize.y;
-            Grid[x, y] = transform.GetChild(i).GetComponent<GridField>();
-            Grid[x, y].name = "Grid Field (" + x + ", " + y + ")";
-            Grid[x, y].Construct(new Vector2Int(x, y));
+            bool assigned = false;
+            while(!assigned)
+            {
+                Vector3 expectedPosition = new Vector3(bounds.min.x + (GridFieldSize.x * x),
+                bounds.min.y + (GridFieldSize.y * (y + .5f)), 0);
+
+                if(field.transform.position == expectedPosition)
+                {
+                    Grid[x, y] = field;
+                    Grid[x, y].name = "GridField[" + x + "][" + y + "]";
+                    Grid[x, y].Construct(new Vector2Int(x, y));
+                    assigned = true;
+                }
+
+                y++;
+                if(y > GridSize.y)
+                {
+                    x++;
+                    y = 0;
+                }
+            }
         }
 
         ModuleEfficiencyInClustersReduced = m_ModuleEfficiencyInClustersReduced;
@@ -253,27 +284,27 @@ public class GridController : MonoBehaviour
         return result;
     }
 
-    private void BuildGrid()
-    {
-        int destroyCount = transform.childCount - 1;
-        //clear field before reinstantiating
-        for (int i = destroyCount; i > 0; i--)
-        {
-            Destroy(transform.GetChild(i));
-        }
+    //private void BuildGrid()
+    //{
+    //    int destroyCount = transform.childCount - 1;
+    //    //clear field before reinstantiating
+    //    for (int i = destroyCount; i > 0; i--)
+    //    {
+    //        Destroy(transform.GetChild(i));
+    //    }
 
-        for(int x = 0; x < GridSize.x; x++)
-        {
-            for(int y = 0; y < GridSize.y; y++)
-            {
-                GridField field = Instantiate<GridField>(m_GridFieldPrefab, new Vector3(GridOffset.x + x * GridFieldSize.x, GridOffset.y + y * GridFieldSize.y),
-                    Quaternion.identity, this.transform);
-                field.Construct(new Vector2Int(x,y));
-            }
-        }
+    //    for(int x = 0; x < GridSize.x; x++)
+    //    {
+    //        for(int y = 0; y < GridSize.y; y++)
+    //        {
+    //            GridField field = Instantiate<GridField>(m_GridFieldPrefab, new Vector3(GridOffset.x + x * GridFieldSize.x, GridOffset.y + y * GridFieldSize.y),
+    //                Quaternion.identity, this.transform);
+    //            field.Construct(new Vector2Int(x,y));
+    //        }
+    //    }
 
-        Debug.Log("Building grid complete.");
-    }
+    //    Debug.Log("Building grid complete.");
+    //}
 
     private static T ForNeighboursDo<T>(Vector2Int coords, Func<Vector2Int, T> Act)
     {
@@ -285,7 +316,7 @@ public class GridController : MonoBehaviour
                 //north
                 case 0:
                     //check if not illegal position
-                    if (coords.y + 1 > GridController.GridSize.y - 1)
+                    if (coords.y + 1 > GridController.GridSize.y - 1 || Grid[coords.x, coords.y + 1] == null)
                         break;
 
                     result = Act(new Vector2Int(coords.x, coords.y + 1));
@@ -293,7 +324,7 @@ public class GridController : MonoBehaviour
                 //south
                 case 1:
                     //check if not illegal position
-                    if (coords.y - 1 < 0)
+                    if (coords.y - 1 < 0 || Grid[coords.x, coords.y - 1] == null)
                         break;
 
                     result = Act(new Vector2Int(coords.x, coords.y - 1));
@@ -301,7 +332,7 @@ public class GridController : MonoBehaviour
                 //east
                 case 2:
                     //check if not illegal position
-                    if (coords.x + 1 > GridController.GridSize.x - 1)
+                    if (coords.x + 1 > GridController.GridSize.x - 1 || Grid[coords.x + 1, coords.y] == null)
                         break;
 
                     result = Act(new Vector2Int(coords.x + 1, coords.y));
@@ -309,7 +340,7 @@ public class GridController : MonoBehaviour
                 //west
                 case 3:
                     //check if not illegal position
-                    if (coords.x - 1 < 0)
+                    if (coords.x - 1 < 0 || Grid[coords.x - 1, coords.y] == null)
                         break;
 
                     result = Act(new Vector2Int(coords.x - 1, coords.y));

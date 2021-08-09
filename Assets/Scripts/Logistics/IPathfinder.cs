@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IPathfinder
 {
-    public Stack<IPathfindingNode> FindPath(IPathfindingNode startNode, IPathfindingNode endNode, List<IPathfindingNode> network);
+    public Stack<IPathfindingNode> FindPath(IPathfindingNode startNode, IPathfindingNode endNode);
 }

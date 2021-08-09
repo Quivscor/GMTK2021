@@ -12,7 +12,7 @@ public class AStarPathfinder : IPathfinder
         heuristic = new ManhattanHeuristic();
     }
 
-    public Stack<IPathfindingNode> FindPath(IPathfindingNode startNode, IPathfindingNode endNode, List<IPathfindingNode> network)
+    public Stack<IPathfindingNode> FindPath(IPathfindingNode startNode, IPathfindingNode endNode)
     {
         Stack<IPathfindingNode> path = new Stack<IPathfindingNode>();
         List<IPathfindingNode> openList = new List<IPathfindingNode>();

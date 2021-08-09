@@ -5,80 +5,41 @@ using UnityEngine;
 [System.Serializable]
 public class EnemyPath
 {
-    public List<GridField> PathNodes { get; private set; }
+    public EnemyPathNode StartNode { get; private set; }
+    public EnemyPathNode[] PathNodes { get; private set; }
+    public EnemyPathNode EndNode { get; private set; }
+
+    private IPathfinder m_Pathfinder;
 
     public EnemyPath()
     {
-        
+        m_Pathfinder = new AStarPathfinder();
     }
 
     //TODO: find a way to call this in constructor
-    public void ConstructPath()
+    public void ConstructPath(int pathIndex)
     {
-        PathNodes = new List<GridField>();
-        PathNodes.Add(FindStartingNode());
-        bool noNeighbours = false;
-
-        while (!noNeighbours)
-        {
-            GridField neighbour = GridController.Instance.FindNeighbourWhich(PathNodes[PathNodes.Count - 1].OwnCoordinates, FindRoadNeighbour);
-
-            if (neighbour == null)
-                noNeighbours = true;
-            else
-                PathNodes.Add(neighbour);
-        }
-
-        Building hq = Resources.Load<Building>("HQ");
-        hq.isBuilt = true;
-        PathNodes[PathNodes.Count - 1].AssignBuilding(GameObject.Instantiate<Building>(hq, PathNodes[PathNodes.Count - 1].transform.position, Quaternion.identity, null));
+        PopulateNodeList(pathIndex);
     }
 
-    private bool FindRoadNeighbour(Vector2Int coords)
+    public Stack<IPathfindingNode> GetPath()
     {
-        return GridController.Grid[coords.x, coords.y].type == GridFieldType.ROAD_FIELD &&
-            !PathNodes.Contains(GridController.Grid[coords.x, coords.y]);
+        return m_Pathfinder.FindPath(StartNode, EndNode);
     }
 
-    //Checking Grid for path node on the edge of the map
-    public GridField FindStartingNode()
+    private void PopulateNodeList(int pathIndex)
     {
-        for(int i = 0; i < 4; i++)
-        {
-            switch(i)
-            {
-                case 0:
-                    for(int j = 0; j < GridController.GridSize.x; j++)
-                    {
-                        if (GridController.Grid[j, 0].type == GridFieldType.ROAD_FIELD)
-                            return GridController.Grid[j, 0];
-                    }
-                    break;
-                case 1:
-                    for (int j = 0; j < GridController.GridSize.x; j++)
-                    {
-                        if (GridController.Grid[j, GridController.GridSize.y - 1].type == GridFieldType.ROAD_FIELD)
-                            return GridController.Grid[j, GridController.GridSize.y - 1];
-                    }
-                    break;
-                case 2:
-                    for (int j = 0; j < GridController.GridSize.y; j++)
-                    {
-                        if (GridController.Grid[0, j].type == GridFieldType.ROAD_FIELD)
-                            return GridController.Grid[0, j];
-                    }
-                    break;
-                case 3:
-                    for (int j = 0; j < GridController.GridSize.y; j++)
-                    {
-                        if (GridController.Grid[GridController.GridSize.x - 1, j].type == GridFieldType.ROAD_FIELD)
-                            return GridController.Grid[GridController.GridSize.x - 1, j];
-                    }
-                    break;
-            }
-        }
+        //find all objects and keep only those that belong in specific path
+        List<EnemyPathNode> nodes = GameObject.FindObjectsOfType<EnemyPathNode>().ToList();
+        nodes = nodes.FindAll(x => x.PathIndex == pathIndex);
 
-        Debug.LogError("No ROAD_FIELD on the edge of the map!");
-        return null;
+        PathNodes = nodes.ToArray();
+        foreach(EnemyPathNode node in PathNodes)
+        {
+            if (node.NodeType == EnemyNodeType.START)
+                StartNode = node;
+            else if (node.NodeType == EnemyNodeType.END)
+                EndNode = node;
+        }
     }
 }

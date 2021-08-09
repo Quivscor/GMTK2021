@@ -8,6 +8,7 @@ public delegate void FactoryCreateEvent(Enemy e);
 public interface IEnemyFactory
 {
     List<Enemy> EnemyTypes { get;}
+    EnemyPath EnemyPath { get; }
 
     IEnumerator CreateWave(WaveData data);
 

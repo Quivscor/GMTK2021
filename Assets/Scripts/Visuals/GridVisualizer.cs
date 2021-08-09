@@ -23,6 +23,10 @@ public class GridVisualizer : MonoBehaviour
 
         foreach(GridField field in GridController.Grid)
         {
+            //null fields are allowed now, just skip them
+            if (field == null)
+                continue;
+
             field.OnHoverEnter += DrawSelectedBuildingMock;
             field.OnHoverExit += HideSelectedBuildingMock;
         }

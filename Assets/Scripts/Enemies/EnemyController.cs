@@ -5,8 +5,6 @@ using System;
 
 public class EnemyController : MonoBehaviour
 {
-    public static EnemyPath EnemyPath { get; private set; }
-
     [Header("Enemy Factory Settings")]
     [SerializeField] private List<Enemy> m_EnemyTypes;
     public List<Enemy> EnemyTypes { get => m_EnemyTypes; }
@@ -25,12 +23,10 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        EnemyPath = new EnemyPath();
-        EnemyPath.ConstructPath();
-
         if (EnemyTypes.Count <= 0)
             Debug.LogError("No enemy types detected in EnemyController!");
-        EnemyFactory = new PointBasedEnemyFactory(EnemyPath.PathNodes[0].transform.position, EnemyTypes);
+
+        EnemyFactory = new PointBasedEnemyFactory(EnemyTypes, 0);
 
         EnemyFactory.OnEnemySpawned += SubscribeEnemy;
         EnemyFactory.OnWaveFinishSpawning += HandleFinishWaveSpawn;
@@ -80,10 +76,6 @@ public class EnemyController : MonoBehaviour
     {
         Destroy(e.Enemy.GetComponentInChildren<SpriteRenderer>());
         Destroy(e.Enemy.gameObject, .2f);
-    }
-
-    public Vector3 GetPositionOfNodeAt(int i)
-    {
-        return EnemyPath.PathNodes[i].transform.position;
+        Destroy(e.Enemy);
     }
 }

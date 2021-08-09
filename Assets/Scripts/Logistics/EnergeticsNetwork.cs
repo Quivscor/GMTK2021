@@ -87,8 +87,7 @@ public class EnergeticsNetwork
         else
             m_ConsumerIterator++;
 
-        List<IPathfindingNode> pathfindingNodes = Nodes.ToList<IPathfindingNode>();
-        Particles[Particles.Count - 1].Construct(pathFinder.FindPath(e.GenerationOrigin, Consumers.ElementAt(m_ConsumerIterator), pathfindingNodes));
+        Particles[Particles.Count - 1].Construct(pathFinder.FindPath(e.GenerationOrigin, Consumers.ElementAt(m_ConsumerIterator)));
         Particles[Particles.Count - 1].OnNoAvailablePath += RemoveParticle;
         Particles[Particles.Count - 1].OnReachDestination += ConsumeParticle;
     }
@@ -155,7 +154,7 @@ public class EnergeticsNetwork
         List<IPathfindingNode> pathfindingNodes = Nodes.ToList<IPathfindingNode>();
         foreach (EnergyParticle p in particles)
         {
-            Stack<IPathfindingNode> newPath = pathFinder.FindPath(p.CurrentNode, p.Target, pathfindingNodes);
+            Stack<IPathfindingNode> newPath = pathFinder.FindPath(p.CurrentNode, p.Target);
             if (newPath == null)
                 RemoveParticle(new EnergyParticleEventData(p));
             else

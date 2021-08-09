@@ -7,6 +7,7 @@ using System.Linq;
 public class PointBasedEnemyFactory : IEnemyFactory
 {
     public List<Enemy> EnemyTypes { get; private set; }
+    public EnemyPath EnemyPath { get; protected set; }
     public Vector3 SpawnPoint { get; private set; }
 
     private float m_TimeOffsetBetweenWaveMembers = 0.75f;
@@ -15,10 +16,14 @@ public class PointBasedEnemyFactory : IEnemyFactory
     public event FactoryEvent OnWaveFinishSpawning;
     public event FactoryCreateEvent OnEnemySpawned;
 
-    public PointBasedEnemyFactory(Vector3 spawnPoint, List<Enemy> enemyTypes)
+    public PointBasedEnemyFactory(List<Enemy> enemyTypes, int pathIndex)
     {
         EnemyTypes = new List<Enemy>();
-        this.SpawnPoint = spawnPoint;
+
+        //constructing path per factory
+        EnemyPath = new EnemyPath();
+        EnemyPath.ConstructPath(pathIndex);
+        SpawnPoint = EnemyPath.StartNode.transform.position;
 
         //most expensive enemy is first
         EnemyTypes = enemyTypes;
@@ -64,7 +69,7 @@ public class PointBasedEnemyFactory : IEnemyFactory
                 Enemy enemy = GameObject.Instantiate(e, SpawnPoint, Quaternion.identity, null);
 
                 //scale enemy with wave number
-                enemy.Construct(data.WaveNumber);
+                enemy.Construct(EnemyPath.StartNode, data.WaveNumber, EnemyPath.GetPath());
                 m_AvailablePoints -= enemy.pointCost;
 
                 //subscribe enemy to handlers for enemy death and enemy reaching base
