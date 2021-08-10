@@ -136,7 +136,8 @@ public class GridVisualizer : MonoBehaviour
         GridController.Instance.RecalculateBuilding(ref m_DummyBuilding, activeInCluster.transform.position, 
             cluster, activeBuildingsInClusterCount);
 
-        return (RecalculationBuilding.BonusStats - activeInCluster.BonusStats);
+        return ((RecalculationBuilding.BaseStats + RecalculationBuilding.BonusStats) - 
+            (activeInCluster.BaseStats + activeInCluster.BonusStats));
     }
 
     public void HideSelectedBuildingMock(GridFieldEventData e)

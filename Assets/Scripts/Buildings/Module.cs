@@ -21,9 +21,9 @@ public class Module : Building, IModule
     public override int BuildingComparator()
     {
         if (ConnectionData.IsBoostAdditive)
-            return 0;
-        else
             return 10;
+        else
+            return 0;
     }
 
     public override string ShowInfo()
