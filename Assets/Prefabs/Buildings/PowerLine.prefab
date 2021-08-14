@@ -573,6 +573,7 @@ MonoBehaviour:
     electricUsage: 0
     rechargeRate: 5
     resistance: 5
+  m_AllowedPlacementFieldType: 1
   isDirty: 0
   isBuilt: 0
 --- !u!114 &3774543049701646989

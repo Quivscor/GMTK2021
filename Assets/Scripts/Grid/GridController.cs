@@ -42,15 +42,6 @@ public class GridController : MonoBehaviour
         GridVisualizer = FindObjectOfType<GridVisualizer>();
     }
 
-    //private void OnValidate()
-    //{
-    //    if(ConstructGrid)
-    //    {
-    //        BuildGrid();
-    //        ConstructGrid = false;
-    //    }
-    //}
-
     private void Init()
     {
         if (Instance == null)
@@ -81,7 +72,7 @@ public class GridController : MonoBehaviour
             while(!assigned)
             {
                 Vector3 expectedPosition = new Vector3(bounds.min.x + (GridFieldSize.x * x),
-                bounds.min.y + (GridFieldSize.y * (y + .5f)), 0);
+                bounds.min.y + (GridFieldSize.y * y), 0);
 
                 if(field.transform.position == expectedPosition)
                 {
@@ -97,6 +88,10 @@ public class GridController : MonoBehaviour
                     x++;
                     y = 0;
                 }
+
+                //if GridSize is bigger than the map, infinite loop happens, this proteccs
+                if (x >= GridSize.x && y >= GridSize.y)
+                    break;
             }
         }
 
@@ -120,6 +115,9 @@ public class GridController : MonoBehaviour
 
         if (data.building is IEnergetics energetics)
             EnergeticsController.ProcessEnergeticsBuildingPlacement(data);
+
+        if (data.building.BuildingType == BuildingType.MONEYMAKER && data.building is IGenerator generator)
+            ResourcesController.SubscribeGenerator(generator);
 
         RecalculateGrid();
         
@@ -283,28 +281,6 @@ public class GridController : MonoBehaviour
         }
         return result;
     }
-
-    //private void BuildGrid()
-    //{
-    //    int destroyCount = transform.childCount - 1;
-    //    //clear field before reinstantiating
-    //    for (int i = destroyCount; i > 0; i--)
-    //    {
-    //        Destroy(transform.GetChild(i));
-    //    }
-
-    //    for(int x = 0; x < GridSize.x; x++)
-    //    {
-    //        for(int y = 0; y < GridSize.y; y++)
-    //        {
-    //            GridField field = Instantiate<GridField>(m_GridFieldPrefab, new Vector3(GridOffset.x + x * GridFieldSize.x, GridOffset.y + y * GridFieldSize.y),
-    //                Quaternion.identity, this.transform);
-    //            field.Construct(new Vector2Int(x,y));
-    //        }
-    //    }
-
-    //    Debug.Log("Building grid complete.");
-    //}
 
     private static T ForNeighboursDo<T>(Vector2Int coords, Func<Vector2Int, T> Act)
     {

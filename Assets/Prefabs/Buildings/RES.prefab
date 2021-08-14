@@ -71,8 +71,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: dfd548b684448ba49a17c0b28d59f84f, type: 3}
-  m_Color: {r: 1, g: 0.53825164, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4a468a2b059b0f645b4ec68b5703f7f0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -91,10 +91,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2178362147333473737}
-  - component: {fileID: 8121455052510576082}
+  - component: {fileID: 2156980574197163961}
   - component: {fileID: 4058455296736449939}
   m_Layer: 0
-  m_Name: PWR
+  m_Name: RES
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8121455052510576082
+--- !u!114 &2156980574197163961
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,11 +141,11 @@ MonoBehaviour:
   m_ConnectionData:
     m_ConnectionBoost:
       cost: 0
-      power: 5
+      power: 0
       frequency: 0
       electricUsage: 1
       rechargeRate: 0
-      resistance: 0
+      resistance: 10
     m_ConnectingTypes: 119
     m_IsBoostAdditive: 1
 --- !u!61 &4058455296736449939

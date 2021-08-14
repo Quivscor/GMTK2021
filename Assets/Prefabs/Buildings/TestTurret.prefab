@@ -56,9 +56,10 @@ MonoBehaviour:
     cost: 100
     power: 5
     frequency: 1
-    electricUsage: 5
+    electricUsage: 1
     rechargeRate: 5
     resistance: 50
+  m_AllowedPlacementFieldType: 1
   isDirty: 0
   isBuilt: 0
   m_MaxEnergy: 100

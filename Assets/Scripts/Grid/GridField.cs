@@ -7,12 +7,6 @@ using System;
 public class GridField : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public GridFieldType type = GridFieldType.UNKNOWN;
-
-    [SerializeField] private Sprite buildPlotSprite;
-    [SerializeField] private Sprite buildPlotSpriteSelected;
-    [SerializeField] private Sprite buildPlotSpriteHighlighted;
-    [SerializeField] private Sprite roadSprite;
-
     public Vector2Int OwnCoordinates { get; private set; }
 
     [SerializeField] private Building m_Building;
@@ -20,14 +14,6 @@ public class GridField : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
     public Action<GridFieldEventData> OnHoverEnter;
     public Action<GridFieldEventData> OnHoverExit;
-
-    private void Awake()
-    {
-        if (type == GridFieldType.ROAD_FIELD)
-            GetComponentInChildren<SpriteRenderer>().sprite = roadSprite;
-        else
-            GetComponentInChildren<SpriteRenderer>().sprite = buildPlotSprite;
-    }
 
     //Init from creating class here
     public void Construct(Vector2Int coordinates)
@@ -42,15 +28,23 @@ public class GridField : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(SelectionManager.IsSelectedBuildingPlaceable() && Building == null && type != GridFieldType.ROAD_FIELD)
+        if(eventData.button == PointerEventData.InputButton.Left)
         {
-            //place building if possible
-            GridController.Instance.ProcessBuildingPlacement(new GridFieldEventData(SelectionManager.SelectedBuilding, OwnCoordinates));
+            if (SelectionManager.IsSelectedBuildingPlaceable() && Building == null 
+                && type == SelectionManager.SelectedBuilding.AllowedPlacementFieldType)
+            {
+                //place building if possible
+                GridController.Instance.ProcessBuildingPlacement(new GridFieldEventData(SelectionManager.SelectedBuilding, OwnCoordinates));
+            }
+            else if (Building != null)
+            {
+                //select placed building
+                SelectionManager.Select(Building);
+            }
         }
-        else if(Building != null)
+        else if(eventData.button == PointerEventData.InputButton.Right)
         {
-            //select placed building
-            SelectionManager.Select(Building);
+            SelectionManager.Deselect();
         }
     }
 
@@ -70,4 +64,6 @@ public enum GridFieldType
     UNKNOWN = 0,
     BUILD_FIELD = 1,
     ROAD_FIELD = 2,
+    GENERATOR_FIELD = 3,
+
 }

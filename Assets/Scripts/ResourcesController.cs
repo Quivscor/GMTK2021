@@ -14,6 +14,11 @@ public class ResourcesController : MonoBehaviour
 
     [SerializeField] private GameObject gameOverCanvas;
 
+    public void SubscribeGenerator(IGenerator generator)
+    {
+        generator.OnGenerate += GainMoney;
+    }
+
     public void RemoveLife(EnemyEventData e)
     {
         lives -= e.Enemy.damage;
@@ -36,6 +41,12 @@ public class ResourcesController : MonoBehaviour
     public void GainMoney(EnemyEventData e)
     {
         money += e.Enemy.currentMoney;
+        OnMoneyChange?.Invoke(money);
+    }
+
+    public void GainMoney(GeneratorEventData e)
+    {
+        money += Mathf.RoundToInt(e.GeneratedValue);
         OnMoneyChange?.Invoke(money);
     }
 

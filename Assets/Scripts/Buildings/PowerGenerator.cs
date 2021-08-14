@@ -31,7 +31,7 @@ public class PowerGenerator : PowerLine, IEnergetics, IGenerator
 
         if(m_EnergyParticleGenerationCooldownCurrent <= 0)
         {
-            Generate(this);
+            Generate();
             m_EnergyParticleGenerationCooldownCurrent = EnergyParticleGenerationCooldown;
         }
         else
@@ -42,11 +42,11 @@ public class PowerGenerator : PowerLine, IEnergetics, IGenerator
 
     protected override void SetBuildingCustomStats()
     {
-        m_EnergyParticleGenerationCooldown = 10f / Mathf.Log(BaseStats.frequency + BonusStats.frequency, 2);
-        m_ParticleValue = EnergyParticle.DefaultEnergyValue + (BaseStats.power + BonusStats.power) / 10f;
+        m_EnergyParticleGenerationCooldown = 2f / Mathf.Log(BaseStats.frequency + BonusStats.frequency, 2);
+        m_ParticleValue = 3 + Mathf.Log(BaseStats.power + BonusStats.power, 2);
     }
 
-    public void Generate(IPathfindingNode origin)
+    public void Generate()
     {
         int iterator;
 
@@ -57,7 +57,7 @@ public class PowerGenerator : PowerLine, IEnergetics, IGenerator
 
         for(int i = 0; i < iterator; i++)
         {
-            EnergyParticle particle = new EnergyParticle(EnergyParticleValue, origin);
+            EnergyParticle particle = new EnergyParticle(EnergyParticleValue, this);
 
             OnGenerate?.Invoke(new GeneratorEventData(particle, this));
         }

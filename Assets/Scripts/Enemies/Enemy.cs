@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour, INodeTraverser
     [SerializeField] private float hp;
     private float currentHp;
     public int damage;
-    [SerializeField] private float perWaveIncrease = 0.05f;
+    [SerializeField] private float perWaveExponent = 0.05f;
     #endregion
 
     #region TraversalData
@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour, INodeTraverser
 
     public void Construct(IPathfindingNode start, int waveNumber, Stack<IPathfindingNode> path)
     {
-        currentHp = hp * (1 + (waveNumber * perWaveIncrease));
+        currentHp = hp + (Mathf.Pow(waveNumber, perWaveExponent));
         currentMoney = money + (int)(1 * Mathf.Log(waveNumber, 5));
 
         Path = path;

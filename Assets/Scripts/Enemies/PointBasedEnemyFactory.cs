@@ -52,7 +52,7 @@ public class PointBasedEnemyFactory : IEnemyFactory
 
     private int GetAvailablePoints(int waveNumber)
     {
-        return (int)Mathf.Log(waveNumber * 2f, 2);
+        return (10 + (int)Mathf.Log(waveNumber * 2f, 2));
     }
 
     private void FinalizeWaveSpawn()

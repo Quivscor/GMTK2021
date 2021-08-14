@@ -10,4 +10,6 @@ public enum BuildingType
     HQ = 8,
     POWERSOURCE = 16,
     POWERLINE = 32,
+    MONEYMAKER = 64,
+
 }

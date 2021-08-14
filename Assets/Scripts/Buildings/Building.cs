@@ -14,6 +14,8 @@ public class Building : MonoBehaviour, IPointerClickHandler
     [SerializeField] private BuildingStats m_BaseStats;
     public BuildingStats BaseStats { get => m_BaseStats; protected set => m_BaseStats = value; }
     public BuildingStats BonusStats { get; protected set; }
+    [SerializeField] private GridFieldType m_AllowedPlacementFieldType;
+    public GridFieldType AllowedPlacementFieldType => m_AllowedPlacementFieldType;
 
     //actual hp of building
     public float CurrentResistance { get; protected set; }

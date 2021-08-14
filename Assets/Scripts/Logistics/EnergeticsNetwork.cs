@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnergeticsNetwork
 {
     public static float EnergyNetworkContactResistanceDamage = 0.005f;
+    public static float EnergyNetworkContactEnemyDamage = 0.0005f;
 
     public HashSet<IEnergetics> Nodes { get; private set; }
     public HashSet<IGenerator> Origins { get; private set; }
@@ -46,13 +47,14 @@ public class EnergeticsNetwork
 
     public void AddNode(IEnergetics node)
     {
-        if (node is IGenerator generator)
-            AddOrigin(generator);
-        else if (node is IActiveBuilding active)
+        //there can be generator and an active building, we consider them as active buildings first
+        if (node is IActiveBuilding active)
         {
             Consumers.Add(active);
             UpdateOrigins();
         }
+        else if (node is IGenerator generator)
+            AddOrigin(generator);
 
         Building b = (node as MonoBehaviour).GetComponent<Building>();
         b.OnEnterRechargingState += OnNetworkNodeEnterRechargeState;
@@ -126,6 +128,9 @@ public class EnergeticsNetwork
         {
             foreach (IPathfindingNode n in node.NetworkNeighbours)
             {
+                if (n.IsWalkable == false)
+                    continue;
+
                 RaycastHit2D[] hit = Physics2D.RaycastAll(node.TransformReference.position, n.TransformReference.position - node.TransformReference.position,
                     Vector3.Distance(n.TransformReference.position, node.TransformReference.position));
 
@@ -140,6 +145,7 @@ public class EnergeticsNetwork
                             b.ReceiveDamage(EnergyNetworkContactResistanceDamage);
                             b = n as Building;
                             b.ReceiveDamage(EnergyNetworkContactResistanceDamage);
+                            e.TakeDamage(EnergyNetworkContactEnemyDamage * (b.BaseStats.power + b.BonusStats.power));
                         }
                     }
                 }

@@ -21,6 +21,8 @@ public class GridVisualizer : MonoBehaviour
         GridController.Instance.OnProcessBuildPlacement += HideClusterHighlight;
         GridController.Instance.OnProcessBuildPlacement += EnergeticsNetworkVisualizer.ClearMockConnections;
 
+        SelectionManager.OnDeselection += HideClusterHighlight;
+
         foreach(GridField field in GridController.Grid)
         {
             //null fields are allowed now, just skip them
@@ -160,10 +162,13 @@ public class GridVisualizer : MonoBehaviour
         }
 
         //mock works differently, special case for it here
-        if(SelectionManager.SelectedBuilding.IsActiveBuilding())
+        if(SelectionManager.SelectedBuilding != null)
         {
-            IStatDisplayer display = SelectionManager.SelectedBuildingMock.GetComponentInChildren<IStatDisplayer>();
-            display.BoostDisplay.Hide();
+            if (SelectionManager.SelectedBuilding.IsActiveBuilding())
+            {
+                IStatDisplayer display = SelectionManager.SelectedBuildingMock.GetComponentInChildren<IStatDisplayer>();
+                display.BoostDisplay.Hide();
+            }
         }
 
         ActiveStatDisplayers.Clear();

@@ -54,6 +54,29 @@ public static class SelectionManager
         m_SelectedBuildingMock.OnBuildingSelected?.Invoke();
     }
 
+    private static void RecolorMock(bool retrieveOriginalColor = false)
+    {
+        if (SelectedBuildingMock == null)
+            return;
+
+        SpriteRenderer[] renderers = SelectedBuildingMock.GetComponentsInChildren<SpriteRenderer>();
+        if(retrieveOriginalColor)
+        {
+            SpriteRenderer[] originalColors = SelectedBuilding.GetComponentsInChildren<SpriteRenderer>();
+            for(int i = 0; i < renderers.Length; i++)
+            {
+                renderers[i].color = originalColors[i].color;
+            }
+        }
+        else
+        {
+            foreach (SpriteRenderer sr in renderers)
+            {
+                sr.color = new Color(1, 0, 0, .35f);
+            }
+        }    
+    }
+
     public static void UpdateDisplay()
     {
         OnBuildingSelected?.Invoke(new DisplayData());
@@ -84,6 +107,14 @@ public static class SelectionManager
 
     public static void PlaceMockAt(GridField field)
     {
+        if (field.Building != null)
+            return;
+
+        if (SelectedBuilding.AllowedPlacementFieldType != field.type)
+            RecolorMock();
+        else
+            RecolorMock(true);
+
         m_SelectedBuildingMock.transform.position = field.transform.position;
         m_SelectedBuildingMockField = field;
     }
