@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BuildingType: 4
   m_BaseStats:
-    cost: 50
+    cost: 60
     power: 0
     frequency: 0
     electricUsage: 0
@@ -138,14 +138,22 @@ MonoBehaviour:
   m_AllowedPlacementFieldType: 1
   isDirty: 0
   isBuilt: 0
+  m_BuildingShopData:
+    UIBuildingSprite: {fileID: 21300000, guid: 34a176cc3ebfaf54aab983938415fc9b, type: 3}
+    UIBuildingDescription: 'This module increases all building values by 30%, except
+      for energy cost which is increased by 50%.
+
+      Cost: 60'
+    UIBuildingName: MULT Module
+    BuildingShopCategory: 1000
   m_ConnectionData:
     m_ConnectionBoost:
       cost: 0
       power: 0.3
       frequency: 0.3
       electricUsage: 0.4
-      rechargeRate: 0
-      resistance: 0
+      rechargeRate: 0.3
+      resistance: 0.3
     m_ConnectingTypes: 119
     m_IsBoostAdditive: 0
 --- !u!61 &4058455296736449939

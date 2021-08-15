@@ -12,9 +12,9 @@ public class PowerLine : Building, IEnergetics
     public IPathfindingNode Parent { get => m_Parent; set => m_Parent = value; }
     public Transform TransformReference => this.transform;
 
-    protected override void Start()
+    public override void Construct()
     {
-        base.Start();
+        base.Construct();
         m_NetworkNeighbours = new HashSet<IPathfindingNode>();
     }
 

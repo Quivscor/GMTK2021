@@ -25,9 +25,9 @@ public class BaseTurret : Building, ITurret
     public event EnergyEvent OnReceiveEnergy;
     public event EnergyEvent OnUseEnergy;
 
-    protected override void Start()
+    public override void Construct()
     {
-        base.Start();
+        base.Construct();
 
         m_NetworkNeighbours = new HashSet<IPathfindingNode>();
 

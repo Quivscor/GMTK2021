@@ -13,10 +13,9 @@ public class HitScanTurret : BaseTurret
     private float m_ExtraTimeBetweenShotsReduction;
     #endregion
 
-    protected override void Start()
+    public override void Construct()
     {
-        base.Start();
-
+        base.Construct();
         BaseDamage = BaseStats.power;
         TimeBetweenShots = BaseStats.frequency;
 

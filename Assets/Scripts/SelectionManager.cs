@@ -10,6 +10,7 @@ public static class SelectionManager
     public static Action OnSelectedBuildingUpdated;
 
     public static Building SelectedBuilding { get; private set; }
+    private static Building m_SelectedBuildingCopy;
     private static Building m_SelectedBuildingMock;
     public static Building SelectedBuildingMock => m_SelectedBuildingMock;
     private static GridField m_SelectedBuildingMockField;
@@ -49,9 +50,15 @@ public static class SelectionManager
     private static void InstantiateMock()
     {
         m_SelectedBuildingMock = GameObject.Instantiate(SelectedBuilding, m_DefaultMockPosition, Quaternion.identity, null);
+        m_SelectedBuildingCopy = GameObject.Instantiate(SelectedBuilding, m_DefaultMockPosition, Quaternion.identity, null);
+        //required to avoid null errors, shouldn't matter to those buildings
+        m_SelectedBuildingMock.Construct();
+        m_SelectedBuildingCopy.Construct();
+        m_SelectedBuildingCopy.name = "SelectionCopy";
         m_SelectedBuildingMock.name = "BuildingMock";
         m_SelectedBuildingMock.gameObject.layer = IgnoreRaycastLayerID;
         m_SelectedBuildingMock.OnBuildingSelected?.Invoke();
+        m_SelectedBuildingCopy.OnBuildingSelected?.Invoke();
     }
 
     private static void RecolorMock(bool retrieveOriginalColor = false)
@@ -62,7 +69,7 @@ public static class SelectionManager
         SpriteRenderer[] renderers = SelectedBuildingMock.GetComponentsInChildren<SpriteRenderer>();
         if(retrieveOriginalColor)
         {
-            SpriteRenderer[] originalColors = SelectedBuilding.GetComponentsInChildren<SpriteRenderer>();
+            SpriteRenderer[] originalColors = m_SelectedBuildingCopy.GetComponentsInChildren<SpriteRenderer>();
             for(int i = 0; i < renderers.Length; i++)
             {
                 renderers[i].color = originalColors[i].color;
@@ -103,6 +110,7 @@ public static class SelectionManager
     private static void DestroyMock()
     {
         GameObject.Destroy(m_SelectedBuildingMock.gameObject);
+        GameObject.Destroy(m_SelectedBuildingCopy.gameObject);
     }
 
     public static void PlaceMockAt(GridField field)

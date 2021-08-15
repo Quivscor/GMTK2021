@@ -29,10 +29,10 @@ public class Building : MonoBehaviour, IPointerClickHandler
     public Action OnDamageReceived;
     public Action<BuildingEventData> OnEnterRechargingState;
 
-    public bool isDirty = false;
-    public bool isBuilt = false;
+    [HideInInspector] public bool isDirty = false;
+    [HideInInspector] public bool isBuilt = false;
 
-    protected virtual void Start()
+    public virtual void Construct()
     {
         BonusStats = new BuildingStats();
 
@@ -143,6 +143,9 @@ public class Building : MonoBehaviour, IPointerClickHandler
         CurrentResistance -= value;
         OnDamageReceived?.Invoke();
     }
+
+    [SerializeField] private BuildingShopData m_BuildingShopData;
+    public BuildingShopData BuildingShopData => m_BuildingShopData;
 
     public virtual string ShowInfo()
     {

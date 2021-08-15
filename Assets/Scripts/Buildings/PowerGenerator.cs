@@ -17,9 +17,9 @@ public class PowerGenerator : PowerLine, IEnergetics, IGenerator
 
     public event GenerateEvent OnGenerate;
 
-    protected override void Start()
+    public override void Construct()
     {
-        base.Start();
+        base.Construct();
 
         m_NetworkNeighbours = new HashSet<IPathfindingNode>();
         m_EnergyParticleGenerationCooldownCurrent = m_EnergyParticleGenerationCooldown;

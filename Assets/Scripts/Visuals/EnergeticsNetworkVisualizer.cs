@@ -67,7 +67,7 @@ public class EnergeticsNetworkVisualizer : MonoBehaviour
 
     public static void UpdateMockConnections(Vector3 mockPosition)
     {
-        MockConnections.Clear();
+        ClearMockConnections();
 
         Collider2D[] cols = Physics2D.OverlapCircleAll(mockPosition, EnergeticsController.ConnectionDistance);
         for (int i = 0; i < cols.Length; i++)

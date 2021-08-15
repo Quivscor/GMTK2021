@@ -104,19 +104,23 @@ public class GridController : MonoBehaviour
         if (!ResourcesController.TrySpendMoney(data.building.BaseStats.cost))
             return;
 
-        Grid[data.gridFieldCoords.x, data.gridFieldCoords.y].AssignBuilding(data.building);
-        data.building.transform.position = Grid[data.gridFieldCoords.x, data.gridFieldCoords.y].transform.position;
-        data.building.name += "(" + data.gridFieldCoords.x + ", " + data.gridFieldCoords.y + ")";
-        data.building.isBuilt = true;
-        data.building.isDirty = true;
+        //we can't use Awake or Start anymore, so create and construct object here
+        Building b = Instantiate(data.building, Grid[data.gridFieldCoords.x, data.gridFieldCoords.y].transform.position,
+            Quaternion.identity, Grid[data.gridFieldCoords.x, data.gridFieldCoords.y].transform);
+        b.Construct();
 
-        if (!data.building.BuildingType.HasFlag(BuildingType.ADDMODULE) && !data.building.BuildingType.HasFlag(BuildingType.MULTMODULE))
+        Grid[data.gridFieldCoords.x, data.gridFieldCoords.y].AssignBuilding(b);
+        b.name += "(" + data.gridFieldCoords.x + ", " + data.gridFieldCoords.y + ")";
+        b.isBuilt = true;
+        b.isDirty = true;
+
+        if (!b.BuildingType.HasFlag(BuildingType.ADDMODULE) && !b.BuildingType.HasFlag(BuildingType.MULTMODULE))
             ActiveBuildingFields.Add(Grid[data.gridFieldCoords.x, data.gridFieldCoords.y]);
 
-        if (data.building is IEnergetics energetics)
-            EnergeticsController.ProcessEnergeticsBuildingPlacement(data);
+        if (b is IEnergetics energetics)
+            EnergeticsController.ProcessEnergeticsBuildingPlacement(b);
 
-        if (data.building.BuildingType == BuildingType.MONEYMAKER && data.building is IGenerator generator)
+        if (b.BuildingType == BuildingType.MONEYMAKER && b is IGenerator generator)
             ResourcesController.SubscribeGenerator(generator);
 
         RecalculateGrid();

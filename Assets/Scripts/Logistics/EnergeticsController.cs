@@ -35,9 +35,8 @@ public class EnergeticsController : MonoBehaviour
         }
     }
 
-    public void ProcessEnergeticsBuildingPlacement(GridFieldEventData e)
+    public void ProcessEnergeticsBuildingPlacement(Building building)
     {
-        Building building = e.building;
         IEnergetics newNode = building.GetComponent<IEnergetics>();
 
         //check if can connect to nearby network?
@@ -63,13 +62,13 @@ public class EnergeticsController : MonoBehaviour
         {
             IEnergetics node;
             //if yes, add connections
-            if (cols[i].TryGetComponent<IEnergetics>(out node))
+            if (cols[i].TryGetComponent<IEnergetics>(out node) && node != newNode)
             {
                 node.AddNetworkNeighbour(newNode);
                 newNode.AddNetworkNeighbour(node);
             }
 
-            if (node == null)
+            if (node == null || node == newNode)
                 continue;
 
             EnergeticsNetwork network = Networks.Find((x) => x.Nodes.Contains(node));

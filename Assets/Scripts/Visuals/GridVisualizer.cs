@@ -22,6 +22,7 @@ public class GridVisualizer : MonoBehaviour
         GridController.Instance.OnProcessBuildPlacement += EnergeticsNetworkVisualizer.ClearMockConnections;
 
         SelectionManager.OnDeselection += HideClusterHighlight;
+        SelectionManager.OnDeselection += EnergeticsNetworkVisualizer.ClearMockConnections;
 
         foreach(GridField field in GridController.Grid)
         {
@@ -32,6 +33,9 @@ public class GridVisualizer : MonoBehaviour
             field.OnHoverEnter += DrawSelectedBuildingMock;
             field.OnHoverExit += HideSelectedBuildingMock;
         }
+
+        //init recalculation dummy
+        m_DummyBuilding.Construct();
     }
 
     public void DrawSelectedBuildingMock(GridFieldEventData e)
@@ -147,8 +151,6 @@ public class GridVisualizer : MonoBehaviour
         if (SelectionManager.SelectedBuilding != null && !SelectionManager.SelectedBuilding.isBuilt)
         {
             SelectionManager.HideMock();
-            if (SelectionManager.SelectedBuilding is IPathfindingNode energeticsNode)
-                EnergeticsNetworkVisualizer.ClearMockConnections();
         }
     }
 
