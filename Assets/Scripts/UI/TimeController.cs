@@ -19,6 +19,11 @@ namespace LinkTD.UI
         private int m_CurrentGameSpeedIterator;
         [SerializeField] private float[] m_GameSpeedSettings;
 
+        private void Start()
+        {
+            m_TimeScale = Time.timeScale;
+        }
+
         public void PauseGame()
         {
             if (TimeScale == 0)
