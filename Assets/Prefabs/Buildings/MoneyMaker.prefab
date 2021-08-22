@@ -541,10 +541,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BuildingType: 64
   m_BaseStats:
-    cost: 200
-    power: 6
-    frequency: 4
-    electricUsage: 10
+    cost: 2000
+    power: 50
+    frequency: 100
+    electricUsage: 50
     rechargeRate: 5
     resistance: 20
   m_AllowedPlacementFieldType: 1
@@ -555,9 +555,13 @@ MonoBehaviour:
     UIBuildingDescription: 'Generates money equal to it''s power value. Time it takes
       to generate money is tied to it''s operation speed.
 
-      Cost: 200'
+      Cost: 2000'
     UIBuildingName: Money Maker
     BuildingShopCategory: 3000
+  m_MaxEnergy: 2000
+  m_GeneratedObjectName: Money
+  m_BonusPowerModifier: 0.3
+  m_BonusFrequencyModifier: 0.1
 --- !u!61 &4058455296736449939
 BoxCollider2D:
   m_ObjectHideFlags: 0

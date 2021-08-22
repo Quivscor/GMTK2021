@@ -35,6 +35,17 @@ public class EnergeticsController : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        float deltaTime = Time.fixedDeltaTime;
+
+        List<EnergeticsNetwork> networks = new List<EnergeticsNetwork>(Networks);
+        foreach (EnergeticsNetwork network in networks)
+        {
+            network.FixedUpdateNetwork(deltaTime);
+        }
+    }
+
     public void ProcessEnergeticsBuildingPlacement(Building building)
     {
         IEnergetics newNode = building.GetComponent<IEnergetics>();

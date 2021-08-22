@@ -131,9 +131,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointCost: 1
-  money: 3
+  money: 15
   currentMoney: 0
-  hp: 2
+  hp: 20
   damage: 1
   perWaveExponent: 1.6
   m_MoveSpeed: 1

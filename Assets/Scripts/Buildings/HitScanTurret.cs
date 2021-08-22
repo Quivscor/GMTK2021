@@ -5,26 +5,35 @@ using UnityEngine;
 public class HitScanTurret : BaseTurret
 {
     #region TurretStats
-    public float TimeBetweenShots { get; protected set; }
+    private float m_TimeBetweenShots;
+    public float TimeBetweenShots => m_TimeBetweenShots;
     private float m_TimeBetweenShotsCurrent;
     public float BaseDamage { get; protected set; }
 
-    private float m_ExtraDamage;
-    private float m_ExtraTimeBetweenShotsReduction;
+    private float m_Damage;
     #endregion
+
+    [SerializeField] private float m_BonusPowerModifier;
+    [SerializeField] private float m_BonusFrequencyModifier;
 
     public override void Construct()
     {
         base.Construct();
         BaseDamage = BaseStats.power;
-        TimeBetweenShots = BaseStats.frequency;
+        m_TimeBetweenShots = BaseStats.frequency / BaseStats.frequency;
 
         m_TimeBetweenShotsCurrent = TimeBetweenShots;
     }
 
     protected override void Update()
     {
+        if (!isBuilt || Time.timeScale == 0)
+            return;
+
         base.Update();
+
+        if (IsRecharging())
+            return;
 
         SanityTargetList();
 
@@ -33,7 +42,7 @@ public class HitScanTurret : BaseTurret
             if (m_TimeBetweenShotsCurrent <= 0)
             {
                 if(Fire())
-                    m_TimeBetweenShotsCurrent = TimeBetweenShots - m_ExtraTimeBetweenShotsReduction;
+                    m_TimeBetweenShotsCurrent = TimeBetweenShots;
             }
             else
                 m_TimeBetweenShotsCurrent -= Time.deltaTime;
@@ -42,8 +51,9 @@ public class HitScanTurret : BaseTurret
 
     protected override void SetBuildingCustomStats()
     {
-        m_ExtraDamage = BonusStats.power;
-        m_ExtraTimeBetweenShotsReduction = BonusStats.frequency / (32 + BonusStats.frequency);
+        base.SetBuildingCustomStats();
+        m_Damage = BaseStats.power + (BonusStats.power * m_BonusPowerModifier);
+        m_TimeBetweenShots = BaseStats.frequency / (BaseStats.frequency + (BonusStats.frequency * m_BonusFrequencyModifier));
     }
 
     public void SanityTargetList()
@@ -59,17 +69,17 @@ public class HitScanTurret : BaseTurret
     {
         if (base.Fire())
         {
-            Targets[0].TakeDamage(BaseDamage + m_ExtraDamage);
+            Targets[0].TakeDamage(m_Damage);
             return true;
         }
         else return false;
     }
 
-    public override string ShowInfo()
+    public override string GetPersonalizedStatsString()
     {
-        string info = base.ShowInfo();
+        string info = base.GetPersonalizedStatsString();
 
-        info += "Damage = " + (BaseDamage + m_ExtraDamage) + "\nFire rate = " + (TimeBetweenShots - m_ExtraTimeBetweenShotsReduction) +
+        info += "Damage = " + (m_Damage) + "\nFire rate = " + (TimeBetweenShots) +
             "\nEnergy use per shot = " + (BaseStats.electricUsage + BonusStats.electricUsage) + "\nCurrent energy = " + Energy + "/" + MaxEnergy;
 
         return info;

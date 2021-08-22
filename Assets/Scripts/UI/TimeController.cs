@@ -6,6 +6,8 @@ namespace LinkTD.UI
 {
     public class TimeController : MonoBehaviour
     {
+        [SerializeField] private GameObject m_PauseGameText;
+
         private static float m_TimeScale;
         public static float TimeScale
         {
@@ -22,6 +24,8 @@ namespace LinkTD.UI
         private void Start()
         {
             m_TimeScale = Time.timeScale;
+
+            PauseGame();
         }
 
         public void PauseGame()
@@ -38,7 +42,8 @@ namespace LinkTD.UI
             if (m_CurrentGameSpeedIterator >= m_GameSpeedSettings.Length)
                 m_CurrentGameSpeedIterator = 0;
 
-            TimeScale = m_GameSpeedSettings[m_CurrentGameSpeedIterator];
+            if(TimeScale != 0)
+                TimeScale = m_GameSpeedSettings[m_CurrentGameSpeedIterator];
         }
     }
 

@@ -7,13 +7,11 @@ public class GeneralInfoDisplay : MonoBehaviour
 {
     [SerializeField] private TMProText livesText;
     [SerializeField] private TMProText waveText;
-    [SerializeField] private TMProText moneyText;
 
-    private void Start()
+    private void Awake()
     {
         ResourcesController r = FindObjectOfType<ResourcesController>();
         r.OnLivesChange += UpdateLives;
-        r.OnMoneyChange += UpdateMoney;
         EnemyController e = FindObjectOfType<EnemyController>();
         e.OnNewWave += UpdateWave;
     }
@@ -21,10 +19,6 @@ public class GeneralInfoDisplay : MonoBehaviour
     public void UpdateWave(WaveData e)
     {
         UpdateText(waveText, "Wave: ", e.WaveNumber);
-    }
-    public void UpdateMoney(int value)
-    {
-        UpdateText(moneyText, "Money: ", value);
     }
 
     public void UpdateLives(int value)

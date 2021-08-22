@@ -541,9 +541,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BuildingType: 16
   m_BaseStats:
-    cost: 100
-    power: 4
-    frequency: 4
+    cost: 500
+    power: 20
+    frequency: 20
     electricUsage: 0
     rechargeRate: 5
     resistance: 20
@@ -555,9 +555,11 @@ MonoBehaviour:
     UIBuildingDescription: 'Generates energy particles, required by most active buildings
       to operate. Can only be placed on resource tiles.
 
-      Cost: 100'
+      Cost: 500'
     UIBuildingName: Power Generator
     BuildingShopCategory: 2000
+  m_BonusPowerModifier: 0.5
+  m_GeneratedObjectName: Energy Particle
 --- !u!61 &4058455296736449939
 BoxCollider2D:
   m_ObjectHideFlags: 0

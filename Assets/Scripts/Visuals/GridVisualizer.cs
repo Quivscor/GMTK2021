@@ -21,8 +21,8 @@ public class GridVisualizer : MonoBehaviour
         GridController.Instance.OnProcessBuildPlacement += HideClusterHighlight;
         GridController.Instance.OnProcessBuildPlacement += EnergeticsNetworkVisualizer.ClearMockConnections;
 
-        SelectionManager.OnDeselection += HideClusterHighlight;
-        SelectionManager.OnDeselection += EnergeticsNetworkVisualizer.ClearMockConnections;
+        SelectionManager.Data.OnDeselection += HideClusterHighlight;
+        SelectionManager.Data.OnDeselection += EnergeticsNetworkVisualizer.ClearMockConnections;
 
         foreach(GridField field in GridController.Grid)
         {
@@ -40,11 +40,11 @@ public class GridVisualizer : MonoBehaviour
 
     public void DrawSelectedBuildingMock(GridFieldEventData e)
     {
-        if(SelectionManager.SelectedBuilding != null && !SelectionManager.SelectedBuilding.isBuilt)
+        if(SelectionManager.Data.SelectedBuilding != null && !SelectionManager.Data.SelectedBuilding.isBuilt)
         {
             SelectionManager.PlaceMockAt(e.owner);
 
-            if(SelectionManager.SelectedBuilding is IPathfindingNode energeticsNode)
+            if(SelectionManager.Data.SelectedBuilding is IPathfindingNode energeticsNode)
                 EnergeticsNetworkVisualizer.UpdateMockConnections(e.owner.transform.position);
 
             HashSet<GridField> cluster = GridController.GetCluster(e.owner.OwnCoordinates);
@@ -83,7 +83,7 @@ public class GridVisualizer : MonoBehaviour
         var clusterOrdered = cluster.OrderByDescending(x =>
         {
             if (x.Building == null)
-                return SelectionManager.SelectedBuilding.BuildingComparator();
+                return SelectionManager.Data.SelectedBuilding.BuildingComparator();
             return x.Building.BuildingComparator();
         });
 
@@ -100,19 +100,21 @@ public class GridVisualizer : MonoBehaviour
                     text += "Power + " + stats.power.ToString("F") + "\n";
                 if (stats.frequency != 0)
                     text += "Frequency + " + stats.frequency.ToString("F") + "\n";
+                if (stats.resistance != 0)
+                    text += "Resistance + " + stats.resistance.ToString("F") + "\n";
                 if (stats.electricUsage != 0)
                     text += "Energy use + " + stats.electricUsage.ToString("F") + "\n";
 
-                if(text != "")
+                if (text != "")
                     display.BoostDisplay.Show(text);
             }
         }
         //for mock only
-        if(SelectionManager.SelectedBuilding.IsActiveBuilding())
+        if(SelectionManager.Data.SelectedBuilding.IsActiveBuilding())
         {
-            BuildingStats stats = GetClusterStatDifference(clusterOrdered, SelectionManager.SelectedBuilding);
+            BuildingStats stats = GetClusterStatDifference(clusterOrdered, SelectionManager.Data.SelectedBuilding);
             IStatDisplayer display;
-            if (SelectionManager.SelectedBuildingMock.TryGetComponent(out display))
+            if (SelectionManager.Data.SelectedBuildingMock.TryGetComponent(out display))
             {
                 //for preview purposes currently, UI requires rework
                 string text = "";
@@ -120,6 +122,8 @@ public class GridVisualizer : MonoBehaviour
                     text += "Power + " + stats.power.ToString("F") + "\n";
                 if (stats.frequency != 0)
                     text += "Frequency + " + stats.frequency.ToString("F") + "\n";
+                if (stats.resistance != 0)
+                    text += "Resistance + " + stats.resistance.ToString("F") + "\n";
                 if (stats.electricUsage != 0)
                     text += "Energy use + " + stats.electricUsage.ToString("F") + "\n";
 
@@ -132,7 +136,7 @@ public class GridVisualizer : MonoBehaviour
     private BuildingStats GetClusterStatDifference(IEnumerable<GridField> cluster, Building activeInCluster)
     {
         int activeBuildingsInClusterCount = GridController.Instance.CountActiveBuildingsInCluster(cluster);
-        if(SelectionManager.SelectedBuilding.IsActiveBuilding())
+        if(SelectionManager.Data.SelectedBuilding.IsActiveBuilding())
             activeBuildingsInClusterCount++;
 
         RecalculationBuilding.ResetBuildingBonuses();
@@ -148,7 +152,7 @@ public class GridVisualizer : MonoBehaviour
 
     public void HideSelectedBuildingMock(GridFieldEventData e)
     {
-        if (SelectionManager.SelectedBuilding != null && !SelectionManager.SelectedBuilding.isBuilt)
+        if (SelectionManager.Data.SelectedBuilding != null && !SelectionManager.Data.SelectedBuilding.isBuilt)
         {
             SelectionManager.HideMock();
         }
@@ -164,11 +168,11 @@ public class GridVisualizer : MonoBehaviour
         }
 
         //mock works differently, special case for it here
-        if(SelectionManager.SelectedBuilding != null)
+        if(SelectionManager.Data.SelectedBuilding != null)
         {
-            if (SelectionManager.SelectedBuilding.IsActiveBuilding())
+            if (SelectionManager.Data.SelectedBuilding.IsActiveBuilding())
             {
-                IStatDisplayer display = SelectionManager.SelectedBuildingMock.GetComponentInChildren<IStatDisplayer>();
+                IStatDisplayer display = SelectionManager.Data.SelectedBuildingMock.GetComponentInChildren<IStatDisplayer>();
                 display.BoostDisplay.Hide();
             }
         }

@@ -9,26 +9,50 @@ public class MoneyGenerator : PowerLine, IActiveBuilding, IGenerator
     protected float m_Energy;
     public float Energy => m_Energy;
 
-    protected float m_MaxEnergy = 100f;
+    [SerializeField] protected float m_MaxEnergy = 100f;
     public float MaxEnergy => m_MaxEnergy;
+    protected EnergyAnalytics m_Analytics;
+    public EnergyAnalytics Analytics => m_Analytics;
 
     protected float m_GeneratedMoney;
     protected float m_GenerationCooldown;
+    public float GenerationCooldown => m_GenerationCooldown;
     protected float m_GenerationCooldownCurrent;
+    public float GenerationCooldownCurrent => m_GenerationCooldownCurrent;
+    [SerializeField] protected string m_GeneratedObjectName;
+    public string GeneratedObjectName => (m_GeneratedObjectName + " (" + m_GeneratedMoney.ToString("F2") + ")");
+
+    [SerializeField] private float m_BonusPowerModifier;
+    [SerializeField] private float m_BonusFrequencyModifier;
 
     public event GenerateEvent OnGenerate;
+    public event GenerationProgressEvent OnGenerationProgress;
     public event EnergyEvent OnReceiveEnergy;
     public event EnergyEvent OnUseEnergy;
 
+    public override void Construct()
+    {
+        base.Construct();
+
+        m_Analytics = new EnergyAnalytics(5f);
+    }
+
     protected override void SetBuildingCustomStats()
     {
-        m_GeneratedMoney = 5 + Mathf.Log(BaseStats.power + BonusStats.power, 5);
-        m_GenerationCooldown = 10 / (1 + Mathf.Log(BaseStats.frequency + BonusStats.frequency, 3));
+        base.SetBuildingCustomStats();
+        m_GeneratedMoney = BaseStats.power + BonusStats.power * m_BonusPowerModifier;
+        m_GenerationCooldown = BaseStats.frequency / ((BaseStats.frequency / 10) + (BonusStats.frequency * m_BonusFrequencyModifier));
     }
 
     protected override void Update()
     {
-        base.Update();
+        if (!isBuilt || Time.timeScale == 0)
+            return;
+
+        m_Analytics.MeasureTime(Time.deltaTime);
+
+        if (IsRecharging())
+            return;
 
         if (m_GenerationCooldownCurrent <= 0)
         {
@@ -38,6 +62,7 @@ public class MoneyGenerator : PowerLine, IActiveBuilding, IGenerator
         else
         {
             m_GenerationCooldownCurrent -= Time.deltaTime;
+            OnGenerationProgress?.Invoke();
         }
     }
 
@@ -49,6 +74,7 @@ public class MoneyGenerator : PowerLine, IActiveBuilding, IGenerator
             m_Energy = MaxEnergy;
         }
         OnReceiveEnergy?.Invoke();
+        m_Analytics.MeasureEnergyGain(energy);
     }
 
     public void Generate()
@@ -68,9 +94,9 @@ public class MoneyGenerator : PowerLine, IActiveBuilding, IGenerator
         return true;
     }
 
-    public override string ShowInfo()
+    public override string GetPersonalizedStatsString()
     {
-        string info = base.ShowInfo(); 
+        string info = base.GetPersonalizedStatsString(); 
         info += "\nGenerates " + Mathf.RoundToInt(m_GeneratedMoney) + " money every " + m_GenerationCooldown + "s\nCosts " + 
             (BaseStats.electricUsage + BonusStats.electricUsage) + " energy to run";
         info += "\nCurrent energy = " + Energy + "/" + MaxEnergy;

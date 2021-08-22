@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BuildingType: 2
   m_BaseStats:
-    cost: 25
+    cost: 100
     power: 0
     frequency: 0
     electricUsage: 0
@@ -143,19 +143,20 @@ MonoBehaviour:
     UIBuildingDescription: 'This module increases operation speed of connected active
       building by a flat amount.
 
-      Cost: 25'
+      Cost: 100'
     UIBuildingName: SPEED Module
     BuildingShopCategory: 1000
   m_ConnectionData:
     m_ConnectionBoost:
       cost: 0
       power: 0
-      frequency: 5
-      electricUsage: 1
+      frequency: 15
+      electricUsage: 10
       rechargeRate: 0
       resistance: 0
     m_ConnectingTypes: 119
     m_IsBoostAdditive: 1
+  m_SortingOrder: 10
 --- !u!61 &4058455296736449939
 BoxCollider2D:
   m_ObjectHideFlags: 0

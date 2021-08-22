@@ -109,9 +109,9 @@ public class EnergyParticle : INodeTraverser
     {
         float result = SingleUnitTraversalTime;
 
-        float extraFrequency = (next as MonoBehaviour).GetComponent<Building>().BonusStats.frequency;
+        float extraFrequency = (next as IEnergetics).ConnectionSpeedModifier;
 
-        result = SingleUnitTraversalTime / (1 + Mathf.Log(1 + extraFrequency, 4));
+        result = SingleUnitTraversalTime / (1 + Mathf.Log(1 + extraFrequency, 5));
 
         return result;
     }

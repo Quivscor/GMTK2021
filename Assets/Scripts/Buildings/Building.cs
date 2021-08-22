@@ -20,14 +20,14 @@ public class Building : MonoBehaviour, IPointerClickHandler
     //actual hp of building
     public float CurrentResistance { get; protected set; }
     //is building inactive and regenerating
-    public bool IsRecharging { get; protected set; }
+    protected bool m_IsRecharging;
     private float m_CurrentRechargeTime;
 
     public Action OnBuildingSelected;
     public Action OnBuildingDeselected;
-    public Action OnBuildingStatsUpdated;
+    public Action OnBuildingUpdated;
     public Action OnDamageReceived;
-    public Action<BuildingEventData> OnEnterRechargingState;
+    //public Action<BuildingEventData> OnEnterRechargingState;
 
     [HideInInspector] public bool isDirty = false;
     [HideInInspector] public bool isBuilt = false;
@@ -37,35 +37,34 @@ public class Building : MonoBehaviour, IPointerClickHandler
         BonusStats = new BuildingStats();
 
         SetBuildingCustomStats();
-        OnBuildingStatsUpdated += SetBuildingCustomStats;
+        OnBuildingUpdated += SetBuildingCustomStats;
         CurrentResistance = BaseStats.resistance + BonusStats.resistance;
     }
 
     protected virtual void Update()
     {
-        if (!isBuilt || Time.timeScale == 0)
-            return;
-
-        if (IsBuildingRecharging())
-            return;
+        
     }
 
-    protected virtual bool IsBuildingRecharging()
+    public virtual bool IsRecharging()
     {
         float maxResistance = BaseStats.resistance + BonusStats.resistance;
-        if (CurrentResistance <= 0 && !IsRecharging)
+        if (CurrentResistance <= 0 && !m_IsRecharging)
         {
-            IsRecharging = true;
+            m_IsRecharging = true;
             m_CurrentRechargeTime = 0;
-            OnEnterRechargingState?.Invoke(new BuildingEventData(this, this as IPathfindingNode));
+            OnBuildingUpdated?.Invoke();
             return true;
         }
-        else if(IsRecharging)
+        else if(m_IsRecharging)
         {
             m_CurrentRechargeTime += Time.deltaTime;
             float rechargeTime = BaseStats.rechargeRate + BonusStats.rechargeRate;
             if (m_CurrentRechargeTime >= rechargeTime)
-                IsRecharging = false;
+            {
+                m_IsRecharging = false;
+                OnBuildingUpdated?.Invoke();
+            }              
             CurrentResistance = Mathf.Lerp(0, maxResistance, m_CurrentRechargeTime / rechargeTime);
             return true;
         }
@@ -110,13 +109,13 @@ public class Building : MonoBehaviour, IPointerClickHandler
     public virtual void AddBoostValue(BuildingStats s)
     {
         BonusStats += s;
-        OnBuildingStatsUpdated?.Invoke();
+        OnBuildingUpdated?.Invoke();
     }
 
     public virtual void AddBoostMultiplier(BuildingStats s)
     {
-        BonusStats += (BaseStats + BonusStats) * s;
-        OnBuildingStatsUpdated?.Invoke();
+        BonusStats += BonusStats * s;
+        OnBuildingUpdated?.Invoke();
     }
 
     public virtual int BuildingComparator() { return 10000; }
@@ -147,7 +146,7 @@ public class Building : MonoBehaviour, IPointerClickHandler
     [SerializeField] private BuildingShopData m_BuildingShopData;
     public BuildingShopData BuildingShopData => m_BuildingShopData;
 
-    public virtual string ShowInfo()
+    public virtual string GetPersonalizedStatsString()
     {
         throw new System.NotImplementedException();
     }

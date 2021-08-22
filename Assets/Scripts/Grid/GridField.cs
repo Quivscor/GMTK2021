@@ -31,10 +31,10 @@ public class GridField : MonoBehaviour, IPointerClickHandler, IPointerEnterHandl
         if(eventData.button == PointerEventData.InputButton.Left)
         {
             if (SelectionManager.IsSelectedBuildingPlaceable() && Building == null 
-                && type == SelectionManager.SelectedBuilding.AllowedPlacementFieldType)
+                && type == SelectionManager.Data.SelectedBuilding.AllowedPlacementFieldType)
             {
                 //place building if possible
-                GridController.Instance.ProcessBuildingPlacement(new GridFieldEventData(SelectionManager.SelectedBuilding, OwnCoordinates));
+                GridController.Instance.ProcessBuildingPlacement(new GridFieldEventData(SelectionManager.Data.SelectedBuilding, OwnCoordinates));
             }
             else if (Building != null)
             {

@@ -127,9 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5a1f4fb6deb64a43b2ee6eda0a53e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BuildingType: 2
+  m_BuildingType: 4
   m_BaseStats:
-    cost: 25
+    cost: 100
     power: 0
     frequency: 0
     electricUsage: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
     UIBuildingDescription: 'This module decreases energy usage of connected active
       building by half.
 
-      Cost: 25'
+      Cost: 100'
     UIBuildingName: ECO Module
     BuildingShopCategory: 1000
   m_ConnectionData:
@@ -156,6 +156,7 @@ MonoBehaviour:
       resistance: 0
     m_ConnectingTypes: 119
     m_IsBoostAdditive: 0
+  m_SortingOrder: 5
 --- !u!61 &4058455296736449939
 BoxCollider2D:
   m_ObjectHideFlags: 0

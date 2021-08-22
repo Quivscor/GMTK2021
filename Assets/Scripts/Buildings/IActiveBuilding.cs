@@ -6,6 +6,8 @@ public delegate void EnergyEvent();
 
 public interface IActiveBuilding : IEnergetics
 {
+    public EnergyAnalytics Analytics { get; }
+
     public float Energy { get; }
     public float MaxEnergy { get; }
     public void AddEnergy(float energy);

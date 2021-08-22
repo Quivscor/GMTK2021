@@ -5,8 +5,13 @@ using UnityEngine;
 
 public class PowerGenerator : PowerLine, IEnergetics, IGenerator
 {
+    [SerializeField] private float m_BonusPowerModifier;
     private float m_EnergyParticleGenerationCooldown;
+    public float GenerationCooldown => m_EnergyParticleGenerationCooldown;
     private float m_EnergyParticleGenerationCooldownCurrent;
+    public float GenerationCooldownCurrent => m_EnergyParticleGenerationCooldownCurrent;
+    [SerializeField] protected string m_GeneratedObjectName;
+    public string GeneratedObjectName => (m_GeneratedObjectName + " (" + m_ParticleValue.ToString("F2") + "kW)");
 
     private float m_ParticleValue;
 
@@ -16,6 +21,7 @@ public class PowerGenerator : PowerLine, IEnergetics, IGenerator
     public float EnergyParticleValue => m_ParticleValue;
 
     public event GenerateEvent OnGenerate;
+    public event GenerationProgressEvent OnGenerationProgress;
 
     public override void Construct()
     {
@@ -27,9 +33,13 @@ public class PowerGenerator : PowerLine, IEnergetics, IGenerator
 
     protected override void Update()
     {
-        base.Update();
+        if (!isBuilt || Time.timeScale == 0)
+            return;
 
-        if(m_EnergyParticleGenerationCooldownCurrent <= 0)
+        if (IsRecharging())
+            return;
+
+        if (m_EnergyParticleGenerationCooldownCurrent <= 0)
         {
             Generate();
             m_EnergyParticleGenerationCooldownCurrent = EnergyParticleGenerationCooldown;
@@ -37,13 +47,15 @@ public class PowerGenerator : PowerLine, IEnergetics, IGenerator
         else
         {
             m_EnergyParticleGenerationCooldownCurrent -= Time.deltaTime;
+            OnGenerationProgress?.Invoke();
         }
     }
 
     protected override void SetBuildingCustomStats()
     {
-        m_EnergyParticleGenerationCooldown = 2f / Mathf.Log(BaseStats.frequency + BonusStats.frequency, 2);
-        m_ParticleValue = 3 + Mathf.Log(BaseStats.power + BonusStats.power, 2);
+        base.SetBuildingCustomStats();
+        m_EnergyParticleGenerationCooldown = BaseStats.frequency / (BaseStats.frequency + BonusStats.frequency);
+        m_ParticleValue = BaseStats.power + (BonusStats.power * m_BonusPowerModifier);
     }
 
     public void Generate()
@@ -64,7 +76,7 @@ public class PowerGenerator : PowerLine, IEnergetics, IGenerator
         
     }
 
-    public override string ShowInfo()
+    public override string GetPersonalizedStatsString()
     {
         string info = "Power generator.\nEnergy per particle = " + m_ParticleValue + "\nParticle rate = " + m_EnergyParticleGenerationCooldown +
             "s per particle";

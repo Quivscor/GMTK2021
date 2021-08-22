@@ -53,12 +53,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BuildingType: 1
   m_BaseStats:
-    cost: 100
-    power: 5
-    frequency: 1
-    electricUsage: 1
+    cost: 1000
+    power: 60
+    frequency: 15
+    electricUsage: 10
     rechargeRate: 5
-    resistance: 50
+    resistance: 20
   m_AllowedPlacementFieldType: 1
   isDirty: 0
   isBuilt: 0
@@ -67,10 +67,12 @@ MonoBehaviour:
     UIBuildingDescription: 'Fires precisely aimed shots at enemy. Requires energy
       to operate. Attached modules increase it''s effectiveness.
 
-      Cost: 100'
+      Cost: 1000'
     UIBuildingName: Basic Turret
     BuildingShopCategory: 0
-  m_MaxEnergy: 100
+  m_MaxEnergy: 1000
+  m_BonusPowerModifier: 1
+  m_BonusFrequencyModifier: 1
 --- !u!61 &5284955210927474974
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -251,7 +251,7 @@ public class GridController : MonoBehaviour
                 IncreaseBuildingStats(building, module, activeBuildingsInCluster, distanceFromActiveBuilding);
             }
             //check based on item held over checked field, not placed on it
-            else if (field.Building == null && SelectionManager.SelectedBuilding is IModule selectedModule && !hasCalculatedMock)
+            else if (field.Building == null && SelectionManager.Data.SelectedBuilding is IModule selectedModule && !hasCalculatedMock)
             {
                 IncreaseBuildingStats(building, selectedModule, activeBuildingsInCluster, distanceFromActiveBuilding);
                 hasCalculatedMock = true;

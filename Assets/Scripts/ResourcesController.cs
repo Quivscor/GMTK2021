@@ -6,8 +6,11 @@ using System;
 
 public class ResourcesController : MonoBehaviour
 {
-    [SerializeField] private int lives = 20;
-    [SerializeField] private int money = 100;
+    [SerializeField] private int m_Lives = 20;
+    [SerializeField] private int m_Money = 100;
+
+    public int Lives => m_Lives;
+    public int Money => m_Money;
 
     public Action<int> OnMoneyChange;
     public Action<int> OnLivesChange;
@@ -19,35 +22,41 @@ public class ResourcesController : MonoBehaviour
         generator.OnGenerate += GainMoney;
     }
 
+    private void Start()
+    {
+        OnLivesChange?.Invoke(Lives);
+        OnMoneyChange?.Invoke(Money);
+    }
+
     public void RemoveLife(EnemyEventData e)
     {
-        lives -= e.Enemy.damage;
-        if (lives <= 0)
+        m_Lives -= e.Enemy.damage;
+        if (m_Lives <= 0)
             GameOver();
         else
-            OnLivesChange?.Invoke(lives);
+            OnLivesChange?.Invoke(m_Lives);
     }
 
     public bool TrySpendMoney(int value)
     {
-        if (value > money)
+        if (value > m_Money)
             return false;
 
-        money -= value;
-        OnMoneyChange?.Invoke(money);
+        m_Money -= value;
+        OnMoneyChange?.Invoke(m_Money);
         return true;
     }
 
     public void GainMoney(EnemyEventData e)
     {
-        money += e.Enemy.currentMoney;
-        OnMoneyChange?.Invoke(money);
+        m_Money += e.Enemy.currentMoney;
+        OnMoneyChange?.Invoke(m_Money);
     }
 
     public void GainMoney(GeneratorEventData e)
     {
-        money += Mathf.RoundToInt(e.GeneratedValue);
-        OnMoneyChange?.Invoke(money);
+        m_Money += Mathf.RoundToInt(e.GeneratedValue);
+        OnMoneyChange?.Invoke(m_Money);
     }
 
     public void GameOver()

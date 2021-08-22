@@ -5,8 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class EnergeticsNetwork
 {
-    public static float EnergyNetworkContactResistanceDamage = 0.005f;
-    public static float EnergyNetworkContactEnemyDamage = 0.0005f;
+    public static float EnergyNetworkContactResistanceDamage = 0.3f;
+    public static float EnergyNetworkContactEnemyDamage = 0.03f;
+    public static readonly float EnergyNetworkRaycastTestCountPerSecond = 6;
+    private float m_CurrentTime;
 
     public HashSet<IEnergetics> Nodes { get; private set; }
     public HashSet<IGenerator> Origins { get; private set; }
@@ -28,7 +30,7 @@ public class EnergeticsNetwork
         AddNode(node);
     }
 
-    public EnergeticsNetwork(List<IEnergetics> nodes)
+    public EnergeticsNetwork(IEnumerable<IEnergetics> nodes)
     {
         Init();
         foreach (IEnergetics node in nodes)
@@ -43,6 +45,7 @@ public class EnergeticsNetwork
         Particles = new List<EnergyParticle>();
 
         pathFinder = new AStarPathfinder();
+        m_CurrentTime = 0;
     }
 
     public void AddNode(IEnergetics node)
@@ -56,8 +59,7 @@ public class EnergeticsNetwork
         else if (node is IGenerator generator)
             AddOrigin(generator);
 
-        Building b = (node as MonoBehaviour).GetComponent<Building>();
-        b.OnEnterRechargingState += OnNetworkNodeEnterRechargeState;
+        node.OnEnterRechargingState += OnNetworkNodeEnterRechargeState;
 
         Nodes.Add(node);
     }
@@ -117,8 +119,16 @@ public class EnergeticsNetwork
         {
             p.Update(deltaTime);
         }
+    }
 
-        CheckNetworkConnectionsContact();
+    public void FixedUpdateNetwork(float deltaTime)
+    {
+        m_CurrentTime += deltaTime;
+        if(m_CurrentTime >= 1/EnergyNetworkRaycastTestCountPerSecond)
+        {
+            CheckNetworkConnectionsContact();
+            m_CurrentTime = 0;
+        }
     }
 
     private void CheckNetworkConnectionsContact()
@@ -126,6 +136,9 @@ public class EnergeticsNetwork
         List<IEnergetics> nodes = new List<IEnergetics>(Nodes);
         foreach (IEnergetics node in nodes)
         {
+            if (node.IsWalkable == false)
+                continue;
+
             foreach (IPathfindingNode n in node.NetworkNeighbours)
             {
                 if (n.IsWalkable == false)
@@ -142,10 +155,11 @@ public class EnergeticsNetwork
                         if (hit[i].transform.TryGetComponent(out e))
                         {
                             Building b = node as Building;
+                            IEnergetics en = node as IEnergetics;
                             b.ReceiveDamage(EnergyNetworkContactResistanceDamage);
                             b = n as Building;
                             b.ReceiveDamage(EnergyNetworkContactResistanceDamage);
-                            e.TakeDamage(EnergyNetworkContactEnemyDamage * (b.BaseStats.power + b.BonusStats.power));
+                            e.TakeDamage(EnergyNetworkContactEnemyDamage * en.ConnectionDamageModifier);
                         }
                     }
                 }
@@ -160,6 +174,9 @@ public class EnergeticsNetwork
         List<IPathfindingNode> pathfindingNodes = Nodes.ToList<IPathfindingNode>();
         foreach (EnergyParticle p in particles)
         {
+            if (p.CurrentNode == e.node || p.NextNode == e.node)
+                RemoveParticle(new EnergyParticleEventData(p));
+
             Stack<IPathfindingNode> newPath = pathFinder.FindPath(p.CurrentNode, p.Target);
             if (newPath == null)
                 RemoveParticle(new EnergyParticleEventData(p));
@@ -170,7 +187,10 @@ public class EnergeticsNetwork
 
     private bool CheckParticleContainsRechargingNode(EnergyParticle p, IPathfindingNode n)
     {
-        if (p.Path.Contains(n) || p.CurrentNode == n)
+        if (p == null || p.Path == null || n == null)
+            return false;
+
+        if (p.Path.Contains(n) || p.CurrentNode == n || p.NextNode == n)
             return true;
         else
             return false;
@@ -210,11 +230,10 @@ public class EnergeticsNetwork
 
         foreach(IEnergetics node in network.Nodes)
         {
-            Building b = (node as MonoBehaviour).GetComponent<Building>();
-            b.OnEnterRechargingState -= networkA.OnNetworkNodeEnterRechargeState;
-            b.OnEnterRechargingState -= networkB.OnNetworkNodeEnterRechargeState;
+            node.OnEnterRechargingState -= networkA.OnNetworkNodeEnterRechargeState;
+            node.OnEnterRechargingState -= networkB.OnNetworkNodeEnterRechargeState;
 
-            b.OnEnterRechargingState += network.OnNetworkNodeEnterRechargeState;
+            node.OnEnterRechargingState += network.OnNetworkNodeEnterRechargeState;
         }
 
         network.UpdateOrigins();
