@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cecb3a860680cc549907fb1a46fbe8f8, type: 3}
+  m_Name: Test1 WaveData
+  m_EditorClassIdentifier: 
+  Waves:
+  - enemyTypes:
+    - {fileID: 1983382915193716151, guid: f1155231949b82546a21ce4b2156cbd4, type: 3}
+    enemyCounts: 05000000
+    OverrideScaling: 0
+  - enemyTypes:
+    - {fileID: 1983382915193716151, guid: f1155231949b82546a21ce4b2156cbd4, type: 3}
+    enemyCounts: 0a000000
+    OverrideScaling: 0
+  - enemyTypes:
+    - {fileID: 1983382915193716151, guid: f1155231949b82546a21ce4b2156cbd4, type: 3}
+    enemyCounts: 0f000000
+    OverrideScaling: 0
+  - enemyTypes:
+    - {fileID: 1983382915193716151, guid: f1155231949b82546a21ce4b2156cbd4, type: 3}
+    enemyCounts: 02000000
+    OverrideScaling: 0
+  - enemyTypes:
+    - {fileID: 1983382915193716151, guid: f1155231949b82546a21ce4b2156cbd4, type: 3}
+    enemyCounts: 04000000
+    OverrideScaling: 0

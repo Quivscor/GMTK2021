@@ -7,7 +7,6 @@ public delegate void FactoryCreateEvent(Enemy e);
 
 public interface IEnemyFactory
 {
-    List<Enemy> EnemyTypes { get;}
     EnemyPath EnemyPath { get; }
 
     IEnumerator CreateWave(WaveData data);
@@ -16,4 +15,10 @@ public interface IEnemyFactory
 
     event FactoryCreateEvent OnEnemySpawned;
     event FactoryEvent OnWaveFinishSpawning;
+}
+
+public enum FactoryType
+{
+    POINT_BASED,
+    WAVE_DATA_BASED,
 }

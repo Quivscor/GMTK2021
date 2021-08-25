@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour, INodeTraverser
 
     protected float m_CurrentTime;
     [SerializeField] protected float m_MoveSpeed = 1;
-    public float SingleUnitTraversalTime => m_MoveSpeed;
+    public float SingleUnitTraversalTime => 1 / m_MoveSpeed;
     #endregion
 
     #region Events
@@ -38,6 +38,19 @@ public class Enemy : MonoBehaviour, INodeTraverser
         currentHp = hp + (Mathf.Pow(waveNumber, perWaveExponent));
         currentMoney = money + (int)(1 * Mathf.Log(waveNumber, 5));
 
+        SetPathData(start, path);
+    }
+
+    public void Construct(IPathfindingNode start, int waveNumber, float scaling, Stack<IPathfindingNode> path)
+    {
+        currentHp = hp + (Mathf.Pow(waveNumber, scaling));
+        currentMoney = money + (int)(1 * Mathf.Log(waveNumber, 5));
+
+        SetPathData(start, path);
+    }
+
+    private void SetPathData(IPathfindingNode start, Stack<IPathfindingNode> path)
+    {
         Path = path;
         CurrentNode = start;
         NextNode = Path.Pop();
@@ -65,6 +78,11 @@ public class Enemy : MonoBehaviour, INodeTraverser
             }
         }
         MoveBetweenNodes(CurrentNode, NextNode, Time.deltaTime);
+    }
+
+    public float GetSpawnTime()
+    {
+        return SingleUnitTraversalTime * 0.75f;
     }
 
     public void TakeDamage(float damage)

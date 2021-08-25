@@ -8,7 +8,10 @@ public class EnemyController : MonoBehaviour
     [Header("Enemy Factory Settings")]
     [SerializeField] private List<Enemy> m_EnemyTypes;
     public List<Enemy> EnemyTypes { get => m_EnemyTypes; }
+    [SerializeField] private LevelEnemyWavesData m_LevelData;
+
     public IEnemyFactory EnemyFactory { get; private set; }
+    [SerializeField] private FactoryType m_FactoryType;
 
     public ResourcesController ResourcesController { get; private set; }
 
@@ -26,7 +29,18 @@ public class EnemyController : MonoBehaviour
         if (EnemyTypes.Count <= 0)
             Debug.LogError("No enemy types detected in EnemyController!");
 
-        EnemyFactory = new PointBasedEnemyFactory(EnemyTypes, 0);
+        switch(m_FactoryType)
+        {
+            case FactoryType.POINT_BASED:
+                EnemyFactory = new PointBasedEnemyFactory(EnemyTypes, 0);
+                break;
+            case FactoryType.WAVE_DATA_BASED:
+                EnemyFactory = new LevelDataBasedEnemyFactory(m_LevelData);
+                break;
+            default:
+                Debug.LogError("Factory type not set!");
+                break;
+        }
 
         EnemyFactory.OnEnemySpawned += SubscribeEnemy;
         EnemyFactory.OnWaveFinishSpawning += HandleFinishWaveSpawn;
